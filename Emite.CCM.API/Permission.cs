@@ -29,7 +29,8 @@ public static class Permission
 		public const string Delete = "Permission.Call.Delete";
 		public const string Upload = "Permission.Call.Upload";
 		public const string History = "Permission.Call.History";
-	}
+        public const string AssignToAgent = "Permission.Call.AssignToAgent";        
+    }
 	public static class Ticket
 	{
 		public const string View = "Permission.Ticket.View";
@@ -39,6 +40,7 @@ public static class Permission
 		public const string Upload = "Permission.Ticket.Upload";
 		public const string History = "Permission.Ticket.History";
 		public const string Approve = "Permission.Ticket.Approve";
-	}
+        public const string AssignToAgent = "Permission.Ticket.AssignToAgent";
+    }
 	
 }

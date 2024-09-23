@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 using Emite.Common.API.Controllers;
 using Asp.Versioning;
+using Emite.CCM.Application.DTOs;
 
 namespace Emite.CCM.API.Controllers.v1;
 
@@ -15,7 +16,7 @@ public class CustomerController : BaseApiController<CustomerController>
 {
     [Authorize(Policy = Permission.Customer.View)]
     [HttpGet]
-    public async Task<ActionResult<PagedListResponse<CustomerState>>> GetAsync([FromQuery] GetCustomerQuery query) =>
+    public async Task<ActionResult<PagedListResponse<CustomerListDto>>> GetAsync([FromQuery] GetCustomerQuery query) =>
         Ok(await Mediator.Send(query));
 
     [Authorize(Policy = Permission.Customer.View)]

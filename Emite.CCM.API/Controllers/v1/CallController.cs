@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 using Emite.Common.API.Controllers;
 using Asp.Versioning;
+using Emite.CCM.Application.DTOs;
+using Emite.CCM.Application.Features.CCM.Agent.Commands;
 
 namespace Emite.CCM.API.Controllers.v1;
 
@@ -15,7 +17,7 @@ public class CallController : BaseApiController<CallController>
 {
     [Authorize(Policy = Permission.Call.View)]
     [HttpGet]
-    public async Task<ActionResult<PagedListResponse<CallState>>> GetAsync([FromQuery] GetCallQuery query) =>
+    public async Task<ActionResult<PagedListResponse<CallListDto>>> GetAsync([FromQuery] GetCallQuery query) =>
         Ok(await Mediator.Send(query));
 
     [Authorize(Policy = Permission.Call.View)]
@@ -40,6 +42,11 @@ public class CallController : BaseApiController<CallController>
     [HttpDelete("{id}")]
     public async Task<ActionResult<CallState>> DeleteAsync(string id) =>
         await ToActionResult(async () => await Mediator.Send(new DeleteCallCommand { Id = id }));
+
+    [Authorize(Policy = Permission.Call.AssignToAgent)]
+    [HttpPatch("{id}")]
+    public async Task<ActionResult<CallState>> PatchAsync(string id, string agentId) =>
+      await ToActionResult(async () => await Mediator.Send(new AssignCallToAgentCommand { Id = id, AgentId = agentId }));
 }
 
 public record CallViewModel
