@@ -1,0 +1,18 @@
+@using Emite.CCM.Web
+@using Emite.CCM.Infrastructure.Data;
+@using Emite.Common.Web.Utility.Authorization
+@using Emite.CCM.Web.Pages.Shared;
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.Extensions.Configuration
+@using Emite.CCM.Core.Identity;
+@namespace Emite.CCM.Web.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, NetEscapades.AspNetCore.SecurityHeaders.TagHelpers
+@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+@inject IHtmlLocalizer<SharedResource> Localizer
+@inject UserManager<ApplicationUser> UserManager
+@inject IAuthorizationService AuthorizationService
+@inject IConfiguration Configuration
+@inject Emite.CCM.Web.Service.DropdownServices dropdownService

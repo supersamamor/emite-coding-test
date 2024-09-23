@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
+    <PackageReference Include="Quartz.AspNetCore" Version="3.13.0" />
+    <PackageReference Include="Quartz.Plugins" Version="3.13.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Emite.Common.Services.Shared\Emite.Common.Services.Shared.csproj" />
+    <ProjectReference Include="..\Emite.CCM.Infrastructure\Emite.CCM.Infrastructure.csproj" />
+	<ProjectReference Include="..\Emite.CCM.ExcelProcessor\Emite.CCM.ExcelProcessor.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ccm_jobs-qa.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

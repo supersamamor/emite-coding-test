@@ -1,0 +1,72 @@
+@page
+@model EditModel
+@{
+    ViewData["Title"] = Localizer["Edit Call"];
+    ViewData["ActiveMainPage"] = "Call";
+    ViewData["Level1"] = "CCM";
+}
+<form id="call-form" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="@Model.RemoveSubDetailId" />
+    <input type="hidden" asp-for="@Model.AsyncAction" />
+    <div id="PartialLoaderContainer">
+        <partial name="_InputFieldsPartial" model="Model.Call" />
+    </div>
+    <div id="toolbar-container" class="btn-group" role="group">  
+		<a asp-page="Index" id="btnCancelConfirmationModal" class="btn btn-secondary" title="@Localizer["Back"]"><i class="fas fa-arrow-left"></i></a>                
+        <button type="button" class="btn btn-success" id="btnConfirmationModal" title="@Localizer["Save changes"]"><i class="fas fa-save"></i></button>
+		@if ((await AuthorizationService.AuthorizeAsync(User, Permission.Call.History)).Succeeded)
+		{
+			<a asp-page="History" id="btnHistoryConfirmationModal" asp-route-id="@Model.Call.Id" class="btn btn-primary" title="@Localizer["History"]"><i class="fas fa-history"></i></a>
+		}
+    </div>
+</form>
+<a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+</a>
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+
+<script asp-add-nonce>
+    $(document).ready(function () {
+		$.bindSaveConfirmationModal('Update', '#btnConfirmationModal','#call-form');
+		$.bindCancelConfirmationModal('Cancel', '#btnCancelConfirmationModal','#call-form', 'Do you want to cancel the changes?');
+		$.bindCancelConfirmationModal('History', '#btnHistoryConfirmationModal', '#call-form', 'Do you want to cancel the changes?');
+        function InitializeForm()
+        {
+            $('.DisableSelectDropdown').on('mousedown', function(e) {
+                e.preventDefault();
+                this.blur();
+                window.focus();
+            });
+            
+			$.fn.agentSelect = function() {
+				this.filter("select").each(function() {
+					$(this).ajaxSelect({
+						ajax: {
+							url: '@Url.Page("/Agent/Index", new { area = "CCM", handler = "Select2Data" })',
+						}
+					});
+				});
+				return this;
+			};
+			$("#AgentId").agentSelect();
+
+			$.fn.customerSelect = function() {
+				this.filter("select").each(function() {
+					$(this).ajaxSelect({
+						ajax: {
+							url: '@Url.Page("/Customer/Index", new { area = "CCM", handler = "Select2Data" })',
+						}
+					});
+				});
+				return this;
+			};
+			$("#CustomerId").customerSelect();
+
+
+        }
+        InitializeForm();
+    });
+</script>
+}

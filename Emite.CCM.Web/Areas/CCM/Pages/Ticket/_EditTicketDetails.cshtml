@@ -1,0 +1,68 @@
+@using Models
+@model TicketViewModel
+
+<div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-1 row-cols-xl-1 row-cols-xxl-1">
+    <div class="col">
+        <div class="mb-3">
+            <label asp-for="@Model.AgentId" class="form-label"><strong>@Localizer["Agent Id"] :</strong></label>
+            <select asp-for="@Model.AgentId" class="form-control" asp-items="@(dropdownService.GetAgentList(Model.AgentId))"><option value="">- Select Agent Id -</option></select>
+            <span asp-validation-for="@Model.AgentId" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col">
+        <div class="mb-3">
+            <label asp-for="@Model.CustomerId" class="form-label"><strong>@Localizer["Customer Id"] :</strong></label>
+            <select asp-for="@Model.CustomerId" class="form-control" asp-items="@(dropdownService.GetCustomerList(Model.CustomerId))"><option value="">- Select Customer Id -</option></select>
+            <span asp-validation-for="@Model.CustomerId" class="text-danger"></span>
+
+        </div>
+    </div>
+    <div class="col">
+        <div class="mb-3">
+            <label asp-for="@Model.Description" class="form-label"><strong>@Localizer["Description"] :</strong></label>
+            <input asp-for="@Model.Description" class="form-control" />
+            <span asp-validation-for="@Model.Description" class="text-danger"></span>
+
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="mb-3">
+            <label asp-for="@Model.Priority" class="form-label"><strong>@Localizer["Priority"] :</strong></label>
+            <select asp-for="@Model.Priority" class="form-control" asp-items="@(dropdownService.GetDropdownFromConstants<Emite.CCM.Core.CCM.TicketPrioritization>())">
+                <option value="">- Select Priority -</option>
+            </select>
+            <span asp-validation-for="@Model.Priority" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col">
+        <div class="mb-3">
+            <label asp-for="@Model.Resolution" class="form-label"><strong>@Localizer["Resolution"] :</strong></label>
+            <textarea rows="4" asp-for="@Model.Resolution" class="form-control"></textarea>
+            <span asp-validation-for="@Model.Resolution" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col">
+        <div class="mb-3">
+            <label asp-for="@Model.CreatedAt" class="form-label"><strong>@Localizer["Created At"] :</strong></label>
+            <input asp-for="@Model.CreatedAt" class="form-control" />
+            <span asp-validation-for="@Model.CreatedAt" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col">
+        <div class="mb-3">
+            <label asp-for="@Model.UpdatedAt" class="form-label"><strong>@Localizer["Updated At"] :</strong></label>
+            <input asp-for="@Model.UpdatedAt" class="form-control" />
+            <span asp-validation-for="@Model.UpdatedAt" class="text-danger"></span>
+        </div>
+    </div>  
+    <div class="col">
+        <div class="mb-3">
+            <label asp-for="@Model.Status" class="form-label"><strong>@Localizer["Status"] :</strong></label>
+            <select asp-for="@Model.Status" class="form-control" asp-items="@(dropdownService.GetDropdownFromConstants<Emite.CCM.Core.CCM.TicketStatus>())">
+                <option value="">- Select Status -</option>
+            </select>
+            <span asp-validation-for="@Model.Status" class="text-danger"></span>
+        </div>
+    </div>
+</div>

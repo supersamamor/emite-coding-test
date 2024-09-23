@@ -1,0 +1,182 @@
+@page
+@model IndexModel
+
+@section Styles {
+    <partial name="_DataTableStyles" />
+}
+@{
+    ViewData["Title"] = Localizer["Ticket List"];
+    ViewData["ActiveMainPage"] = "Ticket";
+    ViewData["Level1"] = "CCM";
+    var toolBarModel = new Emite.CCM.Web.Models.ListingToolbarModel(Localizer["Ticket List"].Value);
+    if ((await AuthorizationService.AuthorizeAsync(User, Permission.Ticket.Create)).Succeeded)
+    {
+        toolBarModel.Buttons.Add(new Emite.CCM.Web.Models.Button("/Ticket/Add", "CCM", Emite.CCM.Web.Models.ButtonType.Add, 1));
+    }
+    if ((await AuthorizationService.AuthorizeAsync(User, Permission.Ticket.Upload)).Succeeded)
+    {
+        toolBarModel.Buttons.Add(new Emite.CCM.Web.Models.Button(Emite.CCM.Web.Models.ButtonType.DownloadTemplate, 2));
+    }
+    if ((await AuthorizationService.AuthorizeAsync(User, Permission.Ticket.Upload)).Succeeded)
+    {
+        toolBarModel.Buttons.Add(new Emite.CCM.Web.Models.Button(Emite.CCM.Web.Models.ButtonType.Upload, 3));
+    }
+}
+<partial name="_ListingsToolbarPartial" model=@(toolBarModel) />
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <table id="ticket" class="table table-hover table-bordered table-striped responsive nowrap fills-table" width="100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Localizer["Agent Id"]
+                            </th>
+                            <th>
+                                @Localizer["Created At"]
+                            </th>
+                            <th>
+                                @Localizer["Customer Id"]
+                            </th>
+                            <th>
+                                @Localizer["Description"]
+                            </th>
+                            <th>
+                                @Localizer["Priority"]
+                            </th>
+                            <th>
+                                @Localizer["Resolution"]
+                            </th>
+                            <th>
+                                @Localizer["Status"]
+                            </th>
+                            <th>
+                                @Localizer["Updated At"]
+                            </th>
+                            <th>
+                                @Localizer["Actions"]
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<div id="BatchUploadPartialContainer">
+    <partial name="_BatchUpload" model="Model.BatchUpload" />
+</div>
+@section Scripts {
+    <partial name="_DataTableScripts" />
+    <script asp-add-nonce>
+        $(document).ready(function () {
+            var table = $('#ticket').DataTable({
+                select: false,
+                serverSide: true,
+                responsive: true,
+                order: [[10, 'desc']],
+                dom: '@Html.Raw(Emite.CCM.Web.WebConstants.DataTableDOMLayOut)',
+                ajax:
+                {
+                    url: '@Url.Page("/Ticket/Index", new { area = "CCM", handler = "ListAll" })',
+                    type: "POST",
+                    headers: {
+                        RequestVerificationToken:
+                            $('input:hidden[name="__RequestVerificationToken"]').val()
+                    },
+                },
+                initComplete: function (settings, json) {
+                    BindTableRowCollapseEvent();
+                },
+                columns: [
+                    { data: "agentId", name: "AgentId", responsivePriority: 1, title: '@Localizer["Agent Id"]', searchable: true, className: "text-start" },
+                    { data: "createdAtFormatted", name: "CreatedAt", responsivePriority: 1, title: '@Localizer["Created At"]', searchable: false, className: "text-start" },
+                    { data: "customerId", name: "CustomerId", responsivePriority: 1, title: '@Localizer["Customer Id"]', searchable: true, className: "text-start" },
+                    { data: "description", name: "Description", responsivePriority: 2, title: '@Localizer["Description"]', searchable: true, className: "text-start" },
+                    { data: "priority", name: "Priority", responsivePriority: 2, title: '@Localizer["Priority"]', searchable: true, className: "text-start" },
+                    { data: "resolution", name: "Resolution", responsivePriority: 2, title: '@Localizer["Resolution"]', searchable: false, className: "text-start" },
+                    { data: "updatedAtFormatted", name: "UpdatedAt", responsivePriority: 2, title: '@Localizer["Updated At"]', searchable: false, className: "text-start" },
+                    { data: "statusBadge", name: "StatusBadge", responsivePriority: 1, title: '@Localizer["Approval Status"]', searchable: false, orderable: false, className: "fills-text-center" },
+                    {
+                        data: null,
+                        searchable: false,
+                        orderable: false,
+                        responsivePriority: 1,
+                        width: "10%",
+                        className: "fills-text-center",
+                        render: function (data, type, row, meta) {
+                            var url = '@Url.Page("/Ticket/Details", new { area = "CCM" })' + '?id=' + row.id;
+                            var button = '<a href="' + url + '" class="btn btnFills btnInfoIcon btnViewTicket" title="@Localizer["View"]"></a>';
+        @if ((await AuthorizationService.AuthorizeAsync(User, Permission.Ticket.Edit)).Succeeded)
+        {
+            <text>
+                                    url = '@Url.Page("/Ticket/Edit", new { area = "CCM" })' + '?id=' + row.id;
+                                button = button + '&nbsp;<a href="' + url + '" class="btn btnFills btnEditIcon btnEditTicket" title="@Localizer["Edit"]"></a>';
+            </text>
+        }
+        @if ((await AuthorizationService.AuthorizeAsync(User, Permission.Ticket.Delete)).Succeeded)
+        {
+            <text>
+                                    url = '@Url.Page("/Ticket/Delete", new { area = "CCM" })' + '?id=' + row.id;
+                                button = button + '&nbsp;<a href="' + url + '" class="btn btnFills btnDeleteIcon btnDeleteTicket" title="@Localizer["Delete"]"></a>';
+            </text>
+        }
+        @if ((await AuthorizationService.AuthorizeAsync(User, Permission.Ticket.Approve)).Succeeded)
+        {
+            <text>
+                                    url = '@Url.Page("/Ticket/Approve", new { area = "CCM" })' + '?id=' + row.id;
+                                button = button + '&nbsp;<a href="' + url + '" class="btn btnFills btnApproveIcon" title="@Localizer["Approve"]"></a>';
+            </text>
+        }
+        @if ((await AuthorizationService.AuthorizeAsync(User, Permission.Ticket.History)).Succeeded)
+        {
+            <text>
+                                    url = '@Url.Page("/Ticket/History", new { area = "CCM" })' + '?id=' + row.id;
+                                button = button + '&nbsp;<a href="' + url + '" class="btn btnFills btnHistoryIcon" title="@Localizer["History"]"></a>';
+            </text>
+        }
+                                                                                                                                return button;
+                        },
+                    },
+                    { data: "lastModifiedDate", name: "LastModifiedDate", title: '@Localizer["Last Modified Date"]', visible: false, searchable: false },
+                    { data: "id", name: "Id", visible: false },
+                ],
+                buttons: [
+                    'pageLength',
+                ],
+            });
+            var debounce = new $.fn.dataTable.Debounce(table); // Add delay to search
+
+            $('.btn-table_filter').on('click', function (e) {
+                table.ajax.reload(null, false);
+            });
+            function BindTableRowCollapseEvent() {
+                $('#ticket tbody').on('click', 'td.dtr-control', function () {
+                    $.showAjaxLoaderOnClick([".btnAddTicket", ".btnEditTicket", ".btnViewTicket", ".btnDeleteTicket"]);
+                });
+            }
+            $.showAjaxLoaderOnClick([".btnAddTicket", ".btnEditTicket", ".btnViewTicket", ".btnDeleteTicket"]);
+            $.InitializeSearchKeyCookies(table);
+            $('#btnBatchUpload').on('change', function (e) {
+                $('#batch-upload-form').submit();
+            });
+            $('#@(Emite.CCM.Web.Models.ListingToolbarConstants.ButtonPrefix + Emite.CCM.Web.Models.ButtonType.DownloadTemplate)').on('click', function (e) {
+                $('#download-template-form').submit();
+            });
+            $('#@(Emite.CCM.Web.Models.ListingToolbarConstants.ButtonPrefix + Emite.CCM.Web.Models.ButtonType.Upload)').on('click', function (e) {
+                $('#btnBatchUpload').click();
+            });
+        @if (!string.IsNullOrEmpty(Model.BatchUpload.BatchUploadFileName))
+        {
+            <text>
+                    $('#btnDownloadBatchUploadTemplateLink')[0].click();
+            </text>
+        }
+                });
+    </script>
+}
