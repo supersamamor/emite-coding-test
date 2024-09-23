@@ -19,11 +19,11 @@
 		<PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.1.0" />
 		<PackageReference Include="AutoMapper" Version="13.0.1" />	
 		<PackageReference Include="LanguageExt.Core" Version="4.4.9" />
-		<PackageReference Include="MediatR" Version="12.4.0" />
+		<PackageReference Include="MediatR" Version="12.4.1" />
 		<PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.22.0" />
 		<PackageReference Include="OpenIddict.Validation.AspNetCore" Version="5.8.0" />
 		<PackageReference Include="OpenIddict.Validation.SystemNetHttp" Version="5.8.0" />
-		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.3" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.8.0" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Emite.Common.Web.Utility\Emite.Common.Web.Utility.csproj" />
