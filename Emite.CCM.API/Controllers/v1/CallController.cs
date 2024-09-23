@@ -15,12 +15,12 @@ namespace Emite.CCM.API.Controllers.v1;
 [ApiVersion("1.0")]
 public class CallController : BaseApiController<CallController>
 {
-    [Authorize(Policy = Permission.Call.View)]
+    [AllowAnonymous]
     [HttpGet]
     public async Task<ActionResult<PagedListResponse<CallListDto>>> GetAsync([FromQuery] GetCallQuery query) =>
         Ok(await Mediator.Send(query));
 
-    [Authorize(Policy = Permission.Call.View)]
+    [AllowAnonymous]
     [HttpGet("{id}")]
     public async Task<ActionResult<CallState>> GetAsync(string id) =>
         await ToActionResult(async () => await Mediator.Send(new GetCallByIdQuery(id)));
