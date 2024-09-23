@@ -53,7 +53,6 @@ namespace Emite.CCM.UnitTest.Application
             {
                 Id = callId,
                 Notes = "test notes",
-                Status = "test status",
                 StartTime = DateTime.Now,
             };
             var validators = new List<IValidator<AddCallCommand>>

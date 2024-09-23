@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 using Emite.Common.API.Controllers;
 using Asp.Versioning;
+using Emite.CCM.Application.DTOs;
 
 namespace Emite.CCM.API.Controllers.v1;
 
@@ -15,7 +16,7 @@ public class AgentController : BaseApiController<AgentController>
 {
     [Authorize(Policy = Permission.Agent.View)]
     [HttpGet]
-    public async Task<ActionResult<PagedListResponse<AgentState>>> GetAsync([FromQuery] GetAgentQuery query) =>
+    public async Task<ActionResult<PagedListResponse<AgentListDto>>> GetAsync([FromQuery] GetAgentQuery query) =>
         Ok(await Mediator.Send(query));
 
     [Authorize(Policy = Permission.Agent.View)]
@@ -40,6 +41,11 @@ public class AgentController : BaseApiController<AgentController>
     [HttpDelete("{id}")]
     public async Task<ActionResult<AgentState>> DeleteAsync(string id) =>
         await ToActionResult(async () => await Mediator.Send(new DeleteAgentCommand { Id = id }));
+
+    [Authorize(Policy = Permission.Agent.UpdateStatus)]
+    [HttpPatch("{id}")]
+    public async Task<ActionResult<AgentState>> PatchAsync(string id, string status) =>
+        await ToActionResult(async () => await Mediator.Send(new UpdateAgentStatusCommand { Id = id, Status = status }));
 }
 
 public record AgentViewModel

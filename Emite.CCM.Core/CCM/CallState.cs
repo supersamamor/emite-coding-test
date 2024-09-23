@@ -1,21 +1,22 @@
 using Emite.Common.Core.Base.Models;
-using System.ComponentModel;
-
 namespace Emite.CCM.Core.CCM;
 
 public record CallState : BaseEntity
 {
-    public string? AgentId { get; init; }
+    public string? AgentId { get; private set; }
     public string CustomerId { get; init; } = "";
     public DateTime? EndTime { get; init; }
     public string Notes { get; init; } = "";
     public DateTime StartTime { get; init; }
-    public string Status { get; init; } = CallStatus.Queued;
+    public string Status { get; private set; } = CallStatus.Queued;
 
     public AgentState? Agent { get; set; }
     public CustomerState? Customer { get; set; }
 
-
+    public void AssignToAgent(string agentId)
+    {
+        this.AgentId = agentId;
+    }
 }
 public class CallStatus
 {

@@ -2,16 +2,20 @@ using Emite.Common.Core.Base.Models;
 namespace Emite.CCM.Core.CCM;
 public record TicketState : BaseEntity
 {
-    public string? AgentId { get; init; }
+    public string? AgentId { get; private set; }
     public DateTime CreatedAt { get; init; }
     public string CustomerId { get; init; } = "";
     public string Description { get; init; } = "";
     public string Priority { get; init; } = TicketPrioritization.Low;
     public string? Resolution { get; init; }
-    public string Status { get; init; } = TicketStatus.Open;
+    public string Status { get; private set; } = TicketStatus.Open;
     public DateTime UpdatedAt { get; init; }
     public AgentState? Agent { get; set; }
     public CustomerState? Customer { get; set; }
+    public void AssignToAgent(string agentId)
+    {
+        this.AgentId = agentId;
+    }
 }
 public class TicketPrioritization
 {

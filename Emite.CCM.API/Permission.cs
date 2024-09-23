@@ -10,7 +10,8 @@ public static class Permission
 		public const string Delete = "Permission.Agent.Delete";
 		public const string Upload = "Permission.Agent.Upload";
 		public const string History = "Permission.Agent.History";
-	}
+        public const string UpdateStatus = "Permission.Agent.UpdateStatus";
+    }
 	public static class Customer
 	{
 		public const string View = "Permission.Customer.View";
