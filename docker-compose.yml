@@ -9,7 +9,8 @@ services:
       - "48019:8080"   
       - "48023:443"  # HTTPS
     volumes:
-      - ./certs:/https  # Mount the certificate- 
+      - ./certs:/https  # Mount the certificate-
+      - "C:/emite/logs:/logs"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development 
       - ConnectionStrings__ApplicationContext=Server=db;Database=CCM;Persist Security Info=True;User Id=sa;Password=TestPas$123!@#;Connection Timeout=300;TrustServerCertificate=True; 
@@ -22,10 +23,11 @@ services:
       - Elasticsearch__Uri=
       - Authentication__Issuer=https://localhost:48021
       - Authentication__Audience=https://localhost:48023
-    networks:
-      - mynetwork
     extra_hosts:
-      - "host.docker.internal:host-gateway"  # For Linux, this resolves the host's localhost for internal communication.
+      - "host.docker.internal:host-gateway"
+    networks:
+      - networkA
+      - sharednetwork
     depends_on:
       - db        
       - elasticsearch
@@ -39,6 +41,7 @@ services:
     volumes:
       - ./certs:/https  # Mount the certificate- 
       - ./uploads:/app/uploads
+      - "C:/emite/logs:/logs"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development  
       - ConnectionStrings__ApplicationContext=Server=db;Database=CCM;Persist Security Info=True;User Id=sa;Password=TestPas$123!@#;Connection Timeout=300;TrustServerCertificate=True;
@@ -54,10 +57,11 @@ services:
       - BaseUrl=https://localhost:48021
       - WebSocket=wss://localhost:48021
       - Elasticsearch__Uri=
-    networks:
-      - mynetwork
     extra_hosts:
-      - "host.docker.internal:host-gateway"  # For Linux, this resolves the host's localhost for internal communication.
+      - "host.docker.internal:host-gateway"
+    networks:
+      - networkB
+      - sharednetwork
     depends_on:
       - db      
       - elasticsearch
@@ -67,13 +71,14 @@ services:
       SA_PASSWORD: "TestPas$123!@#"         
       ACCEPT_EULA: "Y"                    
     ports:
-      - "1433:1433"                       
+      - "15432:1433"                       
     volumes:
       - sql_data:/var/opt/mssql
-    networks:
-      - mynetwork
     extra_hosts:
-      - "host.docker.internal:host-gateway"  # For Linux, this resolves the host's localhost for internal communication.
+      - "host.docker.internal:host-gateway"
+    networks:
+      - networkC
+      - sharednetwork
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.17.9
     container_name: elasticsearch
@@ -85,12 +90,20 @@ services:
       - "48022:9200"  # Host port 48022 maps to container port 9200
     volumes:
       - es_data:/usr/share/elasticsearch/data  # Persistent storage for Elasticsearch data
-    networks:
-      - mynetwork
     extra_hosts:
-      - "host.docker.internal:host-gateway"  # For Linux, this resolves the host's localhost for internal communication.
+      - "host.docker.internal:host-gateway"
+    networks:
+      - networkD
 networks:
-  mynetwork:
+  networkA:
+    driver: bridge
+  networkB:
+    driver: bridge
+  networkC:
+    driver: bridge
+  networkD:
+    driver: bridge
+  sharednetwork:
     driver: bridge
 volumes:
   sql_data:                               
