@@ -29,7 +29,7 @@ public class GetAgentQueryHandler(ApplicationContext context, IMemoryCache cache
             {
                 AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(DefaultCacheDurationMinutes)
             };
-            var response = Task.FromResult(Context.Set<AgentState>()
+            var response = Context.Set<AgentState>()
                .AsNoTracking().Select(e => new AgentListDto()
                {
                    Id = e.Id,
@@ -41,9 +41,9 @@ public class GetAgentQueryHandler(ApplicationContext context, IMemoryCache cache
                })
                .ToPagedResponse(request.SearchColumns, request.SearchValue,
                    request.SortColumn, request.SortOrder,
-                   request.PageNumber, request.PageSize));
+                   request.PageNumber, request.PageSize);
             Cache.Set(cacheKey, response, cacheEntryOptions);
-            return response;
+            return Task.FromResult(response);
         }
 
     }
