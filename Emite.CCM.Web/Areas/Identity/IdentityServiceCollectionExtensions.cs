@@ -108,8 +108,8 @@ public static class IdentityServiceCollectionExtensions
                                  AuthorizationClaimTypes.Permission);
                                                        
                    // Centralized Certificate Loading
-                   var certificatePath = configuration["SslCertificate__Path"];
-                   var certificatePassword = configuration["SslCertificate__Password"];
+                   var certificatePath = configuration["SslCertificate:Path"];
+                   var certificatePassword = configuration["SslCertificate:Password"];
 
                    if (!string.IsNullOrEmpty(certificatePath))
                    {
