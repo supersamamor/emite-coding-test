@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using static OpenIddict.Abstractions.OpenIddictConstants;
 using Emite.CCM.Core.Identity;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Emite.CCM.Web.Areas.Identity;
 
@@ -106,16 +107,25 @@ public static class IdentityServiceCollectionExtensions
                                  CustomClaimTypes.Entity,
                                  AuthorizationClaimTypes.Permission);
 
-                   // Register the signing and encryption credentials.
-                   //if (context.HostingEnvironment.EnvironmentName == "Development")
-                   //{
-                   //    options.AddDevelopmentEncryptionCertificate()
-                   //           .AddDevelopmentSigningCertificate();
-                   //}
 
-                   options.AddEncryptionCertificate(configuration.GetValue<string>("SslThumbprint"))
-                 .AddSigningCertificate(configuration.GetValue<string>("SslThumbprint"));
+                   // Load Encryption Certificate from file
+                   var encryptionCertPath = configuration["OpenIddict__EncryptionCertificate__Path"];
+                   var encryptionCertPassword = configuration["OpenIddict__EncryptionCertificate__Password"];
+                   var signingCertPath = configuration["OpenIddict__SigningCertificate__Path"];
+                   var signingCertPassword = configuration["OpenIddict__SigningCertificate__Password"];
+                   if (!string.IsNullOrEmpty(encryptionCertPath) && !string.IsNullOrEmpty(signingCertPath))
+                   {
+                       var encryptionCertificate = new X509Certificate2(encryptionCertPath, encryptionCertPassword);
+                       options.AddEncryptionCertificate(encryptionCertificate);
+                      
 
+                       var signingCertificate = new X509Certificate2(signingCertPath, signingCertPassword);
+                       options.AddSigningCertificate(signingCertificate);                  
+                   }
+                   else
+                   {
+                       options.AddEncryptionCertificate(configuration.GetValue<string>("SslThumbprint")!).AddSigningCertificate(configuration.GetValue<string>("SslThumbprint")!);
+                   }
                    // Force client applications to use Proof Key for Code Exchange (PKCE).
                    options.RequireProofKeyForCodeExchange();
 
