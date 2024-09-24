@@ -2,7 +2,6 @@ using Emite.CCM.Infrastructure.Data;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using LanguageExt;
-
 namespace Emite.CCM.Application.Features.CCM.AverageCallDuration.Queries;
 
 public record GetAverageCallDurationQuery : IRequest<double?>
@@ -13,7 +12,7 @@ public record GetAverageCallDurationQuery : IRequest<double?>
     public string? AgentId { get; set; }
 }
 
-public class GetAverageCallDurationQueryHandler(ApplicationContext context) : IRequest
+public class GetAverageCallDurationQueryHandler(ApplicationContext context) : IRequestHandler<GetAverageCallDurationQuery, double?>
 {
     public async Task<double?> Handle(GetAverageCallDurationQuery request, CancellationToken cancellationToken = default)
     {
@@ -47,3 +46,4 @@ public class GetAverageCallDurationQueryHandler(ApplicationContext context) : IR
         return averageDurationInSeconds;
     }
 }
+   
