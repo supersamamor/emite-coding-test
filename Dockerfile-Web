@@ -69,6 +69,8 @@ COPY ./certs/aspnetcore.pfx /https/aspnetcore.pfx
 # Set environment variables for the certificate
 ENV ASPNETCORE_Kestrel__Certificates__Default__Password "certpass123!@"
 ENV ASPNETCORE_Kestrel__Certificates__Default__Path "/https/aspnetcore.pfx"
+ENV SslCertificate__Path "/https/aspnetcore.pfx"
+ENV SslCertificate__Password "certpass123!@#"
 
 # Set the entry point for the container
 ENTRYPOINT ["dotnet", "Emite.CCM.Web.dll"]
