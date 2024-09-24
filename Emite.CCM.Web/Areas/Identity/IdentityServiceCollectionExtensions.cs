@@ -106,21 +106,28 @@ public static class IdentityServiceCollectionExtensions
                                  Scopes.OfflineAccess,
                                  CustomClaimTypes.Entity,
                                  AuthorizationClaimTypes.Permission);
+                                                       
+                   // Centralized Certificate Loading
+                   var certificatePath = configuration["SslCertificate__Path"];
+                   var certificatePassword = configuration["SslCertificate__Password"];
 
-
-                   // Load Encryption Certificate from file
-                   var encryptionCertPath = configuration["OpenIddict__EncryptionCertificate__Path"];
-                   var encryptionCertPassword = configuration["OpenIddict__EncryptionCertificate__Password"];
-                   var signingCertPath = configuration["OpenIddict__SigningCertificate__Path"];
-                   var signingCertPassword = configuration["OpenIddict__SigningCertificate__Password"];
-                   if (!string.IsNullOrEmpty(encryptionCertPath) && !string.IsNullOrEmpty(signingCertPath))
+                   if (!string.IsNullOrEmpty(certificatePath))
                    {
-                       var encryptionCertificate = new X509Certificate2(encryptionCertPath, encryptionCertPassword);
-                       options.AddEncryptionCertificate(encryptionCertificate);
-                      
+                       try
+                       {
+                           var certificate = new X509Certificate2(certificatePath, certificatePassword);
 
-                       var signingCertificate = new X509Certificate2(signingCertPath, signingCertPassword);
-                       options.AddSigningCertificate(signingCertificate);                  
+                           // Use the same certificate for both encryption and signing
+                           options.AddEncryptionCertificate(certificate);
+                           options.AddSigningCertificate(certificate);
+
+                           Console.WriteLine($"Loaded certificate from: {certificatePath}");
+                       }
+                       catch (Exception ex)
+                       {
+                           Console.WriteLine($"Error loading certificate from {certificatePath}: {ex.Message}");
+                           throw; // Optionally handle the exception as needed
+                       }
                    }
                    else
                    {

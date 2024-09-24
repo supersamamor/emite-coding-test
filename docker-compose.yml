@@ -29,12 +29,10 @@ services:
       - ConnectionStrings__IdentityContext=Server=db;Database=CCM;Persist Security Info=True;User Id=sa;Password=TestPas$123!@#;Connection Timeout=300;TrustServerCertificate=True; 
       - ConnectionStrings__ReportContext=Server=db;Database=CCM;Persist Security Info=True;User Id=sa;Password=TestPas$123!@#;Connection Timeout=300;TrustServerCertificate=True;
       - UseInMemoryDatabase=false
-      - ASPNETCORE_Kestrel__Certificates__Default__Password=certpass123!@#
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetcore.pfx
-      - OpenIddict__EncryptionCertificate__Path=/https/aspnetcore.pfx
-      - OpenIddict__EncryptionCertificate__Password=certpass123!@#
-      - OpenIddict__SigningCertificate__Path=/https/aspnetcore.pfx
-      - OpenIddict__SigningCertificate__Password=certpass123!@#
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=certpass123!@#
+      - SslCertificate__Path=/https/aspnetcore.pfx
+      - SslCertificate__Password=certpass123!@#
       - UsersUpload__UploadFilesPath=/app/uploads
       - ASPNETCORE_URLS=https://+:443;http://+:8080
     depends_on:
