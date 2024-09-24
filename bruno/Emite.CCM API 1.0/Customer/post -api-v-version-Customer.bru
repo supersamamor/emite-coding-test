@@ -1,0 +1,28 @@
+meta {
+  name: post -api-v-version-Customer
+  type: http
+  seq: 2
+}
+
+post {
+  url: /api/v:version/Customer
+  body: json
+  auth: bearer
+}
+
+params:path {
+  version: 
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "email": "",
+    "lastContactDate": "",
+    "name": "",
+    "phoneNumber": ""
+  }
+}

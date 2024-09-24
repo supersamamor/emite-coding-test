@@ -1,0 +1,20 @@
+meta {
+  name: put -api-v-version-Agent--id
+  type: http
+  seq: 4
+}
+
+put {
+  url: /api/v:version/Agent/:id
+  body: json
+  auth: bearer
+}
+
+params:path {
+  id: 
+  version: 
+}
+
+auth:bearer {
+  token: {{token}}
+}

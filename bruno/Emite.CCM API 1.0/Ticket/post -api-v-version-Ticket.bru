@@ -1,0 +1,32 @@
+meta {
+  name: post -api-v-version-Ticket
+  type: http
+  seq: 2
+}
+
+post {
+  url: /api/v:version/Ticket
+  body: json
+  auth: bearer
+}
+
+params:path {
+  version: 
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "agentId": "",
+    "createdAt": "",
+    "customerId": "",
+    "description": "",
+    "priority": "",
+    "resolution": "",
+    "status": "",
+    "updatedAt": ""
+  }
+}

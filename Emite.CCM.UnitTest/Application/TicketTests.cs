@@ -78,7 +78,7 @@ namespace Emite.CCM.UnitTest.Application
             };
             var validator = new CompositeValidator<AddTicketCommand>(validators);
             var handler = new AddTicketCommandHandler(_context, _mapper, validator, _identityContext,
-               null);
+               null, null);
             var result = await handler.Handle(command, CancellationToken.None);
             // Assert
             ClassicAssert.IsTrue(result.IsSuccess);
@@ -100,7 +100,7 @@ namespace Emite.CCM.UnitTest.Application
                 new EditTicketCommandValidator(_context)
             };
             var validator = new CompositeValidator<EditTicketCommand>(validators);
-            var handler = new EditTicketCommandHandler(_context, _mapper, validator);
+            var handler = new EditTicketCommandHandler(_context, _mapper, validator, null);
             var result = await handler.Handle(command, CancellationToken.None);
             // Assert
             ClassicAssert.IsTrue(result.IsSuccess);
@@ -131,7 +131,7 @@ namespace Emite.CCM.UnitTest.Application
                 new DeleteTicketCommandValidator(_context)
             };
             var validator = new CompositeValidator<DeleteTicketCommand>(validators);
-            var handler = new DeleteTicketCommandHandler(_context, _mapper, validator);
+            var handler = new DeleteTicketCommandHandler(_context, _mapper, validator, null);
             var result = await handler.Handle(command, CancellationToken.None);
             // Assert
             ClassicAssert.IsTrue(result.IsSuccess);

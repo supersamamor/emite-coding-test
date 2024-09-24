@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Emite.CCM API 1.0",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

@@ -1,0 +1,19 @@
+meta {
+  name: get -api-v-version-MetaData
+  type: http
+  seq: 1
+}
+
+get {
+  url: /api/v:version/MetaData
+  body: none
+  auth: bearer
+}
+
+params:path {
+  version: 
+}
+
+auth:bearer {
+  token: {{token}}
+}

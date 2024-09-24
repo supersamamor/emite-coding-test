@@ -1,0 +1,20 @@
+meta {
+  name: get -api-v-version-Ticket--id
+  type: http
+  seq: 3
+}
+
+get {
+  url: /api/v:version/Ticket/:id
+  body: none
+  auth: bearer
+}
+
+params:path {
+  id: 
+  version: 
+}
+
+auth:bearer {
+  token: {{token}}
+}

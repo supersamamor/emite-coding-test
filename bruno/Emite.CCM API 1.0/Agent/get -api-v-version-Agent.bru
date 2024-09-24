@@ -1,0 +1,28 @@
+meta {
+  name: get -api-v-version-Agent
+  type: http
+  seq: 1
+}
+
+get {
+  url: /api/v:version/Agent
+  body: none
+  auth: bearer
+}
+
+params:query {
+  ~PageNumber: 
+  ~PageSize: 
+  ~SortColumn: 
+  ~SortOrder: 
+  ~SearchColumns: 
+  ~SearchValue: 
+}
+
+params:path {
+  version: 
+}
+
+auth:bearer {
+  token: {{token}}
+}

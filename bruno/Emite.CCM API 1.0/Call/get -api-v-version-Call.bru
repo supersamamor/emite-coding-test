@@ -1,0 +1,32 @@
+meta {
+  name: get -api-v-version-Call
+  type: http
+  seq: 1
+}
+
+get {
+  url: /api/v:version/Call
+  body: none
+  auth: bearer
+}
+
+params:query {
+  ~DateFrom: 
+  ~DateTo: 
+  ~Status: 
+  ~AgentId: 
+  ~PageNumber: 
+  ~PageSize: 
+  ~SortColumn: 
+  ~SortOrder: 
+  ~SearchColumns: 
+  ~SearchValue: 
+}
+
+params:path {
+  version: 
+}
+
+auth:bearer {
+  token: {{token}}
+}

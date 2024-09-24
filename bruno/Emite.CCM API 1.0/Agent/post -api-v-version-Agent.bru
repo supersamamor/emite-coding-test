@@ -1,0 +1,28 @@
+meta {
+  name: post -api-v-version-Agent
+  type: http
+  seq: 2
+}
+
+post {
+  url: /api/v:version/Agent
+  body: json
+  auth: bearer
+}
+
+params:path {
+  version: 
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "email": "",
+    "name": "",
+    "phoneExtension": "",
+    "status": ""
+  }
+}

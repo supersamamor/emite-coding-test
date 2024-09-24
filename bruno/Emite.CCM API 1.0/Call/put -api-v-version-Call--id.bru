@@ -1,0 +1,20 @@
+meta {
+  name: put -api-v-version-Call--id
+  type: http
+  seq: 4
+}
+
+put {
+  url: /api/v:version/Call/:id
+  body: json
+  auth: bearer
+}
+
+params:path {
+  id: 
+  version: 
+}
+
+auth:bearer {
+  token: {{token}}
+}

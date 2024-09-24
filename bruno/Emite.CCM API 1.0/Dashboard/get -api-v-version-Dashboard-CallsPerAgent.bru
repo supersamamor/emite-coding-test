@@ -1,0 +1,23 @@
+meta {
+  name: get -api-v-version-Dashboard-CallsPerAgent
+  type: http
+  seq: 2
+}
+
+get {
+  url: /api/v:version/Dashboard/CallsPerAgent
+  body: none
+  auth: bearer
+}
+
+params:query {
+  ~query: 
+}
+
+params:path {
+  version: 
+}
+
+auth:bearer {
+  token: {{token}}
+}
