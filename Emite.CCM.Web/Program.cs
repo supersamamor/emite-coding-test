@@ -13,6 +13,7 @@ using Emite.Common.Services.Shared;
 using Emite.CCM.ChatGPT;
 using Serilog;
 using Emite.CCM.Scheduler;
+using Emite.CCM.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,6 +49,8 @@ services.AddExcelProcessor();
 services.AddSharedServices(configuration);
 services.AddChatGPTApiService(configuration);
 services.AddScheduler(configuration);
+services.Configure<CacheSettings>(configuration.GetSection("CacheSettings"));
+services.AddMemoryCache();
 var app = builder.Build();
 // Static Files
 var uploadFilesPath = configuration.GetValue<string>("UsersUpload:UploadFilesPath");

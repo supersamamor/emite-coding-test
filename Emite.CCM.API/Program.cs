@@ -5,6 +5,7 @@ using Emite.CCM.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using System.Reflection;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +25,8 @@ builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.AddHealthChecks().AddDbContextCheck<ApplicationContext>();
 builder.Services.AddDbContext<IdentityContext>(options
        => options.UseSqlServer(configuration.GetConnectionString("ApplicationContext")));
+builder.Services.Configure<CacheSettings>(configuration.GetSection("CacheSettings"));
+builder.Services.AddMemoryCache();
 if (configuration.GetValue<bool>("UseInMemoryDatabase"))
 {
     builder.Services.AddDbContext<ApplicationContext>(options
