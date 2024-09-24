@@ -18,6 +18,7 @@ services:
       - ASPNETCORE_Kestrel__Certificates__Default__Password=certpass123!@#
       - SslCertificate__Path=/https/aspnetcore.pfx
       - SslCertificate__Password=certpass123!@#
+      - ASPNETCORE_URLS=https://+:443;http://+:8080
       - Elasticsearch__Uri=
       - Authentication__Issuer=https://localhost:48021
       - Authentication__Audience=https://localhost:48023
