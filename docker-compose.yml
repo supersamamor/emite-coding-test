@@ -8,6 +8,8 @@ services:
     ports:
       - "48019:8080"   
       - "48023:443"  # HTTPS
+    volumes:
+      - ./certs:/https  # Mount the certificate- 
     environment:
       - ASPNETCORE_ENVIRONMENT=Development 
       - ConnectionStrings__ApplicationContext=Server=db;Database=CCM;Persist Security Info=True;User Id=sa;Password=TestPas$123!@#;Connection Timeout=300;TrustServerCertificate=True; 
