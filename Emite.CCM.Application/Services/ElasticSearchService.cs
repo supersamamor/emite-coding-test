@@ -57,6 +57,25 @@ namespace Emite.CCM.Application.Services
                 throw new Exception($"Failed to delete ticket: {response.ServerError}");
             }
         }
+        public async Task<ISearchResponse<TicketState>?> SearchTicketsWithPaginationAsync(string status, int pageNumber, int pageSize)
+        {
+            if (_elasticClient == null) { return null; }
+            var searchResponse = await _elasticClient.SearchAsync<TicketState>(s => s
+                .Index("tickets")
+                .Query(q => q
+                    .Match(m => m
+                        .Field(f => f.Status)
+                        .Query(status)
+                    )
+                )
+                .From((pageNumber - 1) * pageSize)  
+                .Size(pageSize)  
+                .Sort(so => so
+                    .Descending(f => f.CreatedAt)  
+                )
+            );
+            return searchResponse;
+        }
         public async Task CreateIndexIfNotExistsAsync()
         {
             if (_elasticClient == null) { return; }

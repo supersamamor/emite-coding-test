@@ -8,6 +8,8 @@ using FluentValidation;
 using LanguageExt;
 using LanguageExt.Common;
 using MediatR;
+using static LanguageExt.Prelude;
+using Emite.CCM.Application.Services;
 
 namespace Emite.CCM.Application.Features.CCM.Ticket.Commands;
 
@@ -15,11 +17,26 @@ public record DeleteTicketCommand : BaseCommand, IRequest<Validation<Error, Tick
 
 public class DeleteTicketCommandHandler(ApplicationContext context,
                                    IMapper mapper,
-                                   CompositeValidator<DeleteTicketCommand> validator) : BaseCommandHandler<ApplicationContext, TicketState, DeleteTicketCommand>(context, mapper, validator), IRequestHandler<DeleteTicketCommand, Validation<Error, TicketState>>
-{ 
+                                   CompositeValidator<DeleteTicketCommand> validator,
+                                   ElasticSearchService? elasticSearchService) : BaseCommandHandler<ApplicationContext, TicketState, DeleteTicketCommand>(context, mapper, validator), IRequestHandler<DeleteTicketCommand, Validation<Error, TicketState>>
+{
     public async Task<Validation<Error, TicketState>> Handle(DeleteTicketCommand request, CancellationToken cancellationToken) =>
         await Validators.ValidateTAsync(request, cancellationToken).BindT(
-            async request => await Delete(request.Id, cancellationToken));
+            async request => await DeleteTicket(request.Id, cancellationToken));
+
+    private async Task<Validation<Error, TicketState>> DeleteTicket(string id, CancellationToken cancellationToken = default) =>
+    await Context.GetSingle<TicketState>(e => e.Id == id, cancellationToken: cancellationToken).MatchAsync(
+        Some: async entity =>
+        {
+            Context.Remove(entity);
+            _ = await Context.SaveChangesAsync(cancellationToken);
+            if (elasticSearchService != null)
+            {
+                await elasticSearchService.DeleteTicketAsync(entity.Id);
+            }
+            return Success<Error, TicketState>(entity);
+        },
+        None: () => Fail<Error, TicketState>($"Record with id {id} does not exist"));
 }
 
 

@@ -11,6 +11,7 @@ using MediatR;
 using static LanguageExt.Prelude;
 using Emite.CCM.Application.Hubs;
 using Microsoft.AspNetCore.SignalR;
+using Emite.CCM.Application.Services;
 
 namespace Emite.CCM.Application.Features.CCM.Ticket.Commands;
 
@@ -20,7 +21,8 @@ public class AddTicketCommandHandler(ApplicationContext context,
                                 IMapper mapper,
                                 CompositeValidator<AddTicketCommand> validator,
                                 IdentityContext identityContext,
-                                IHubContext<TicketHub>? hubContext) : BaseCommandHandler<ApplicationContext, TicketState, AddTicketCommand>(context, mapper, validator), IRequestHandler<AddTicketCommand, Validation<Error, TicketState>>
+                                IHubContext<TicketHub>? hubContext,
+                                ElasticSearchService? elasticSearchService) : BaseCommandHandler<ApplicationContext, TicketState, AddTicketCommand>(context, mapper, validator), IRequestHandler<AddTicketCommand, Validation<Error, TicketState>>
 {
     public async Task<Validation<Error, TicketState>> Handle(AddTicketCommand request, CancellationToken cancellationToken) =>
         await Validators.ValidateTAsync(request, cancellationToken).BindT(
@@ -36,6 +38,10 @@ public class AddTicketCommandHandler(ApplicationContext context,
         if (hubContext != null)
         {
             await hubContext.Clients.All.SendAsync($"{nameof(AddTicketCommand)}Success", entity, cancellationToken);
+        }
+        if (elasticSearchService != null)
+        {
+            await elasticSearchService.IndexTicketAsync(entity);
         }
         return Success<Error, TicketState>(entity);
     }

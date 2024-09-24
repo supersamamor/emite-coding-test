@@ -20,4 +20,8 @@ public class DashboardController : BaseApiController<DashboardController>
     public async Task<ActionResult<double?>> GetAsync([FromQuery] GetCallsPerAgentQuery query) =>
        Ok(await Mediator.Send(query));
 
+    [AllowAnonymous]
+    [HttpGet("TicketsViaElasticSearch")]
+    public async Task<ActionResult<double?>> GetAsync([FromQuery] GetTicketsViaElasticSearchQuery query) =>
+      Ok(await Mediator.Send(query));
 }
