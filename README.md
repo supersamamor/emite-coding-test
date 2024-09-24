@@ -50,7 +50,7 @@ Requirements:
 5. Write unit tests for your services -  **Done**
 6. Implement basic error handling and logging -  **Done**
 7. Use dependency injection -  **Done**
-8. Use https://www.usebruno.com/ as rest api client tool. **Done** (bruno folder included from the commit)
+8. Use https://www.usebruno.com/ as rest api client tool. **Done** (bruno folder included from the commit together with postman Emite.CCM API 1.0.postman_collection.json)
 
 Testing:
 - Write unit tests for your service layer

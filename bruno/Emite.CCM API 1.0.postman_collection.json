@@ -1,0 +1,4713 @@
+{
+	"info": {
+		"_postman_id": "395c7887-75f9-415f-baff-62de0fff14a4",
+		"name": "Emite.CCM API 1.0",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13070767"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "v{version}",
+					"item": [
+						{
+							"name": "Agent",
+							"item": [
+								{
+									"name": "{id}",
+									"item": [
+										{
+											"name": "/api/v{{version}}/Agent/:id",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Agent/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Agent",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Agent/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Agent",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"<string>\",\n  \"createdBy\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"lastModifiedBy\": \"<string>\",\n  \"lastModifiedDate\": \"<dateTime>\",\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phoneExtension\": \"<string>\",\n  \"status\": \"<string>\",\n  \"callList\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"<string>\",\n      \"createdBy\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedBy\": \"<string>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"agentId\": \"<string>\",\n      \"customerId\": \"<string>\",\n      \"endTime\": \"<dateTime>\",\n      \"notes\": \"<string>\",\n      \"startTime\": \"<dateTime>\",\n      \"status\": \"<string>\",\n      \"agent\": {\n        \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n      },\n      \"customer\": {\n        \"id\": \"<string>\",\n        \"entity\": \"<string>\",\n        \"createdBy\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"email\": \"<string>\",\n        \"lastContactDate\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"phoneNumber\": \"<string>\",\n        \"callList\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/CallState detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/CallState detected>\"\n          }\n        ],\n        \"ticketList\": [\n          {\n            \"id\": \"<string>\",\n            \"entity\": \"<string>\",\n            \"createdBy\": \"<string>\",\n            \"createdDate\": \"<dateTime>\",\n            \"lastModifiedBy\": \"<string>\",\n            \"lastModifiedDate\": \"<dateTime>\",\n            \"agentId\": \"<string>\",\n            \"createdAt\": \"<dateTime>\",\n            \"customerId\": \"<string>\",\n            \"description\": \"<string>\",\n            \"priority\": \"<string>\",\n            \"resolution\": \"<string>\",\n            \"status\": \"<string>\",\n            \"updatedAt\": \"<dateTime>\",\n            \"agent\": {\n              \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n            },\n            \"customer\": {\n              \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n            }\n          },\n          {\n            \"id\": \"<string>\",\n            \"entity\": \"<string>\",\n            \"createdBy\": \"<string>\",\n            \"createdDate\": \"<dateTime>\",\n            \"lastModifiedBy\": \"<string>\",\n            \"lastModifiedDate\": \"<dateTime>\",\n            \"agentId\": \"<string>\",\n            \"createdAt\": \"<dateTime>\",\n            \"customerId\": \"<string>\",\n            \"description\": \"<string>\",\n            \"priority\": \"<string>\",\n            \"resolution\": \"<string>\",\n            \"status\": \"<string>\",\n            \"updatedAt\": \"<dateTime>\",\n            \"agent\": {\n              \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n            },\n            \"customer\": {\n              \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n            }\n          }\n        ]\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"<string>\",\n      \"createdBy\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedBy\": \"<string>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"agentId\": \"<string>\",\n      \"customerId\": \"<string>\",\n      \"endTime\": \"<dateTime>\",\n      \"notes\": \"<string>\",\n      \"startTime\": \"<dateTime>\",\n      \"status\": \"<string>\",\n      \"agent\": {\n        \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n      },\n      \"customer\": {\n        \"id\": \"<string>\",\n        \"entity\": \"<string>\",\n        \"createdBy\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"email\": \"<string>\",\n        \"lastContactDate\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"phoneNumber\": \"<string>\",\n        \"callList\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/CallState detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/CallState detected>\"\n          }\n        ],\n        \"ticketList\": [\n          {\n            \"id\": \"<string>\",\n            \"entity\": \"<string>\",\n            \"createdBy\": \"<string>\",\n            \"createdDate\": \"<dateTime>\",\n            \"lastModifiedBy\": \"<string>\",\n            \"lastModifiedDate\": \"<dateTime>\",\n            \"agentId\": \"<string>\",\n            \"createdAt\": \"<dateTime>\",\n            \"customerId\": \"<string>\",\n            \"description\": \"<string>\",\n            \"priority\": \"<string>\",\n            \"resolution\": \"<string>\",\n            \"status\": \"<string>\",\n            \"updatedAt\": \"<dateTime>\",\n            \"agent\": {\n              \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n            },\n            \"customer\": {\n              \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n            }\n          },\n          {\n            \"id\": \"<string>\",\n            \"entity\": \"<string>\",\n            \"createdBy\": \"<string>\",\n            \"createdDate\": \"<dateTime>\",\n            \"lastModifiedBy\": \"<string>\",\n            \"lastModifiedDate\": \"<dateTime>\",\n            \"agentId\": \"<string>\",\n            \"createdAt\": \"<dateTime>\",\n            \"customerId\": \"<string>\",\n            \"description\": \"<string>\",\n            \"priority\": \"<string>\",\n            \"resolution\": \"<string>\",\n            \"status\": \"<string>\",\n            \"updatedAt\": \"<dateTime>\",\n            \"agent\": {\n              \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n            },\n            \"customer\": {\n              \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n            }\n          }\n        ]\n      }\n    }\n  ],\n  \"ticketList\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"<string>\",\n      \"createdBy\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedBy\": \"<string>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"agentId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"description\": \"<string>\",\n      \"priority\": \"<string>\",\n      \"resolution\": \"<string>\",\n      \"status\": \"<string>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"agent\": {\n        \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n      },\n      \"customer\": {\n        \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"<string>\",\n      \"createdBy\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedBy\": \"<string>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"agentId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"description\": \"<string>\",\n      \"priority\": \"<string>\",\n      \"resolution\": \"<string>\",\n      \"status\": \"<string>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"agent\": {\n        \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n      },\n      \"customer\": {\n        \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n      }\n    }\n  ]\n}"
+												},
+												{
+													"name": "Not Found",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Agent/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Agent",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												},
+												{
+													"name": "Error",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Agent/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Agent",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												}
+											]
+										},
+										{
+											"name": "/api/v{{version}}/Agent/:id",
+											"request": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phoneExtension\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Agent/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Agent",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "No Content",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phoneExtension\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Agent/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Agent",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "No Content",
+													"code": 204,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "Bad Request",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phoneExtension\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Agent/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Agent",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												},
+												{
+													"name": "Not Found",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phoneExtension\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Agent/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Agent",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												},
+												{
+													"name": "Error",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phoneExtension\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Agent/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Agent",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												}
+											]
+										},
+										{
+											"name": "/api/v{{version}}/Agent/:id",
+											"request": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Agent/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Agent",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Agent/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Agent",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"<string>\",\n  \"createdBy\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"lastModifiedBy\": \"<string>\",\n  \"lastModifiedDate\": \"<dateTime>\",\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phoneExtension\": \"<string>\",\n  \"status\": \"<string>\",\n  \"callList\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"<string>\",\n      \"createdBy\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedBy\": \"<string>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"agentId\": \"<string>\",\n      \"customerId\": \"<string>\",\n      \"endTime\": \"<dateTime>\",\n      \"notes\": \"<string>\",\n      \"startTime\": \"<dateTime>\",\n      \"status\": \"<string>\",\n      \"agent\": {\n        \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n      },\n      \"customer\": {\n        \"id\": \"<string>\",\n        \"entity\": \"<string>\",\n        \"createdBy\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"email\": \"<string>\",\n        \"lastContactDate\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"phoneNumber\": \"<string>\",\n        \"callList\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/CallState detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/CallState detected>\"\n          }\n        ],\n        \"ticketList\": [\n          {\n            \"id\": \"<string>\",\n            \"entity\": \"<string>\",\n            \"createdBy\": \"<string>\",\n            \"createdDate\": \"<dateTime>\",\n            \"lastModifiedBy\": \"<string>\",\n            \"lastModifiedDate\": \"<dateTime>\",\n            \"agentId\": \"<string>\",\n            \"createdAt\": \"<dateTime>\",\n            \"customerId\": \"<string>\",\n            \"description\": \"<string>\",\n            \"priority\": \"<string>\",\n            \"resolution\": \"<string>\",\n            \"status\": \"<string>\",\n            \"updatedAt\": \"<dateTime>\",\n            \"agent\": {\n              \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n            },\n            \"customer\": {\n              \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n            }\n          },\n          {\n            \"id\": \"<string>\",\n            \"entity\": \"<string>\",\n            \"createdBy\": \"<string>\",\n            \"createdDate\": \"<dateTime>\",\n            \"lastModifiedBy\": \"<string>\",\n            \"lastModifiedDate\": \"<dateTime>\",\n            \"agentId\": \"<string>\",\n            \"createdAt\": \"<dateTime>\",\n            \"customerId\": \"<string>\",\n            \"description\": \"<string>\",\n            \"priority\": \"<string>\",\n            \"resolution\": \"<string>\",\n            \"status\": \"<string>\",\n            \"updatedAt\": \"<dateTime>\",\n            \"agent\": {\n              \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n            },\n            \"customer\": {\n              \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n            }\n          }\n        ]\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"<string>\",\n      \"createdBy\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedBy\": \"<string>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"agentId\": \"<string>\",\n      \"customerId\": \"<string>\",\n      \"endTime\": \"<dateTime>\",\n      \"notes\": \"<string>\",\n      \"startTime\": \"<dateTime>\",\n      \"status\": \"<string>\",\n      \"agent\": {\n        \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n      },\n      \"customer\": {\n        \"id\": \"<string>\",\n        \"entity\": \"<string>\",\n        \"createdBy\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"email\": \"<string>\",\n        \"lastContactDate\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"phoneNumber\": \"<string>\",\n        \"callList\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/CallState detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/CallState detected>\"\n          }\n        ],\n        \"ticketList\": [\n          {\n            \"id\": \"<string>\",\n            \"entity\": \"<string>\",\n            \"createdBy\": \"<string>\",\n            \"createdDate\": \"<dateTime>\",\n            \"lastModifiedBy\": \"<string>\",\n            \"lastModifiedDate\": \"<dateTime>\",\n            \"agentId\": \"<string>\",\n            \"createdAt\": \"<dateTime>\",\n            \"customerId\": \"<string>\",\n            \"description\": \"<string>\",\n            \"priority\": \"<string>\",\n            \"resolution\": \"<string>\",\n            \"status\": \"<string>\",\n            \"updatedAt\": \"<dateTime>\",\n            \"agent\": {\n              \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n            },\n            \"customer\": {\n              \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n            }\n          },\n          {\n            \"id\": \"<string>\",\n            \"entity\": \"<string>\",\n            \"createdBy\": \"<string>\",\n            \"createdDate\": \"<dateTime>\",\n            \"lastModifiedBy\": \"<string>\",\n            \"lastModifiedDate\": \"<dateTime>\",\n            \"agentId\": \"<string>\",\n            \"createdAt\": \"<dateTime>\",\n            \"customerId\": \"<string>\",\n            \"description\": \"<string>\",\n            \"priority\": \"<string>\",\n            \"resolution\": \"<string>\",\n            \"status\": \"<string>\",\n            \"updatedAt\": \"<dateTime>\",\n            \"agent\": {\n              \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n            },\n            \"customer\": {\n              \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n            }\n          }\n        ]\n      }\n    }\n  ],\n  \"ticketList\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"<string>\",\n      \"createdBy\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedBy\": \"<string>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"agentId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"description\": \"<string>\",\n      \"priority\": \"<string>\",\n      \"resolution\": \"<string>\",\n      \"status\": \"<string>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"agent\": {\n        \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n      },\n      \"customer\": {\n        \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"<string>\",\n      \"createdBy\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedBy\": \"<string>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"agentId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"description\": \"<string>\",\n      \"priority\": \"<string>\",\n      \"resolution\": \"<string>\",\n      \"status\": \"<string>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"agent\": {\n        \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n      },\n      \"customer\": {\n        \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n      }\n    }\n  ]\n}"
+												},
+												{
+													"name": "Bad Request",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Agent/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Agent",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												},
+												{
+													"name": "Not Found",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Agent/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Agent",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												},
+												{
+													"name": "Error",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Agent/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Agent",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												}
+											]
+										},
+										{
+											"name": "/api/v{{version}}/Agent/:id",
+											"request": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Agent/:id?status=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Agent",
+														":id"
+													],
+													"query": [
+														{
+															"key": "status",
+															"value": "<string>"
+														}
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Agent/:id?status=<string>",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Agent",
+																":id"
+															],
+															"query": [
+																{
+																	"key": "status",
+																	"value": "<string>"
+																}
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"<string>\",\n  \"createdBy\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"lastModifiedBy\": \"<string>\",\n  \"lastModifiedDate\": \"<dateTime>\",\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phoneExtension\": \"<string>\",\n  \"status\": \"<string>\",\n  \"callList\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"<string>\",\n      \"createdBy\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedBy\": \"<string>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"agentId\": \"<string>\",\n      \"customerId\": \"<string>\",\n      \"endTime\": \"<dateTime>\",\n      \"notes\": \"<string>\",\n      \"startTime\": \"<dateTime>\",\n      \"status\": \"<string>\",\n      \"agent\": {\n        \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n      },\n      \"customer\": {\n        \"id\": \"<string>\",\n        \"entity\": \"<string>\",\n        \"createdBy\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"email\": \"<string>\",\n        \"lastContactDate\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"phoneNumber\": \"<string>\",\n        \"callList\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/CallState detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/CallState detected>\"\n          }\n        ],\n        \"ticketList\": [\n          {\n            \"id\": \"<string>\",\n            \"entity\": \"<string>\",\n            \"createdBy\": \"<string>\",\n            \"createdDate\": \"<dateTime>\",\n            \"lastModifiedBy\": \"<string>\",\n            \"lastModifiedDate\": \"<dateTime>\",\n            \"agentId\": \"<string>\",\n            \"createdAt\": \"<dateTime>\",\n            \"customerId\": \"<string>\",\n            \"description\": \"<string>\",\n            \"priority\": \"<string>\",\n            \"resolution\": \"<string>\",\n            \"status\": \"<string>\",\n            \"updatedAt\": \"<dateTime>\",\n            \"agent\": {\n              \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n            },\n            \"customer\": {\n              \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n            }\n          },\n          {\n            \"id\": \"<string>\",\n            \"entity\": \"<string>\",\n            \"createdBy\": \"<string>\",\n            \"createdDate\": \"<dateTime>\",\n            \"lastModifiedBy\": \"<string>\",\n            \"lastModifiedDate\": \"<dateTime>\",\n            \"agentId\": \"<string>\",\n            \"createdAt\": \"<dateTime>\",\n            \"customerId\": \"<string>\",\n            \"description\": \"<string>\",\n            \"priority\": \"<string>\",\n            \"resolution\": \"<string>\",\n            \"status\": \"<string>\",\n            \"updatedAt\": \"<dateTime>\",\n            \"agent\": {\n              \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n            },\n            \"customer\": {\n              \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n            }\n          }\n        ]\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"<string>\",\n      \"createdBy\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedBy\": \"<string>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"agentId\": \"<string>\",\n      \"customerId\": \"<string>\",\n      \"endTime\": \"<dateTime>\",\n      \"notes\": \"<string>\",\n      \"startTime\": \"<dateTime>\",\n      \"status\": \"<string>\",\n      \"agent\": {\n        \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n      },\n      \"customer\": {\n        \"id\": \"<string>\",\n        \"entity\": \"<string>\",\n        \"createdBy\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"email\": \"<string>\",\n        \"lastContactDate\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"phoneNumber\": \"<string>\",\n        \"callList\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/CallState detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/CallState detected>\"\n          }\n        ],\n        \"ticketList\": [\n          {\n            \"id\": \"<string>\",\n            \"entity\": \"<string>\",\n            \"createdBy\": \"<string>\",\n            \"createdDate\": \"<dateTime>\",\n            \"lastModifiedBy\": \"<string>\",\n            \"lastModifiedDate\": \"<dateTime>\",\n            \"agentId\": \"<string>\",\n            \"createdAt\": \"<dateTime>\",\n            \"customerId\": \"<string>\",\n            \"description\": \"<string>\",\n            \"priority\": \"<string>\",\n            \"resolution\": \"<string>\",\n            \"status\": \"<string>\",\n            \"updatedAt\": \"<dateTime>\",\n            \"agent\": {\n              \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n            },\n            \"customer\": {\n              \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n            }\n          },\n          {\n            \"id\": \"<string>\",\n            \"entity\": \"<string>\",\n            \"createdBy\": \"<string>\",\n            \"createdDate\": \"<dateTime>\",\n            \"lastModifiedBy\": \"<string>\",\n            \"lastModifiedDate\": \"<dateTime>\",\n            \"agentId\": \"<string>\",\n            \"createdAt\": \"<dateTime>\",\n            \"customerId\": \"<string>\",\n            \"description\": \"<string>\",\n            \"priority\": \"<string>\",\n            \"resolution\": \"<string>\",\n            \"status\": \"<string>\",\n            \"updatedAt\": \"<dateTime>\",\n            \"agent\": {\n              \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n            },\n            \"customer\": {\n              \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n            }\n          }\n        ]\n      }\n    }\n  ],\n  \"ticketList\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"<string>\",\n      \"createdBy\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedBy\": \"<string>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"agentId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"description\": \"<string>\",\n      \"priority\": \"<string>\",\n      \"resolution\": \"<string>\",\n      \"status\": \"<string>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"agent\": {\n        \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n      },\n      \"customer\": {\n        \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"<string>\",\n      \"createdBy\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedBy\": \"<string>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"agentId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"description\": \"<string>\",\n      \"priority\": \"<string>\",\n      \"resolution\": \"<string>\",\n      \"status\": \"<string>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"agent\": {\n        \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n      },\n      \"customer\": {\n        \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n      }\n    }\n  ]\n}"
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "/api/v{{version}}/Agent",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/Agent",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"Agent"
+											],
+											"query": [
+												{
+													"key": "PageNumber",
+													"value": "<integer>",
+													"disabled": true
+												},
+												{
+													"key": "PageSize",
+													"value": "<integer>",
+													"disabled": true
+												},
+												{
+													"key": "SortColumn",
+													"value": "<string>",
+													"disabled": true
+												},
+												{
+													"key": "SortOrder",
+													"value": "<string>",
+													"disabled": true
+												},
+												{
+													"key": "SearchColumns",
+													"value": "<string>",
+													"disabled": true
+												},
+												{
+													"key": "SearchColumns",
+													"value": "<string>",
+													"disabled": true
+												},
+												{
+													"key": "SearchValue",
+													"value": "<string>",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Agent?PageNumber=<integer>&PageSize=<integer>&SortColumn=<string>&SortOrder=<string>&SearchColumns=<string>&SearchValue=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Agent"
+													],
+													"query": [
+														{
+															"key": "PageNumber",
+															"value": "<integer>"
+														},
+														{
+															"key": "PageSize",
+															"value": "<integer>"
+														},
+														{
+															"key": "SortColumn",
+															"value": "<string>"
+														},
+														{
+															"key": "SortOrder",
+															"value": "<string>"
+														},
+														{
+															"key": "SearchColumns",
+															"value": "<string>"
+														},
+														{
+															"key": "SearchValue",
+															"value": "<string>"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"metaData\": {\n    \"pageCount\": \"<integer>\",\n    \"totalItemCount\": \"<integer>\",\n    \"pageNumber\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"hasPreviousPage\": \"<boolean>\",\n    \"hasNextPage\": \"<boolean>\",\n    \"isFirstPage\": \"<boolean>\",\n    \"isLastPage\": \"<boolean>\",\n    \"firstItemOnPage\": \"<integer>\",\n    \"lastItemOnPage\": \"<integer>\"\n  },\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"email\": \"<string>\",\n      \"name\": \"<string>\",\n      \"phoneExtension\": \"<string>\",\n      \"status\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"email\": \"<string>\",\n      \"name\": \"<string>\",\n      \"phoneExtension\": \"<string>\",\n      \"status\": \"<string>\"\n    }\n  ],\n  \"totalCount\": \"<integer>\"\n}"
+										}
+									]
+								},
+								{
+									"name": "/api/v{{version}}/Agent",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phoneExtension\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/Agent",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"Agent"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Created",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phoneExtension\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Agent",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Agent"
+													]
+												}
+											},
+											"status": "Created",
+											"code": 201,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"<string>\",\n  \"createdBy\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"lastModifiedBy\": \"<string>\",\n  \"lastModifiedDate\": \"<dateTime>\",\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phoneExtension\": \"<string>\",\n  \"status\": \"<string>\",\n  \"callList\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"<string>\",\n      \"createdBy\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedBy\": \"<string>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"agentId\": \"<string>\",\n      \"customerId\": \"<string>\",\n      \"endTime\": \"<dateTime>\",\n      \"notes\": \"<string>\",\n      \"startTime\": \"<dateTime>\",\n      \"status\": \"<string>\",\n      \"agent\": {\n        \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n      },\n      \"customer\": {\n        \"id\": \"<string>\",\n        \"entity\": \"<string>\",\n        \"createdBy\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"email\": \"<string>\",\n        \"lastContactDate\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"phoneNumber\": \"<string>\",\n        \"callList\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/CallState detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/CallState detected>\"\n          }\n        ],\n        \"ticketList\": [\n          {\n            \"id\": \"<string>\",\n            \"entity\": \"<string>\",\n            \"createdBy\": \"<string>\",\n            \"createdDate\": \"<dateTime>\",\n            \"lastModifiedBy\": \"<string>\",\n            \"lastModifiedDate\": \"<dateTime>\",\n            \"agentId\": \"<string>\",\n            \"createdAt\": \"<dateTime>\",\n            \"customerId\": \"<string>\",\n            \"description\": \"<string>\",\n            \"priority\": \"<string>\",\n            \"resolution\": \"<string>\",\n            \"status\": \"<string>\",\n            \"updatedAt\": \"<dateTime>\",\n            \"agent\": {\n              \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n            },\n            \"customer\": {\n              \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n            }\n          },\n          {\n            \"id\": \"<string>\",\n            \"entity\": \"<string>\",\n            \"createdBy\": \"<string>\",\n            \"createdDate\": \"<dateTime>\",\n            \"lastModifiedBy\": \"<string>\",\n            \"lastModifiedDate\": \"<dateTime>\",\n            \"agentId\": \"<string>\",\n            \"createdAt\": \"<dateTime>\",\n            \"customerId\": \"<string>\",\n            \"description\": \"<string>\",\n            \"priority\": \"<string>\",\n            \"resolution\": \"<string>\",\n            \"status\": \"<string>\",\n            \"updatedAt\": \"<dateTime>\",\n            \"agent\": {\n              \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n            },\n            \"customer\": {\n              \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n            }\n          }\n        ]\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"<string>\",\n      \"createdBy\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedBy\": \"<string>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"agentId\": \"<string>\",\n      \"customerId\": \"<string>\",\n      \"endTime\": \"<dateTime>\",\n      \"notes\": \"<string>\",\n      \"startTime\": \"<dateTime>\",\n      \"status\": \"<string>\",\n      \"agent\": {\n        \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n      },\n      \"customer\": {\n        \"id\": \"<string>\",\n        \"entity\": \"<string>\",\n        \"createdBy\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"email\": \"<string>\",\n        \"lastContactDate\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"phoneNumber\": \"<string>\",\n        \"callList\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/CallState detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/CallState detected>\"\n          }\n        ],\n        \"ticketList\": [\n          {\n            \"id\": \"<string>\",\n            \"entity\": \"<string>\",\n            \"createdBy\": \"<string>\",\n            \"createdDate\": \"<dateTime>\",\n            \"lastModifiedBy\": \"<string>\",\n            \"lastModifiedDate\": \"<dateTime>\",\n            \"agentId\": \"<string>\",\n            \"createdAt\": \"<dateTime>\",\n            \"customerId\": \"<string>\",\n            \"description\": \"<string>\",\n            \"priority\": \"<string>\",\n            \"resolution\": \"<string>\",\n            \"status\": \"<string>\",\n            \"updatedAt\": \"<dateTime>\",\n            \"agent\": {\n              \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n            },\n            \"customer\": {\n              \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n            }\n          },\n          {\n            \"id\": \"<string>\",\n            \"entity\": \"<string>\",\n            \"createdBy\": \"<string>\",\n            \"createdDate\": \"<dateTime>\",\n            \"lastModifiedBy\": \"<string>\",\n            \"lastModifiedDate\": \"<dateTime>\",\n            \"agentId\": \"<string>\",\n            \"createdAt\": \"<dateTime>\",\n            \"customerId\": \"<string>\",\n            \"description\": \"<string>\",\n            \"priority\": \"<string>\",\n            \"resolution\": \"<string>\",\n            \"status\": \"<string>\",\n            \"updatedAt\": \"<dateTime>\",\n            \"agent\": {\n              \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n            },\n            \"customer\": {\n              \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n            }\n          }\n        ]\n      }\n    }\n  ],\n  \"ticketList\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"<string>\",\n      \"createdBy\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedBy\": \"<string>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"agentId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"description\": \"<string>\",\n      \"priority\": \"<string>\",\n      \"resolution\": \"<string>\",\n      \"status\": \"<string>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"agent\": {\n        \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n      },\n      \"customer\": {\n        \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"<string>\",\n      \"createdBy\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedBy\": \"<string>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"agentId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"description\": \"<string>\",\n      \"priority\": \"<string>\",\n      \"resolution\": \"<string>\",\n      \"status\": \"<string>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"agent\": {\n        \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n      },\n      \"customer\": {\n        \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n      }\n    }\n  ]\n}"
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phoneExtension\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Agent",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Agent"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+										},
+										{
+											"name": "Error",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phoneExtension\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Agent",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Agent"
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Call",
+							"item": [
+								{
+									"name": "{id}",
+									"item": [
+										{
+											"name": "/api/v{{version}}/Call/:id",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Call/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Call",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Call/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Call",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"<string>\",\n  \"createdBy\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"lastModifiedBy\": \"<string>\",\n  \"lastModifiedDate\": \"<dateTime>\",\n  \"agentId\": \"<string>\",\n  \"customerId\": \"<string>\",\n  \"endTime\": \"<dateTime>\",\n  \"notes\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"status\": \"<string>\",\n  \"agent\": {\n    \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n  },\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"entity\": \"<string>\",\n    \"createdBy\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"email\": \"<string>\",\n    \"lastContactDate\": \"<dateTime>\",\n    \"name\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"callList\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/CallState detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/CallState detected>\"\n      }\n    ],\n    \"ticketList\": [\n      {\n        \"id\": \"<string>\",\n        \"entity\": \"<string>\",\n        \"createdBy\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"agentId\": \"<string>\",\n        \"createdAt\": \"<dateTime>\",\n        \"customerId\": \"<string>\",\n        \"description\": \"<string>\",\n        \"priority\": \"<string>\",\n        \"resolution\": \"<string>\",\n        \"status\": \"<string>\",\n        \"updatedAt\": \"<dateTime>\",\n        \"agent\": {\n          \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n        },\n        \"customer\": {\n          \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n        }\n      },\n      {\n        \"id\": \"<string>\",\n        \"entity\": \"<string>\",\n        \"createdBy\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"agentId\": \"<string>\",\n        \"createdAt\": \"<dateTime>\",\n        \"customerId\": \"<string>\",\n        \"description\": \"<string>\",\n        \"priority\": \"<string>\",\n        \"resolution\": \"<string>\",\n        \"status\": \"<string>\",\n        \"updatedAt\": \"<dateTime>\",\n        \"agent\": {\n          \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n        },\n        \"customer\": {\n          \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n        }\n      }\n    ]\n  }\n}"
+												},
+												{
+													"name": "Not Found",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Call/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Call",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												},
+												{
+													"name": "Error",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Call/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Call",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												}
+											]
+										},
+										{
+											"name": "/api/v{{version}}/Call/:id",
+											"request": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"customerId\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"status\": \"<string>\",\n  \"agentId\": \"<string>\",\n  \"endTime\": \"<dateTime>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Call/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Call",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "No Content",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"customerId\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"status\": \"<string>\",\n  \"agentId\": \"<string>\",\n  \"endTime\": \"<dateTime>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Call/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Call",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "No Content",
+													"code": 204,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "Bad Request",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"customerId\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"status\": \"<string>\",\n  \"agentId\": \"<string>\",\n  \"endTime\": \"<dateTime>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Call/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Call",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												},
+												{
+													"name": "Not Found",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"customerId\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"status\": \"<string>\",\n  \"agentId\": \"<string>\",\n  \"endTime\": \"<dateTime>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Call/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Call",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												},
+												{
+													"name": "Error",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"customerId\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"status\": \"<string>\",\n  \"agentId\": \"<string>\",\n  \"endTime\": \"<dateTime>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Call/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Call",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												}
+											]
+										},
+										{
+											"name": "/api/v{{version}}/Call/:id",
+											"request": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Call/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Call",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Call/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Call",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"<string>\",\n  \"createdBy\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"lastModifiedBy\": \"<string>\",\n  \"lastModifiedDate\": \"<dateTime>\",\n  \"agentId\": \"<string>\",\n  \"customerId\": \"<string>\",\n  \"endTime\": \"<dateTime>\",\n  \"notes\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"status\": \"<string>\",\n  \"agent\": {\n    \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n  },\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"entity\": \"<string>\",\n    \"createdBy\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"email\": \"<string>\",\n    \"lastContactDate\": \"<dateTime>\",\n    \"name\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"callList\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/CallState detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/CallState detected>\"\n      }\n    ],\n    \"ticketList\": [\n      {\n        \"id\": \"<string>\",\n        \"entity\": \"<string>\",\n        \"createdBy\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"agentId\": \"<string>\",\n        \"createdAt\": \"<dateTime>\",\n        \"customerId\": \"<string>\",\n        \"description\": \"<string>\",\n        \"priority\": \"<string>\",\n        \"resolution\": \"<string>\",\n        \"status\": \"<string>\",\n        \"updatedAt\": \"<dateTime>\",\n        \"agent\": {\n          \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n        },\n        \"customer\": {\n          \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n        }\n      },\n      {\n        \"id\": \"<string>\",\n        \"entity\": \"<string>\",\n        \"createdBy\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"agentId\": \"<string>\",\n        \"createdAt\": \"<dateTime>\",\n        \"customerId\": \"<string>\",\n        \"description\": \"<string>\",\n        \"priority\": \"<string>\",\n        \"resolution\": \"<string>\",\n        \"status\": \"<string>\",\n        \"updatedAt\": \"<dateTime>\",\n        \"agent\": {\n          \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n        },\n        \"customer\": {\n          \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n        }\n      }\n    ]\n  }\n}"
+												},
+												{
+													"name": "Bad Request",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Call/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Call",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												},
+												{
+													"name": "Not Found",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Call/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Call",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												},
+												{
+													"name": "Error",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Call/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Call",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												}
+											]
+										},
+										{
+											"name": "/api/v{{version}}/Call/:id",
+											"request": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Call/:id?agentId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Call",
+														":id"
+													],
+													"query": [
+														{
+															"key": "agentId",
+															"value": "<string>"
+														}
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Call/:id?agentId=<string>",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Call",
+																":id"
+															],
+															"query": [
+																{
+																	"key": "agentId",
+																	"value": "<string>"
+																}
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"<string>\",\n  \"createdBy\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"lastModifiedBy\": \"<string>\",\n  \"lastModifiedDate\": \"<dateTime>\",\n  \"agentId\": \"<string>\",\n  \"customerId\": \"<string>\",\n  \"endTime\": \"<dateTime>\",\n  \"notes\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"status\": \"<string>\",\n  \"agent\": {\n    \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n  },\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"entity\": \"<string>\",\n    \"createdBy\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"email\": \"<string>\",\n    \"lastContactDate\": \"<dateTime>\",\n    \"name\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"callList\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/CallState detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/CallState detected>\"\n      }\n    ],\n    \"ticketList\": [\n      {\n        \"id\": \"<string>\",\n        \"entity\": \"<string>\",\n        \"createdBy\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"agentId\": \"<string>\",\n        \"createdAt\": \"<dateTime>\",\n        \"customerId\": \"<string>\",\n        \"description\": \"<string>\",\n        \"priority\": \"<string>\",\n        \"resolution\": \"<string>\",\n        \"status\": \"<string>\",\n        \"updatedAt\": \"<dateTime>\",\n        \"agent\": {\n          \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n        },\n        \"customer\": {\n          \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n        }\n      },\n      {\n        \"id\": \"<string>\",\n        \"entity\": \"<string>\",\n        \"createdBy\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"agentId\": \"<string>\",\n        \"createdAt\": \"<dateTime>\",\n        \"customerId\": \"<string>\",\n        \"description\": \"<string>\",\n        \"priority\": \"<string>\",\n        \"resolution\": \"<string>\",\n        \"status\": \"<string>\",\n        \"updatedAt\": \"<dateTime>\",\n        \"agent\": {\n          \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n        },\n        \"customer\": {\n          \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n        }\n      }\n    ]\n  }\n}"
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "/api/v{{version}}/Call",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/Call?DateFrom=<dateTime>&DateTo=<dateTime>&Status=<string>&AgentId=<string>&PageNumber=<integer>&PageSize=<integer>&SortColumn=<string>&SortOrder=<string>&SearchColumns=<string>&SearchColumns=<string>&SearchValue=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"Call"
+											],
+											"query": [
+												{
+													"key": "DateFrom",
+													"value": "<dateTime>"
+												},
+												{
+													"key": "DateTo",
+													"value": "<dateTime>"
+												},
+												{
+													"key": "Status",
+													"value": "<string>"
+												},
+												{
+													"key": "AgentId",
+													"value": "<string>"
+												},
+												{
+													"key": "PageNumber",
+													"value": "<integer>"
+												},
+												{
+													"key": "PageSize",
+													"value": "<integer>"
+												},
+												{
+													"key": "SortColumn",
+													"value": "<string>"
+												},
+												{
+													"key": "SortOrder",
+													"value": "<string>"
+												},
+												{
+													"key": "SearchColumns",
+													"value": "<string>"
+												},
+												{
+													"key": "SearchColumns",
+													"value": "<string>"
+												},
+												{
+													"key": "SearchValue",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Call?DateFrom=<dateTime>&DateTo=<dateTime>&Status=<string>&AgentId=<string>&PageNumber=<integer>&PageSize=<integer>&SortColumn=<string>&SortOrder=<string>&SearchColumns=<string>&SearchValue=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Call"
+													],
+													"query": [
+														{
+															"key": "DateFrom",
+															"value": "<dateTime>"
+														},
+														{
+															"key": "DateTo",
+															"value": "<dateTime>"
+														},
+														{
+															"key": "Status",
+															"value": "<string>"
+														},
+														{
+															"key": "AgentId",
+															"value": "<string>"
+														},
+														{
+															"key": "PageNumber",
+															"value": "<integer>"
+														},
+														{
+															"key": "PageSize",
+															"value": "<integer>"
+														},
+														{
+															"key": "SortColumn",
+															"value": "<string>"
+														},
+														{
+															"key": "SortOrder",
+															"value": "<string>"
+														},
+														{
+															"key": "SearchColumns",
+															"value": "<string>"
+														},
+														{
+															"key": "SearchValue",
+															"value": "<string>"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"metaData\": {\n    \"pageCount\": \"<integer>\",\n    \"totalItemCount\": \"<integer>\",\n    \"pageNumber\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"hasPreviousPage\": \"<boolean>\",\n    \"hasNextPage\": \"<boolean>\",\n    \"isFirstPage\": \"<boolean>\",\n    \"isLastPage\": \"<boolean>\",\n    \"firstItemOnPage\": \"<integer>\",\n    \"lastItemOnPage\": \"<integer>\"\n  },\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"agentId\": \"<string>\",\n      \"customerId\": \"<string>\",\n      \"endTime\": \"<dateTime>\",\n      \"endTimeFormatted\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"startTime\": \"<dateTime>\",\n      \"startTimeFormatted\": \"<string>\",\n      \"status\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"agentId\": \"<string>\",\n      \"customerId\": \"<string>\",\n      \"endTime\": \"<dateTime>\",\n      \"endTimeFormatted\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"startTime\": \"<dateTime>\",\n      \"startTimeFormatted\": \"<string>\",\n      \"status\": \"<string>\"\n    }\n  ],\n  \"totalCount\": \"<integer>\"\n}"
+										}
+									]
+								},
+								{
+									"name": "/api/v{{version}}/Call",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"customerId\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"status\": \"<string>\",\n  \"agentId\": \"<string>\",\n  \"endTime\": \"<dateTime>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/Call",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"Call"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Created",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"customerId\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"status\": \"<string>\",\n  \"agentId\": \"<string>\",\n  \"endTime\": \"<dateTime>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Call",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Call"
+													]
+												}
+											},
+											"status": "Created",
+											"code": 201,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"<string>\",\n  \"createdBy\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"lastModifiedBy\": \"<string>\",\n  \"lastModifiedDate\": \"<dateTime>\",\n  \"agentId\": \"<string>\",\n  \"customerId\": \"<string>\",\n  \"endTime\": \"<dateTime>\",\n  \"notes\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"status\": \"<string>\",\n  \"agent\": {\n    \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n  },\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"entity\": \"<string>\",\n    \"createdBy\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"email\": \"<string>\",\n    \"lastContactDate\": \"<dateTime>\",\n    \"name\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"callList\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/CallState detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/CallState detected>\"\n      }\n    ],\n    \"ticketList\": [\n      {\n        \"id\": \"<string>\",\n        \"entity\": \"<string>\",\n        \"createdBy\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"agentId\": \"<string>\",\n        \"createdAt\": \"<dateTime>\",\n        \"customerId\": \"<string>\",\n        \"description\": \"<string>\",\n        \"priority\": \"<string>\",\n        \"resolution\": \"<string>\",\n        \"status\": \"<string>\",\n        \"updatedAt\": \"<dateTime>\",\n        \"agent\": {\n          \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n        },\n        \"customer\": {\n          \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n        }\n      },\n      {\n        \"id\": \"<string>\",\n        \"entity\": \"<string>\",\n        \"createdBy\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedDate\": \"<dateTime>\",\n        \"agentId\": \"<string>\",\n        \"createdAt\": \"<dateTime>\",\n        \"customerId\": \"<string>\",\n        \"description\": \"<string>\",\n        \"priority\": \"<string>\",\n        \"resolution\": \"<string>\",\n        \"status\": \"<string>\",\n        \"updatedAt\": \"<dateTime>\",\n        \"agent\": {\n          \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n        },\n        \"customer\": {\n          \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n        }\n      }\n    ]\n  }\n}"
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"customerId\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"status\": \"<string>\",\n  \"agentId\": \"<string>\",\n  \"endTime\": \"<dateTime>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Call",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Call"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+										},
+										{
+											"name": "Error",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"customerId\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"status\": \"<string>\",\n  \"agentId\": \"<string>\",\n  \"endTime\": \"<dateTime>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Call",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Call"
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Customer",
+							"item": [
+								{
+									"name": "{id}",
+									"item": [
+										{
+											"name": "/api/v{{version}}/Customer/:id",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Customer/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Customer",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Customer/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Customer",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"<string>\",\n  \"createdBy\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"lastModifiedBy\": \"<string>\",\n  \"lastModifiedDate\": \"<dateTime>\",\n  \"email\": \"<string>\",\n  \"lastContactDate\": \"<dateTime>\",\n  \"name\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"callList\": [\n    {\n      \"value\": \"<Circular reference to #/components/schemas/CallState detected>\"\n    },\n    {\n      \"value\": \"<Circular reference to #/components/schemas/CallState detected>\"\n    }\n  ],\n  \"ticketList\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"<string>\",\n      \"createdBy\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedBy\": \"<string>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"agentId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"description\": \"<string>\",\n      \"priority\": \"<string>\",\n      \"resolution\": \"<string>\",\n      \"status\": \"<string>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"agent\": {\n        \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n      },\n      \"customer\": {\n        \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"<string>\",\n      \"createdBy\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedBy\": \"<string>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"agentId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"description\": \"<string>\",\n      \"priority\": \"<string>\",\n      \"resolution\": \"<string>\",\n      \"status\": \"<string>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"agent\": {\n        \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n      },\n      \"customer\": {\n        \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n      }\n    }\n  ]\n}"
+												},
+												{
+													"name": "Not Found",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Customer/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Customer",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												},
+												{
+													"name": "Error",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Customer/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Customer",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												}
+											]
+										},
+										{
+											"name": "/api/v{{version}}/Customer/:id",
+											"request": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"lastContactDate\": \"<dateTime>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Customer/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Customer",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "No Content",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"lastContactDate\": \"<dateTime>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Customer/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Customer",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "No Content",
+													"code": 204,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "Bad Request",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"lastContactDate\": \"<dateTime>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Customer/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Customer",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												},
+												{
+													"name": "Not Found",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"lastContactDate\": \"<dateTime>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Customer/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Customer",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												},
+												{
+													"name": "Error",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"lastContactDate\": \"<dateTime>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Customer/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Customer",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												}
+											]
+										},
+										{
+											"name": "/api/v{{version}}/Customer/:id",
+											"request": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Customer/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Customer",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Customer/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Customer",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"<string>\",\n  \"createdBy\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"lastModifiedBy\": \"<string>\",\n  \"lastModifiedDate\": \"<dateTime>\",\n  \"email\": \"<string>\",\n  \"lastContactDate\": \"<dateTime>\",\n  \"name\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"callList\": [\n    {\n      \"value\": \"<Circular reference to #/components/schemas/CallState detected>\"\n    },\n    {\n      \"value\": \"<Circular reference to #/components/schemas/CallState detected>\"\n    }\n  ],\n  \"ticketList\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"<string>\",\n      \"createdBy\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedBy\": \"<string>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"agentId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"description\": \"<string>\",\n      \"priority\": \"<string>\",\n      \"resolution\": \"<string>\",\n      \"status\": \"<string>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"agent\": {\n        \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n      },\n      \"customer\": {\n        \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"<string>\",\n      \"createdBy\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedBy\": \"<string>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"agentId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"description\": \"<string>\",\n      \"priority\": \"<string>\",\n      \"resolution\": \"<string>\",\n      \"status\": \"<string>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"agent\": {\n        \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n      },\n      \"customer\": {\n        \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n      }\n    }\n  ]\n}"
+												},
+												{
+													"name": "Bad Request",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Customer/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Customer",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												},
+												{
+													"name": "Not Found",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Customer/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Customer",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												},
+												{
+													"name": "Error",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Customer/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Customer",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "/api/v{{version}}/Customer",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/Customer?PageNumber=<integer>&PageSize=<integer>&SortColumn=<string>&SortOrder=<string>&SearchColumns=<string>&SearchColumns=<string>&SearchValue=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"Customer"
+											],
+											"query": [
+												{
+													"key": "PageNumber",
+													"value": "<integer>"
+												},
+												{
+													"key": "PageSize",
+													"value": "<integer>"
+												},
+												{
+													"key": "SortColumn",
+													"value": "<string>"
+												},
+												{
+													"key": "SortOrder",
+													"value": "<string>"
+												},
+												{
+													"key": "SearchColumns",
+													"value": "<string>"
+												},
+												{
+													"key": "SearchColumns",
+													"value": "<string>"
+												},
+												{
+													"key": "SearchValue",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Customer?PageNumber=<integer>&PageSize=<integer>&SortColumn=<string>&SortOrder=<string>&SearchColumns=<string>&SearchValue=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Customer"
+													],
+													"query": [
+														{
+															"key": "PageNumber",
+															"value": "<integer>"
+														},
+														{
+															"key": "PageSize",
+															"value": "<integer>"
+														},
+														{
+															"key": "SortColumn",
+															"value": "<string>"
+														},
+														{
+															"key": "SortOrder",
+															"value": "<string>"
+														},
+														{
+															"key": "SearchColumns",
+															"value": "<string>"
+														},
+														{
+															"key": "SearchValue",
+															"value": "<string>"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"metaData\": {\n    \"pageCount\": \"<integer>\",\n    \"totalItemCount\": \"<integer>\",\n    \"pageNumber\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"hasPreviousPage\": \"<boolean>\",\n    \"hasNextPage\": \"<boolean>\",\n    \"isFirstPage\": \"<boolean>\",\n    \"isLastPage\": \"<boolean>\",\n    \"firstItemOnPage\": \"<integer>\",\n    \"lastItemOnPage\": \"<integer>\"\n  },\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"email\": \"<string>\",\n      \"lastContactDate\": \"<dateTime>\",\n      \"lastContactDateFormatted\": \"<string>\",\n      \"name\": \"<string>\",\n      \"phoneNumber\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"email\": \"<string>\",\n      \"lastContactDate\": \"<dateTime>\",\n      \"lastContactDateFormatted\": \"<string>\",\n      \"name\": \"<string>\",\n      \"phoneNumber\": \"<string>\"\n    }\n  ],\n  \"totalCount\": \"<integer>\"\n}"
+										}
+									]
+								},
+								{
+									"name": "/api/v{{version}}/Customer",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"lastContactDate\": \"<dateTime>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/Customer",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"Customer"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Created",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"lastContactDate\": \"<dateTime>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Customer",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Customer"
+													]
+												}
+											},
+											"status": "Created",
+											"code": 201,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"<string>\",\n  \"createdBy\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"lastModifiedBy\": \"<string>\",\n  \"lastModifiedDate\": \"<dateTime>\",\n  \"email\": \"<string>\",\n  \"lastContactDate\": \"<dateTime>\",\n  \"name\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"callList\": [\n    {\n      \"value\": \"<Circular reference to #/components/schemas/CallState detected>\"\n    },\n    {\n      \"value\": \"<Circular reference to #/components/schemas/CallState detected>\"\n    }\n  ],\n  \"ticketList\": [\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"<string>\",\n      \"createdBy\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedBy\": \"<string>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"agentId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"description\": \"<string>\",\n      \"priority\": \"<string>\",\n      \"resolution\": \"<string>\",\n      \"status\": \"<string>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"agent\": {\n        \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n      },\n      \"customer\": {\n        \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"entity\": \"<string>\",\n      \"createdBy\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"lastModifiedBy\": \"<string>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"agentId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"description\": \"<string>\",\n      \"priority\": \"<string>\",\n      \"resolution\": \"<string>\",\n      \"status\": \"<string>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"agent\": {\n        \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n      },\n      \"customer\": {\n        \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n      }\n    }\n  ]\n}"
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"lastContactDate\": \"<dateTime>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Customer",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Customer"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+										},
+										{
+											"name": "Error",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"lastContactDate\": \"<dateTime>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Customer",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Customer"
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Dashboard",
+							"item": [
+								{
+									"name": "AverageCallDuration",
+									"item": [
+										{
+											"name": "/api/v{{version}}/Dashboard/AverageCallDuration",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Dashboard/AverageCallDuration",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Dashboard",
+														"AverageCallDuration"
+													],
+													"query": [
+														{
+															"key": "DateFrom",
+															"value": "<dateTime>",
+															"disabled": true
+														},
+														{
+															"key": "DateTo",
+															"value": "<dateTime>",
+															"disabled": true
+														},
+														{
+															"key": "Status",
+															"value": "<string>",
+															"disabled": true
+														},
+														{
+															"key": "AgentId",
+															"value": "<string>",
+															"disabled": true
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Dashboard/AverageCallDuration?DateFrom=<dateTime>&DateTo=<dateTime>&Status=<string>&AgentId=<string>",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Dashboard",
+																"AverageCallDuration"
+															],
+															"query": [
+																{
+																	"key": "DateFrom",
+																	"value": "<dateTime>"
+																},
+																{
+																	"key": "DateTo",
+																	"value": "<dateTime>"
+																},
+																{
+																	"key": "Status",
+																	"value": "<string>"
+																},
+																{
+																	"key": "AgentId",
+																	"value": "<string>"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "<double>"
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "CallsPerAgent",
+									"item": [
+										{
+											"name": "/api/v{{version}}/Dashboard/CallsPerAgent",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Dashboard/CallsPerAgent",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Dashboard",
+														"CallsPerAgent"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Dashboard/CallsPerAgent",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Dashboard",
+																"CallsPerAgent"
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "<double>"
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "TicketsViaElasticSearch",
+									"item": [
+										{
+											"name": "/api/v{{version}}/Dashboard/TicketsViaElasticSearch",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Dashboard/TicketsViaElasticSearch?Status=Closed&PageSize=100&PageNumber=1",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Dashboard",
+														"TicketsViaElasticSearch"
+													],
+													"query": [
+														{
+															"key": "Status",
+															"value": "Closed"
+														},
+														{
+															"key": "PageSize",
+															"value": "100"
+														},
+														{
+															"key": "PageNumber",
+															"value": "1"
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Dashboard/TicketsViaElasticSearch?Status=<string>&PageSize=<integer>&PageNumber=<integer>",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Dashboard",
+																"TicketsViaElasticSearch"
+															],
+															"query": [
+																{
+																	"key": "Status",
+																	"value": "<string>"
+																},
+																{
+																	"key": "PageSize",
+																	"value": "<integer>"
+																},
+																{
+																	"key": "PageNumber",
+																	"value": "<integer>"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "<double>"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "MetaData",
+							"item": [
+								{
+									"name": "/api/v{{version}}/MetaData",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/MetaData",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"MetaData"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/MetaData",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"MetaData"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"version\": {\n    \"releaseName\": \"<string>\",\n    \"buildNumber\": \"<string>\"\n  }\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Ticket",
+							"item": [
+								{
+									"name": "{id}",
+									"item": [
+										{
+											"name": "/api/v{{version}}/Ticket/:id",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Ticket/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Ticket",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Ticket/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Ticket",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"<string>\",\n  \"createdBy\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"lastModifiedBy\": \"<string>\",\n  \"lastModifiedDate\": \"<dateTime>\",\n  \"agentId\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"customerId\": \"<string>\",\n  \"description\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"resolution\": \"<string>\",\n  \"status\": \"<string>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"agent\": {\n    \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n  },\n  \"customer\": {\n    \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n  }\n}"
+												},
+												{
+													"name": "Not Found",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Ticket/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Ticket",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												},
+												{
+													"name": "Error",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Ticket/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Ticket",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												}
+											]
+										},
+										{
+											"name": "/api/v{{version}}/Ticket/:id",
+											"request": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"createdAt\": \"<dateTime>\",\n  \"customerId\": \"<string>\",\n  \"description\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"status\": \"<string>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"agentId\": \"<string>\",\n  \"resolution\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Ticket/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Ticket",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "No Content",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"createdAt\": \"<dateTime>\",\n  \"customerId\": \"<string>\",\n  \"description\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"status\": \"<string>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"agentId\": \"<string>\",\n  \"resolution\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Ticket/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Ticket",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "No Content",
+													"code": 204,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "Bad Request",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"createdAt\": \"<dateTime>\",\n  \"customerId\": \"<string>\",\n  \"description\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"status\": \"<string>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"agentId\": \"<string>\",\n  \"resolution\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Ticket/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Ticket",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												},
+												{
+													"name": "Not Found",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"createdAt\": \"<dateTime>\",\n  \"customerId\": \"<string>\",\n  \"description\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"status\": \"<string>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"agentId\": \"<string>\",\n  \"resolution\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Ticket/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Ticket",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												},
+												{
+													"name": "Error",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"createdAt\": \"<dateTime>\",\n  \"customerId\": \"<string>\",\n  \"description\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"status\": \"<string>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"agentId\": \"<string>\",\n  \"resolution\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Ticket/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Ticket",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												}
+											]
+										},
+										{
+											"name": "/api/v{{version}}/Ticket/:id",
+											"request": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Ticket/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Ticket",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Ticket/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Ticket",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"<string>\",\n  \"createdBy\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"lastModifiedBy\": \"<string>\",\n  \"lastModifiedDate\": \"<dateTime>\",\n  \"agentId\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"customerId\": \"<string>\",\n  \"description\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"resolution\": \"<string>\",\n  \"status\": \"<string>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"agent\": {\n    \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n  },\n  \"customer\": {\n    \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n  }\n}"
+												},
+												{
+													"name": "Bad Request",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Ticket/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Ticket",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												},
+												{
+													"name": "Not Found",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Ticket/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Ticket",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												},
+												{
+													"name": "Error",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Ticket/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Ticket",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												}
+											]
+										},
+										{
+											"name": "/api/v{{version}}/Ticket/:id",
+											"request": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Ticket/:id?agentId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Ticket",
+														":id"
+													],
+													"query": [
+														{
+															"key": "agentId",
+															"value": "<string>"
+														}
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/Ticket/:id?agentId=<string>",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"Ticket",
+																":id"
+															],
+															"query": [
+																{
+																	"key": "agentId",
+																	"value": "<string>"
+																}
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"<string>\",\n  \"createdBy\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"lastModifiedBy\": \"<string>\",\n  \"lastModifiedDate\": \"<dateTime>\",\n  \"agentId\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"customerId\": \"<string>\",\n  \"description\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"resolution\": \"<string>\",\n  \"status\": \"<string>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"agent\": {\n    \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n  },\n  \"customer\": {\n    \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n  }\n}"
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "/api/v{{version}}/Ticket",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/Ticket?PageNumber=<integer>&PageSize=<integer>&SortColumn=<string>&SortOrder=<string>&SearchColumns=<string>&SearchColumns=<string>&SearchValue=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"Ticket"
+											],
+											"query": [
+												{
+													"key": "PageNumber",
+													"value": "<integer>"
+												},
+												{
+													"key": "PageSize",
+													"value": "<integer>"
+												},
+												{
+													"key": "SortColumn",
+													"value": "<string>"
+												},
+												{
+													"key": "SortOrder",
+													"value": "<string>"
+												},
+												{
+													"key": "SearchColumns",
+													"value": "<string>"
+												},
+												{
+													"key": "SearchColumns",
+													"value": "<string>"
+												},
+												{
+													"key": "SearchValue",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Ticket?PageNumber=<integer>&PageSize=<integer>&SortColumn=<string>&SortOrder=<string>&SearchColumns=<string>&SearchValue=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Ticket"
+													],
+													"query": [
+														{
+															"key": "PageNumber",
+															"value": "<integer>"
+														},
+														{
+															"key": "PageSize",
+															"value": "<integer>"
+														},
+														{
+															"key": "SortColumn",
+															"value": "<string>"
+														},
+														{
+															"key": "SortOrder",
+															"value": "<string>"
+														},
+														{
+															"key": "SearchColumns",
+															"value": "<string>"
+														},
+														{
+															"key": "SearchValue",
+															"value": "<string>"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"metaData\": {\n    \"pageCount\": \"<integer>\",\n    \"totalItemCount\": \"<integer>\",\n    \"pageNumber\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"hasPreviousPage\": \"<boolean>\",\n    \"hasNextPage\": \"<boolean>\",\n    \"isFirstPage\": \"<boolean>\",\n    \"isLastPage\": \"<boolean>\",\n    \"firstItemOnPage\": \"<integer>\",\n    \"lastItemOnPage\": \"<integer>\"\n  },\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"agentId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"createdAtFormatted\": \"<string>\",\n      \"customerId\": \"<string>\",\n      \"description\": \"<string>\",\n      \"priority\": \"<string>\",\n      \"resolution\": \"<string>\",\n      \"status\": \"<string>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"updatedAtFormatted\": \"<string>\",\n      \"statusBadge\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"agentId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"createdAtFormatted\": \"<string>\",\n      \"customerId\": \"<string>\",\n      \"description\": \"<string>\",\n      \"priority\": \"<string>\",\n      \"resolution\": \"<string>\",\n      \"status\": \"<string>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"updatedAtFormatted\": \"<string>\",\n      \"statusBadge\": \"<string>\"\n    }\n  ],\n  \"totalCount\": \"<integer>\"\n}"
+										}
+									]
+								},
+								{
+									"name": "/api/v{{version}}/Ticket",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"createdAt\": \"<dateTime>\",\n  \"customerId\": \"<string>\",\n  \"description\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"status\": \"<string>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"agentId\": \"<string>\",\n  \"resolution\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/Ticket",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"Ticket"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Created",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"createdAt\": \"<dateTime>\",\n  \"customerId\": \"<string>\",\n  \"description\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"status\": \"<string>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"agentId\": \"<string>\",\n  \"resolution\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Ticket",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Ticket"
+													]
+												}
+											},
+											"status": "Created",
+											"code": 201,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<string>\",\n  \"entity\": \"<string>\",\n  \"createdBy\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"lastModifiedBy\": \"<string>\",\n  \"lastModifiedDate\": \"<dateTime>\",\n  \"agentId\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"customerId\": \"<string>\",\n  \"description\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"resolution\": \"<string>\",\n  \"status\": \"<string>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"agent\": {\n    \"value\": \"<Circular reference to #/components/schemas/AgentState detected>\"\n  },\n  \"customer\": {\n    \"value\": \"<Circular reference to #/components/schemas/CustomerState detected>\"\n  }\n}"
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"createdAt\": \"<dateTime>\",\n  \"customerId\": \"<string>\",\n  \"description\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"status\": \"<string>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"agentId\": \"<string>\",\n  \"resolution\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Ticket",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Ticket"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+										},
+										{
+											"name": "Error",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"createdAt\": \"<dateTime>\",\n  \"customerId\": \"<string>\",\n  \"description\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"status\": \"<string>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"agentId\": \"<string>\",\n  \"resolution\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Ticket",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Ticket"
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "tokenName",
+				"value": "token",
+				"type": "string"
+			},
+			{
+				"key": "accessTokenUrl",
+				"value": "{{authUrl}}/connect/token",
+				"type": "string"
+			},
+			{
+				"key": "client_authentication",
+				"value": "header",
+				"type": "string"
+			},
+			{
+				"key": "scope",
+				"value": "{{scope}}",
+				"type": "string"
+			},
+			{
+				"key": "clientSecret",
+				"value": "{{clientSecret}}",
+				"type": "string"
+			},
+			{
+				"key": "clientId",
+				"value": "{{clientId}}",
+				"type": "string"
+			},
+			{
+				"key": "grant_type",
+				"value": "client_credentials",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:48019"
+		},
+		{
+			"key": "version",
+			"value": "1"
+		},
+		{
+			"key": "clientId",
+			"value": "0332342A-FEA3-4250-B3EE-C96E423A0307",
+			"type": "string"
+		},
+		{
+			"key": "clientSecret",
+			"value": "fc255109-f04c-4060-ab46-55d27d1e35a6",
+			"type": "string"
+		},
+		{
+			"key": "authUrl",
+			"value": "https://localhost:48021",
+			"type": "string"
+		},
+		{
+			"key": "scope",
+			"value": "email profile roles name Entity demo_api Permission.Agent.View Permission.Agent.Create Permission.Agent.Delete Permission.Agent.Edit Permission.Agent.UpdateStatus Permission.Customer.View Permission.Customer.Create Permission.Customer.Delete Permission.Customer.Edit Permission.Call.View Permission.Call.Create Permission.Call.Delete Permission.Call.Edit Permission.Call.AssignToAgent Permission.Ticket.View Permission.Ticket.Create Permission.Ticket.Delete Permission.Ticket.Edit Permission.Ticket.AssignToAgent",
+			"type": "string"
+		}
+	]
+}
