@@ -12,6 +12,8 @@ services:
       - ConnectionStrings__ApplicationContext=Server=db;Database=CCM;Persist Security Info=True;User Id=sa;Password=TestPas$123!@#;Connection Timeout=300;TrustServerCertificate=True; 
       - UseInMemoryDatabase=false
       - Elasticsearch__Uri=
+      - Authentication__Issuer=https://localhost:48021
+      - Authentication__Audience=http://localhost:48019
     depends_on:
       - db        
       - elasticsearch
