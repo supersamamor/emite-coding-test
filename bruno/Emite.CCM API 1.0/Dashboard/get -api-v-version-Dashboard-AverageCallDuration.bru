@@ -5,7 +5,7 @@ meta {
 }
 
 get {
-  url: /api/v:version/Dashboard/AverageCallDuration
+  url: {{baseUrl}}/api/v{{version}}/Dashboard/AverageCallDuration
   body: none
   auth: bearer
 }
@@ -15,10 +15,6 @@ params:query {
   ~DateTo: 
   ~Status: 
   ~AgentId: 
-}
-
-params:path {
-  version: 
 }
 
 auth:bearer {

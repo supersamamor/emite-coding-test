@@ -5,14 +5,13 @@ meta {
 }
 
 get {
-  url: /api/v:version/Ticket/:id
+  url: {{baseUrl}}/api/v{{version}}/Ticket/:id
   body: none
   auth: bearer
 }
 
 params:path {
   id: 
-  version: 
 }
 
 auth:bearer {

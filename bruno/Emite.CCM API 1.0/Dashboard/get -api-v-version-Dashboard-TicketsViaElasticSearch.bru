@@ -1,0 +1,21 @@
+meta {
+  name: get -api-v-version-Dashboard-TicketsViaElasticSearch
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/api/v{{version}}/Dashboard/TicketsViaElasticSearch
+  body: none
+  auth: bearer
+}
+
+params:query {
+  ~Status: 
+  ~PageSize: 
+  ~PageNumber: 
+}
+
+auth:bearer {
+  token: {{token}}
+}

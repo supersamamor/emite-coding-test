@@ -5,13 +5,9 @@ meta {
 }
 
 post {
-  url: /api/v:version/Agent
+  url: {{baseUrl}}/api/v{{version}}/Agent
   body: json
   auth: bearer
-}
-
-params:path {
-  version: 
 }
 
 auth:bearer {

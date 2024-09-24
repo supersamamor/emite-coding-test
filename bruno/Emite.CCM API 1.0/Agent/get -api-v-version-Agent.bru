@@ -5,7 +5,7 @@ meta {
 }
 
 get {
-  url: /api/v:version/Agent
+  url: {{baseUrl}}/api/v{{version}}/Agent
   body: none
   auth: bearer
 }
@@ -17,10 +17,6 @@ params:query {
   ~SortOrder: 
   ~SearchColumns: 
   ~SearchValue: 
-}
-
-params:path {
-  version: 
 }
 
 auth:bearer {

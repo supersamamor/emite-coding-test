@@ -5,14 +5,13 @@ meta {
 }
 
 delete {
-  url: /api/v:version/Agent/:id
+  url: {{baseUrl}}/api/v{{version}}/Agent/:id
   body: none
   auth: bearer
 }
 
 params:path {
   id: 
-  version: 
 }
 
 auth:bearer {

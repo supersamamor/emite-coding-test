@@ -5,13 +5,9 @@ meta {
 }
 
 get {
-  url: /api/v:version/MetaData
+  url: {{baseUrl}}/api/v{{version}}/MetaData
   body: none
   auth: bearer
-}
-
-params:path {
-  version: 
 }
 
 auth:bearer {

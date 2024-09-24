@@ -5,7 +5,7 @@ meta {
 }
 
 patch {
-  url: /api/v:version/Call/:id
+  url: {{baseUrl}}/api/v{{version}}/Call/:id
   body: none
   auth: bearer
 }
@@ -16,7 +16,6 @@ params:query {
 
 params:path {
   id: 
-  version: 
 }
 
 auth:bearer {

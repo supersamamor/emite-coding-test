@@ -5,13 +5,9 @@ meta {
 }
 
 post {
-  url: /api/v:version/Ticket
+  url: {{baseUrl}}/api/v{{version}}/Ticket
   body: json
   auth: bearer
-}
-
-params:path {
-  version: 
 }
 
 auth:bearer {

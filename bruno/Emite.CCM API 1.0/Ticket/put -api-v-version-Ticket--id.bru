@@ -5,14 +5,13 @@ meta {
 }
 
 put {
-  url: /api/v:version/Ticket/:id
+  url: {{baseUrl}}/api/v{{version}}/Ticket/:id
   body: json
   auth: bearer
 }
 
 params:path {
   id: 
-  version: 
 }
 
 auth:bearer {
