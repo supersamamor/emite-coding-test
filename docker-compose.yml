@@ -22,9 +22,14 @@ services:
       - Elasticsearch__Uri=
       - Authentication__Issuer=https://localhost:48021
       - Authentication__Audience=https://localhost:48023
+    networks:
+      - host_network
     depends_on:
       - db        
       - elasticsearch
+    extra_hosts:
+      - "localhost:host.docker.internal"  # Ensure the service can resolve localhost to host machine
+
   web:
     build:
       context: .
@@ -50,9 +55,13 @@ services:
       - BaseUrl=https://localhost:48021
       - WebSocket=wss://localhost:48021
       - Elasticsearch__Uri=
+    networks:
+      - host_network
     depends_on:
       - db      
       - elasticsearch
+    extra_hosts:
+      - "localhost:host.docker.internal"  # Ensure the service can resolve localhost to host machine
   db:
     image: "mcr.microsoft.com/mssql/server:2019-latest"  
     environment:
@@ -73,6 +82,11 @@ services:
       - "48022:9200"  # Host port 48022 maps to container port 9200
     volumes:
       - es_data:/usr/share/elasticsearch/data  # Persistent storage for Elasticsearch data
+# Define a custom network to ensure the services can communicate
+networks:
+  host_network:
+    external: true
+    name: host  # Use the host's network
 volumes:
   sql_data:                               
   es_data:
