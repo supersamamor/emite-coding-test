@@ -8,6 +8,7 @@ using System.ComponentModel.DataAnnotations;
 using Emite.Common.API.Controllers;
 using Asp.Versioning;
 using Emite.CCM.Application.DTOs;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace Emite.CCM.API.Controllers.v1;
 
@@ -16,21 +17,25 @@ public class AgentController : BaseApiController<AgentController>
 {
     [Authorize(Policy = Permission.Agent.View)]
     [HttpGet]
+    [EnableRateLimiting("SimpleRateLimitPolicy")]
     public async Task<ActionResult<PagedListResponse<AgentListDto>>> GetAsync([FromQuery] GetAgentQuery query) =>
         Ok(await Mediator.Send(query));
 
     [Authorize(Policy = Permission.Agent.View)]
     [HttpGet("{id}")]
+    [EnableRateLimiting("SimpleRateLimitPolicy")]
     public async Task<ActionResult<AgentState>> GetAsync(string id) =>
         await ToActionResult(async () => await Mediator.Send(new GetAgentByIdQuery(id)));
 
     [Authorize(Policy = Permission.Agent.Create)]
     [HttpPost]
+    [EnableRateLimiting("SimpleRateLimitPolicy")]
     public async Task<ActionResult<AgentState>> PostAsync([FromBody] AgentViewModel request) =>
         await ToActionResult(async () => await Mediator.Send(Mapper.Map<AddAgentCommand>(request)));
 
     [Authorize(Policy = Permission.Agent.Edit)]
     [HttpPut("{id}")]
+    [EnableRateLimiting("SimpleRateLimitPolicy")]
     public async Task<ActionResult<AgentState>> PutAsync(string id, [FromBody] AgentViewModel request)
     {
         var command = Mapper.Map<EditAgentCommand>(request);
@@ -39,11 +44,13 @@ public class AgentController : BaseApiController<AgentController>
 
     [Authorize(Policy = Permission.Agent.Delete)]
     [HttpDelete("{id}")]
+    [EnableRateLimiting("SimpleRateLimitPolicy")]
     public async Task<ActionResult<AgentState>> DeleteAsync(string id) =>
         await ToActionResult(async () => await Mediator.Send(new DeleteAgentCommand { Id = id }));
 
     [Authorize(Policy = Permission.Agent.UpdateStatus)]
     [HttpPatch("{id}")]
+    [EnableRateLimiting("SimpleRateLimitPolicy")]
     public async Task<ActionResult<AgentState>> PatchAsync(string id, string status) =>
         await ToActionResult(async () => await Mediator.Send(new UpdateAgentStatusCommand { Id = id, Status = status }));
 }

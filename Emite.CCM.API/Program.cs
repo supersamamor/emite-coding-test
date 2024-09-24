@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Serilog;
 using System.Reflection;
 using System.Configuration;
+using System.Threading.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +28,23 @@ builder.Services.AddDbContext<IdentityContext>(options
        => options.UseSqlServer(configuration.GetConnectionString("ApplicationContext")));
 builder.Services.Configure<CacheSettings>(configuration.GetSection("CacheSettings"));
 builder.Services.AddMemoryCache();
+// Configure Rate Limiting
+builder.Services.AddRateLimiter(options =>
+{
+    options.AddPolicy("SimpleRateLimitPolicy", context =>
+        RateLimitPartition.GetFixedWindowLimiter(
+            partitionKey: context.Connection.RemoteIpAddress?.ToString() ?? "unknown",
+            factory: _ => new FixedWindowRateLimiterOptions
+            {
+                PermitLimit = configuration.GetValue<int>("RateLimiter:NumberOfRequest"),
+                Window = TimeSpan.FromMinutes(configuration.GetValue<int>("RateLimiter:WindowTimeInMinutes")),
+                QueueProcessingOrder = QueueProcessingOrder.OldestFirst,
+                QueueLimit = 0
+            }));
+
+    // You can add more policies here
+});
+
 if (configuration.GetValue<bool>("UseInMemoryDatabase"))
 {
     builder.Services.AddDbContext<ApplicationContext>(options

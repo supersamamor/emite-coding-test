@@ -14,6 +14,7 @@ using Emite.CCM.ChatGPT;
 using Serilog;
 using Emite.CCM.Scheduler;
 using Emite.CCM.Application;
+using System.Threading.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -51,6 +52,23 @@ services.AddChatGPTApiService(configuration);
 services.AddScheduler(configuration);
 services.Configure<CacheSettings>(configuration.GetSection("CacheSettings"));
 services.AddMemoryCache();
+// Configure Rate Limiting
+builder.Services.AddRateLimiter(options =>
+{
+    options.AddPolicy("SimpleRateLimitPolicy", context =>
+        RateLimitPartition.GetFixedWindowLimiter(
+            partitionKey: context.Connection.RemoteIpAddress?.ToString() ?? "unknown",
+            factory: _ => new FixedWindowRateLimiterOptions
+            {
+                PermitLimit = configuration.GetValue<int>("RateLimiter:NumberOfRequest"),
+                Window = TimeSpan.FromMinutes(configuration.GetValue<int>("RateLimiter:WindowTimeInMinutes")), 
+                QueueProcessingOrder = QueueProcessingOrder.OldestFirst,
+                QueueLimit = 0
+            }));
+
+    // You can add more policies here
+});
+
 var app = builder.Build();
 // Static Files
 var uploadFilesPath = configuration.GetValue<string>("UsersUpload:UploadFilesPath");
