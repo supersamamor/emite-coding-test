@@ -93,7 +93,7 @@ public static class DefaultClient
                 Name = "demo_api",
                 Resources =
                     {
-                        "http://localhost:48019"
+                        "https://localhost:48023"
                     }
             });
         }

@@ -14,8 +14,8 @@ docker-compose up --build
 ```
 
 ### Step 2: Access the Web and API
-API Base URL: http://localhost:48019
-Swagger UI: http://localhost:48019/index.html
+API Base URL: https://localhost:48023
+Swagger UI: https://localhost:48023/index.html
 
 Web UI: https://localhost:48021
 
