@@ -60,13 +60,13 @@ Testing:
 Bonus (Optional):
 1. Implement pagination for calls and tickets. -  **Done** 
 2. Add a search functionality to filter calls by status, date range, or agent -  **Done** 
-3. Implement a simple in-memory cache for GET requests to improve performance -  **Done**
-   Sample Implementation From : 
+3. Implement a simple in-memory cache for GET requests to improve performance -  **Done**   
+   <br>Sample Implementation From : 
     - Emite.CCM.Application.Features.CCM.Agent.Queries.GetAgentByIdQuery
     - Emite.CCM.Application.Features.CCM.Agent.Queries.GetAgentQuery
 4. Create an endpoint to get basic statistics (e.g., average call duration, calls per agent) -  **Done** (Dashboard Controller)
 5. Implement a simple rate limiting mechanism -  **Done**
-   Sample Implementation From : 
+   <br>Sample Implementation From : 
     - Emite.CCM.API.Controllers.v1.AgentController
 6. Add real-time notifications for new calls using SignalR
 7. Implement a basic call routing algorithm to assign calls to available agents
