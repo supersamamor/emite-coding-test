@@ -21,7 +21,7 @@ public record CallState : BaseEntity
 public class CallStatus
 {
     public const string Queued = "Queued";
-    public const string InProgress = "In-Progress";
+    public const string InProgress = "In Progress";
     public const string Completed = "Completed";
     public const string Dropped = "Dropped";
 }
