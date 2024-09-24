@@ -2,11 +2,13 @@
 using Emite.CCM.Application.Features.CCM;
 using Emite.CCM.Application.Features.CCM.Ticket.Commands;
 using Emite.CCM.Application.Features.CCM.Ticket.Queries;
+using Emite.CCM.Application.Hubs;
 using Emite.CCM.Core.CCM;
 using Emite.CCM.Infrastructure.Data;
 using Emite.Common.Identity.Abstractions;
 using Emite.Common.Utility.Validators;
 using FluentValidation;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework.Legacy;
@@ -75,7 +77,8 @@ namespace Emite.CCM.UnitTest.Application
                 new AddTicketCommandValidator(_context)
             };
             var validator = new CompositeValidator<AddTicketCommand>(validators);
-            var handler = new AddTicketCommandHandler(_context, _mapper, validator, _identityContext);
+            var handler = new AddTicketCommandHandler(_context, _mapper, validator, _identityContext,
+               null);
             var result = await handler.Handle(command, CancellationToken.None);
             // Assert
             ClassicAssert.IsTrue(result.IsSuccess);

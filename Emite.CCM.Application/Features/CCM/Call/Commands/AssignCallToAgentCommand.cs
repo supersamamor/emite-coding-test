@@ -7,13 +7,14 @@ using LanguageExt;
 using LanguageExt.Common;
 using MediatR;
 using static LanguageExt.Prelude;
+using Microsoft.EntityFrameworkCore;
 
 namespace Emite.CCM.Application.Features.CCM.Call.Commands;
 
 public record AssignCallToAgentCommand : IRequest<Validation<Error, CallState>>
 {
     public string Id { get; set; } = "";
-    public string AgentId { get; set; } = "";
+    public string? AgentId { get; set; } = "";
 }
 
 public class AssignCallToAgentCommandHandler(ApplicationContext context,
@@ -28,12 +29,28 @@ public class AssignCallToAgentCommandHandler(ApplicationContext context,
         => await context.GetSingle<CallState>(e => e.Id == request.Id, tracking: true, cancellationToken: cancellationToken).MatchAsync(
             Some: async entity =>
             {
-                entity.AssignToAgent(request.AgentId);
+                if (!string.IsNullOrEmpty(request.AgentId))
+                {
+                    entity.AssignToAgent(request.AgentId);
+                }
+                else
+                {
+                    entity.AssignToAgent(await GetAvailableAgent(cancellationToken));
+                }
                 context.Update(entity);
                 _ = await context.SaveChangesAsync(cancellationToken);
                 return Success<Error, CallState>(entity);
             },
             None: () => Fail<Error, CallState>($"Record with id {request.Id} does not exist"));
+
+    private async Task<string?> GetAvailableAgent(CancellationToken cancellationToken)
+    {
+        var minCallCount = await context.Agent
+            .MinAsync(a => a.CallList!.Count, cancellationToken);
+        return await context.Agent
+            .Where(a => a.CallList!.Count == minCallCount && a.Status == AgentStatus.Available).Select(l => l.Id)
+            .FirstOrDefaultAsync(cancellationToken);
+    }
 }
 
 public class AssignCallToAgentCommandValidator : AbstractValidator<AssignCallToAgentCommand>

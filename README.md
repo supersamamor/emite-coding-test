@@ -69,6 +69,6 @@ Bonus (Optional):
    <br>Sample Implementation From : 
     - Emite.CCM.API.Controllers.v1.AgentController
 6. Add real-time notifications for new calls using SignalR - **Done** (From the navigation menu of web UI, you can see a notification icon for number of tickets)
-7. Implement a basic call routing algorithm to assign calls to available agents
+7. Implement a basic call routing algorithm to assign calls to available agents - **Done** (On assign agent end point, if agentid is null, the routing algorithm will execute)
 8. If you know how to use Elasticsearch that would be a bonus.
 

@@ -13,7 +13,7 @@ public record CallState : BaseEntity
     public AgentState? Agent { get; set; }
     public CustomerState? Customer { get; set; }
 
-    public void AssignToAgent(string agentId)
+    public void AssignToAgent(string? agentId)
     {
         this.AgentId = agentId;
     }

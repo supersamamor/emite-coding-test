@@ -16,7 +16,7 @@ using Moq;
 using NUnit.Framework.Legacy;
 
 
-namespace Emite.CCM.UnitTest
+namespace Emite.CCM.UnitTest.Application
 {
 
     [TestFixture]

@@ -20,7 +20,7 @@ public class AddTicketCommandHandler(ApplicationContext context,
                                 IMapper mapper,
                                 CompositeValidator<AddTicketCommand> validator,
                                 IdentityContext identityContext,
-                                IHubContext<TicketHub> hubContext) : BaseCommandHandler<ApplicationContext, TicketState, AddTicketCommand>(context, mapper, validator), IRequestHandler<AddTicketCommand, Validation<Error, TicketState>>
+                                IHubContext<TicketHub>? hubContext) : BaseCommandHandler<ApplicationContext, TicketState, AddTicketCommand>(context, mapper, validator), IRequestHandler<AddTicketCommand, Validation<Error, TicketState>>
 {
     public async Task<Validation<Error, TicketState>> Handle(AddTicketCommand request, CancellationToken cancellationToken) =>
         await Validators.ValidateTAsync(request, cancellationToken).BindT(
@@ -33,7 +33,10 @@ public class AddTicketCommandHandler(ApplicationContext context,
         _ = await Context.AddAsync(entity, cancellationToken);
         await Helpers.ApprovalHelper.AddApprovers(Context, identityContext, ApprovalModule.Ticket, entity.Id, cancellationToken);
         _ = await Context.SaveChangesAsync(cancellationToken);
-        await hubContext.Clients.All.SendAsync($"{nameof(AddTicketCommand)}Success", entity, cancellationToken);
+        if (hubContext != null)
+        {
+            await hubContext.Clients.All.SendAsync($"{nameof(AddTicketCommand)}Success", entity, cancellationToken);
+        }
         return Success<Error, TicketState>(entity);
     }
 

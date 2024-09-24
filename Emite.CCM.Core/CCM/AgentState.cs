@@ -14,7 +14,7 @@ public record AgentState : BaseEntity
     public IList<TicketState>? TicketList { get; set; }
     public void TagStatus(string status)
     {
-        this.Status = Status;
+        this.Status = status;
     }
 
 }
