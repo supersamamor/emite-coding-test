@@ -7,6 +7,7 @@ using Serilog;
 using System.Reflection;
 using System.Configuration;
 using System.Threading.RateLimiting;
+using System.Security.Cryptography.X509Certificates;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,39 @@ builder.Host.UseSerilog((context, services, configuration) =>
 
 // Read configurations from environment variables
 builder.Configuration.AddEnvironmentVariables();
+
+
+// Configure Kestrel with certificate from configuration only if the path is provided
+builder.WebHost.ConfigureKestrel(options =>
+{
+    var certPath = builder.Configuration["ASPNETCORE_Kestrel__Certificates__Default__Path"];
+    var certPassword = builder.Configuration["ASPNETCORE_Kestrel__Certificates__Default__Password"];
+
+    if (!string.IsNullOrEmpty(certPath))
+    {
+        try
+        {
+            var certificate = new X509Certificate2(certPath, certPassword);
+            options.ConfigureHttpsDefaults(httpsOptions =>
+            {
+                httpsOptions.ServerCertificate = certificate;
+            });
+
+            Console.WriteLine($"Loaded HTTPS certificate from path: {certPath}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading HTTPS certificate from path: {certPath}. Exception: {ex.Message}");
+            // Optionally, rethrow or handle the exception as needed
+            throw;
+        }
+    }
+    else
+    {
+        Console.WriteLine("No HTTPS certificate path provided. Kestrel will not be configured for HTTPS.");
+    }
+});
+
 // Add services to the container.
 
 var configuration = builder.Configuration;
