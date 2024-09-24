@@ -132,6 +132,8 @@ public static class IdentityServiceCollectionExtensions
                    else
                    {
                        options.AddEncryptionCertificate(configuration.GetValue<string>("SslThumbprint")!).AddSigningCertificate(configuration.GetValue<string>("SslThumbprint")!);
+
+                       Console.WriteLine($"Loaded certificate via thumbprint : {configuration.GetValue<string>("SslThumbprint")!}");
                    }
                    // Force client applications to use Proof Key for Code Exchange (PKCE).
                    options.RequireProofKeyForCodeExchange();
