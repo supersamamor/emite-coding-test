@@ -16,6 +16,7 @@ using Emite.CCM.Scheduler;
 using Emite.CCM.Application;
 using System.Threading.RateLimiting;
 using Emite.CCM.Application.Hubs;
+using Emite.CCM.Application.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Configure Serilog
@@ -97,6 +98,8 @@ using (var serviceScope = app.Services.CreateScope())
     {
         logger.LogError(ex, "An error occurred ensuring the database was migrated.");
     }
+    var elasticSearchService = serviceProvider.GetRequiredService<ElasticSearchService>();
+    await elasticSearchService!.CreateIndexIfNotExistsAsync();
 }
 // Static Files
 var uploadFilesPath = configuration.GetValue<string>("UsersUpload:UploadFilesPath");

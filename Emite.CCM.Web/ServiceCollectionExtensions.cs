@@ -16,6 +16,7 @@ using System.Globalization;
 using System.Reflection;
 using Emite.CCM.Web.Service;
 using Emite.CCM.Application.Helpers;
+using Emite.CCM.Application.Services;
 
 namespace Emite.CCM.Web;
 
@@ -51,6 +52,7 @@ public static class ServiceCollectionExtensions
 		services.AddTransient<AIDataAnalyticsServices>();
 		services.AddTransient<AIReportQueryGenerationServices>();
         services.Configure<List<Settings.ApplicationEcosystem>>(Configuration.GetSection("ApplicationEcosystem"));
+        services.AddSingleton<ElasticSearchService>();
     }
 
     public static IServiceCollection ConfigureSecurity(this IServiceCollection services, IConfiguration configuration)

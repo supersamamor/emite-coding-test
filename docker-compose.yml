@@ -11,8 +11,10 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development 
       - ConnectionStrings__ApplicationContext=Server=db;Database=CCM;Persist Security Info=True;User Id=sa;Password=TestPas$123!@#;Connection Timeout=300;TrustServerCertificate=True; 
       - UseInMemoryDatabase=false
+      - Elasticsearch__Uri=http://localhost:48022
     depends_on:
-      - db                                 
+      - db        
+      - elasticsearch
   web:
     build:
       context: .
@@ -37,8 +39,10 @@ services:
       - ASPNETCORE_URLS=https://+:443;http://+:8080
       - BaseUrl=https://localhost:48021
       - WebSocket=wss://localhost:52685
+      - Elasticsearch__Uri=http://localhost:48022
     depends_on:
-      - db                                 
+      - db      
+      - elasticsearch
   db:
     image: "mcr.microsoft.com/mssql/server:2019-latest"  
     environment:
@@ -48,5 +52,18 @@ services:
       - "1433:1433"                       
     volumes:
       - sql_data:/var/opt/mssql
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.9
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node  # Suitable for development and testing
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m  # Heap size settings; adjust as needed
+      - xpack.security.enabled=false  # Disable security for development; enable in production
+    ports:
+      - "48022:9200"  # Host port 48022 maps to container port 9200
+    volumes:
+      - es_data:/usr/share/elasticsearch/data  # Persistent storage for Elasticsearch data
 volumes:
   sql_data:                               
+  es_data:
+    driver: local                           

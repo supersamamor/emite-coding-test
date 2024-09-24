@@ -9,6 +9,7 @@ using System.Configuration;
 using System.Threading.RateLimiting;
 using System.Security.Cryptography.X509Certificates;
 using Emite.CCM.Application.Hubs;
+using Emite.CCM.Application.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -50,6 +51,7 @@ builder.Services.AddRateLimiter(options =>
     // You can add more policies here
 });
 builder.Services.AddSignalR();
+builder.Services.AddSingleton<ElasticSearchService>();
 if (configuration.GetValue<bool>("UseInMemoryDatabase"))
 {
     builder.Services.AddDbContext<ApplicationContext>(options
