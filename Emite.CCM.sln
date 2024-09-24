@@ -46,6 +46,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		azure-pipelines-api.yml = azure-pipelines-api.yml
 		azure-pipelines.yml = azure-pipelines.yml
+		docker-compose.yml = docker-compose.yml
+		Dockerfile-API = Dockerfile-API
+		Dockerfile-Web = Dockerfile-Web
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -53,7 +56,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Emite.CCM.ChatGPT", "Emite.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTest", "UnitTest", "{9DD9BB08-9EC3-4F2C-A877-93481331B8E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Emite.CCM.UnitTest", "Emite.CCM.UnitTest\Emite.CCM.UnitTest.csproj", "{F0D4B8E4-AA2A-4D52-8BA2-C817B678302F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Emite.CCM.UnitTest", "Emite.CCM.UnitTest\Emite.CCM.UnitTest.csproj", "{F0D4B8E4-AA2A-4D52-8BA2-C817B678302F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

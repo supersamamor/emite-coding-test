@@ -1,0 +1,48 @@
+﻿version: '3.8'  # The version of Docker Compose syntax used
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile-API              
+    ports:
+      - "48019:8080"                          
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development 
+      - ConnectionStrings__ApplicationContext=Server=db;Database=CCM;Persist Security Info=True;User Id=sa;Password=TestPas$123!@#;Connection Timeout=300;TrustServerCertificate=True; 
+      - UseInMemoryDatabase=false
+    depends_on:
+      - db                                 
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile-Web               
+    ports:
+      - "48020:8080"  # HTTP
+      - "48021:443"  # HTTPS   
+    volumes:
+      - ./certs:/https  # Mount the certificate- 
+      - ./uploads:/app/uploads
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development  
+      - ConnectionStrings__ApplicationContext=Server=db;Database=CCM;Persist Security Info=True;User Id=sa;Password=TestPas$123!@#;Connection Timeout=300;TrustServerCertificate=True;
+      - ConnectionStrings__IdentityContext=Server=db;Database=CCM;Persist Security Info=True;User Id=sa;Password=TestPas$123!@#;Connection Timeout=300;TrustServerCertificate=True; 
+      - ConnectionStrings__ReportContext=Server=db;Database=CCM;Persist Security Info=True;User Id=sa;Password=TestPas$123!@#;Connection Timeout=300;TrustServerCertificate=True;
+      - UseInMemoryDatabase=false
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=certpass123!@#
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetcore.pfx
+      - UsersUpload__UploadFilesPath=/app/uploads
+      - ASPNETCORE_URLS=https://+:443;http://+:8080
+    depends_on:
+      - db                                 
+  db:
+    image: "mcr.microsoft.com/mssql/server:2019-latest"  
+    environment:
+      SA_PASSWORD: "TestPas$123!@#"         
+      ACCEPT_EULA: "Y"                    
+    ports:
+      - "1433:1433"                       
+    volumes:
+      - sql_data:/var/opt/mssql
+volumes:
+  sql_data:                               

@@ -1,0 +1,46 @@
+﻿# Stage 1: Build the application
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /source
+
+# Copy the solution file and restore dependencies
+COPY *.sln ./
+
+# Copy project files for all necessary projects
+COPY Emite.CCM.API/*.csproj ./Emite.CCM.API/
+COPY Emite.CCM.Application/*.csproj ./Emite.CCM.Application/
+COPY Emite.CCM.Infrastructure/*.csproj ./Emite.CCM.Infrastructure/
+COPY Emite.Common.API/*.csproj ./Emite.Common.API/
+COPY Emite.CCM.Core/*.csproj ./Emite.CCM.Core/
+COPY Emite.CCM.Web/*.csproj ./Emite.CCM.Web/
+COPY Emite.Common.Services.Shared/*.csproj ./Emite.Common.Services.Shared/
+COPY Emite.Common.Utility/*.csproj ./Emite.Common.Utility/
+COPY Emite.Common.Web.Utility/*.csproj ./Emite.Common.Web.Utility/
+COPY Emite.Common.Core/*.csproj ./Emite.Common.Core/
+COPY Emite.Common.Core.Base/*.csproj ./Emite.Common.Core.Base/
+COPY Emite.Common.Data/*.csproj ./Emite.Common.Data/
+COPY Emite.Common.Identity.Abstractions/*.csproj ./Emite.Common.Identity.Abstractions/
+COPY Emite.CCM.EmailSending/*.csproj ./Emite.CCM.EmailSending/
+COPY Emite.CCM.ExcelProcessor/*.csproj ./Emite.CCM.ExcelProcessor/
+COPY Emite.CCM.Scheduler/*.csproj ./Emite.CCM.Scheduler/
+COPY Emite.CCM.ChatGPT/*.csproj ./Emite.CCM.ChatGPT/
+
+# Restore all dependencies for the solution
+RUN dotnet restore
+
+# Copy all the project files
+COPY . .
+
+# Build the API project
+WORKDIR /source/Emite.CCM.API
+RUN dotnet publish -c Release -o /app
+
+# Stage 2: Serve the application using a smaller runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
+WORKDIR /app
+COPY --from=build /app .
+
+# Expose HTTP port 8080
+EXPOSE 8080
+
+# Set the entry point for the container
+ENTRYPOINT ["dotnet", "Emite.CCM.API.dll"]
