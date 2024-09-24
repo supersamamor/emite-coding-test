@@ -74,6 +74,29 @@ builder.Services.AddRateLimiter(options =>
 });
 
 var app = builder.Build();
+using (var serviceScope = app.Services.CreateScope())
+{
+    var serviceProvider = serviceScope.ServiceProvider;
+    var logger = serviceProvider.GetRequiredService<ILogger<Program>>();
+    try
+    {
+        var identityContext = serviceProvider.GetRequiredService<IdentityContext>();
+        identityContext.Database.Migrate();
+    }
+    catch (Exception ex)
+    {
+        logger.LogError(ex, "An error occurred ensuring the database was migrated.");
+    }
+    try
+    {
+        var appContext = serviceProvider.GetRequiredService<ApplicationContext>();
+        appContext.Database.Migrate();
+    }
+    catch (Exception ex)
+    {
+        logger.LogError(ex, "An error occurred ensuring the database was migrated.");
+    }
+}
 // Static Files
 var uploadFilesPath = configuration.GetValue<string>("UsersUpload:UploadFilesPath");
 if (uploadFilesPath != null)
