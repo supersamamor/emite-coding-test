@@ -9,6 +9,7 @@ using Emite.Common.Utility.Validators;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Moq;
+using NUnit.Framework.Legacy;
 
 namespace Emite.CCM.UnitTest.Application
 {
@@ -45,6 +46,23 @@ namespace Emite.CCM.UnitTest.Application
             _context.Database.EnsureDeleted();
             _context.Dispose();
         }
+        [TearDown]
+        public void TearDown()
+        {
+            // Check the environment variable
+            var performTeardown = Environment.GetEnvironmentVariable("PERFORM_TEARDOWN");
+
+            if (!string.Equals(performTeardown, "true", StringComparison.OrdinalIgnoreCase))
+            {
+                Console.WriteLine("TearDown: Skipping teardown as per SKIP_TEARDOWN=true.");
+                return;
+            }
+            _context.Database.EnsureDeleted();
+            _context.Dispose();
+            _identityContext.Database.EnsureDeleted();
+            _identityContext.Dispose();
+        }
+
 
         [Test, Order(1)]
         public async Task Handle_Should_Add_Call_When_Valid()
@@ -63,9 +81,9 @@ namespace Emite.CCM.UnitTest.Application
             var handler = new AddCallCommandHandler(_context, _mapper, validator, _identityContext);
             var result = await handler.Handle(command, CancellationToken.None);
             // Assert
-            Assert.IsTrue(result.IsSuccess);
+            ClassicAssert.IsTrue(result.IsSuccess);
             var call = await _context.Call.FirstOrDefaultAsync(c => c.Id == callId);
-            Assert.IsNotNull(call);
+            ClassicAssert.IsNotNull(call);
             Assert.That(call.Id, Is.EqualTo(callId!));
         }
         [Test, Order(2)]
@@ -85,21 +103,21 @@ namespace Emite.CCM.UnitTest.Application
             var handler = new EditCallCommandHandler(_context, _mapper, validator);
             var result = await handler.Handle(command, CancellationToken.None);
             // Assert
-            Assert.IsTrue(result.IsSuccess);
+            ClassicAssert.IsTrue(result.IsSuccess);
             var call = await _context.Call.FirstOrDefaultAsync(c => c.Id == callId);
-            Assert.IsNotNull(call);
+            ClassicAssert.IsNotNull(call);
             Assert.That(call.CustomerId, Is.EqualTo(customerId));
         }
         [Test, Order(3)]
         public async Task Handle_Should_Fetch_Call_Record()
-        {           
+        {
             var query = new GetCallByIdQuery(callId);
             var handler = new GetCallByIdQueryHandler(_context);
             var result = await handler.Handle(query, CancellationToken.None);
             CallState? call = null;
             _ = result.Select(l => call = l);
             // Assert       
-            Assert.IsNotNull(call);
+            ClassicAssert.IsNotNull(call);
         }
         [Test, Order(4)]
         public async Task Handle_Should_Delete_Call()
@@ -116,9 +134,9 @@ namespace Emite.CCM.UnitTest.Application
             var handler = new DeleteCallCommandHandler(_context, _mapper, validator);
             var result = await handler.Handle(command, CancellationToken.None);
             // Assert
-            Assert.IsTrue(result.IsSuccess);
+            ClassicAssert.IsTrue(result.IsSuccess);
             var call = await _context.Call.FirstOrDefaultAsync(c => c.Id == callId);
-            Assert.IsNull(call);
+            ClassicAssert.IsNull(call);
         }
     }
 }

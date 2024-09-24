@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Emite.CCM.Application;
 using Emite.CCM.Application.Features.CCM;
 using Emite.CCM.Application.Features.CCM.Agent.Commands;
 using Emite.CCM.Application.Features.CCM.Agent.Queries;
@@ -8,18 +9,25 @@ using Emite.Common.Identity.Abstractions;
 using Emite.Common.Utility.Validators;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Moq;
+using NUnit.Framework.Legacy;
 
-namespace Emite.CCM.UnitTest.Application
+
+namespace Emite.CCM.UnitTest
 {
 
     [TestFixture]
-    public class AgentTests
+    public class AgentTests : TestBase
     {
         private ApplicationContext _context;
         private IMapper _mapper;
         private IdentityContext _identityContext;
         private string agentId = "1";
+        private IMemoryCache _memoryCache;
+        private IOptions<CacheSettings> _cacheSettings;
         [SetUp]
         public void Setup()
         {
@@ -37,6 +45,14 @@ namespace Emite.CCM.UnitTest.Application
                 .UseInMemoryDatabase(databaseName: "InMemoryIdentityDB")
                 .Options;
             _identityContext = new IdentityContext(optionsIdentity);
+            _memoryCache = new MemoryCache(new MemoryCacheOptions());
+
+            // Retrieve IOptions<CacheSettings>
+            _cacheSettings = ServiceProvider.GetService<IOptions<CacheSettings>>();
+            if (options == null)
+            {
+                throw new InvalidOperationException("CacheSettings are not configured.");
+            }
         }
 
         [OneTimeTearDown]
@@ -44,6 +60,24 @@ namespace Emite.CCM.UnitTest.Application
         {
             _context.Database.EnsureDeleted();
             _context.Dispose();
+            _memoryCache.Dispose();
+        }
+        [TearDown]
+        public void TearDown()
+        {
+            // Check the environment variable
+            var performTeardown = Environment.GetEnvironmentVariable("PERFORM_TEARDOWN");
+
+            if (!string.Equals(performTeardown, "true", StringComparison.OrdinalIgnoreCase))
+            {
+                Console.WriteLine("TearDown: Skipping teardown as per SKIP_TEARDOWN=true.");
+                return;
+            }
+            _context.Database.EnsureDeleted();
+            _context.Dispose();
+            _identityContext.Database.EnsureDeleted();
+            _identityContext.Dispose();
+            _memoryCache.Dispose();
         }
 
         [Test, Order(1)]
@@ -61,9 +95,9 @@ namespace Emite.CCM.UnitTest.Application
             var handler = new AddAgentCommandHandler(_context, _mapper, validator, _identityContext);
             var result = await handler.Handle(command, CancellationToken.None);
             // Assert
-            Assert.IsTrue(result.IsSuccess);
+            ClassicAssert.IsTrue(result.IsSuccess);
             var agent = await _context.Agent.FirstOrDefaultAsync(c => c.Id == agentId);
-            Assert.IsNotNull(agent);
+            ClassicAssert.IsNotNull(agent);
             Assert.That(agent.Id, Is.EqualTo(agentId!));
         }
         [Test, Order(2)]
@@ -83,21 +117,21 @@ namespace Emite.CCM.UnitTest.Application
             var handler = new EditAgentCommandHandler(_context, _mapper, validator);
             var result = await handler.Handle(command, CancellationToken.None);
             // Assert
-            Assert.IsTrue(result.IsSuccess);
+            ClassicAssert.IsTrue(result.IsSuccess);
             var agent = await _context.Agent.FirstOrDefaultAsync(c => c.Id == agentId);
-            Assert.IsNotNull(agent);
+            ClassicAssert.IsNotNull(agent);
             Assert.That(agent.Name, Is.EqualTo(name));
         }
         [Test, Order(3)]
         public async Task Handle_Should_Fetch_Agent_Record()
         {
             var query = new GetAgentByIdQuery(agentId);
-            var handler = new GetAgentByIdQueryHandler(_context);
+            var handler = new GetAgentByIdQueryHandler(_context, _memoryCache, _cacheSettings);
             var result = await handler.Handle(query, CancellationToken.None);
             AgentState? agent = null;
             _ = result.Select(l => agent = l);
             // Assert       
-            Assert.IsNotNull(agent);
+            ClassicAssert.IsNotNull(agent);
         }
         [Test, Order(4)]
         public async Task Handle_Should_Delete_Agent()
@@ -114,9 +148,9 @@ namespace Emite.CCM.UnitTest.Application
             var handler = new DeleteAgentCommandHandler(_context, _mapper, validator);
             var result = await handler.Handle(command, CancellationToken.None);
             // Assert
-            Assert.IsTrue(result.IsSuccess);
+            ClassicAssert.IsTrue(result.IsSuccess);
             var customer = await _context.Agent.FirstOrDefaultAsync(c => c.Id == agentId);
-            Assert.IsNull(customer);
+            ClassicAssert.IsNull(customer);
         }
     }
 }

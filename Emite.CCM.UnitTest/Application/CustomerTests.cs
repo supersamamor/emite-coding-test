@@ -9,6 +9,7 @@ using Emite.Common.Utility.Validators;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Moq;
+using NUnit.Framework.Legacy;
 
 namespace Emite.CCM.UnitTest.Application
 {
@@ -45,6 +46,22 @@ namespace Emite.CCM.UnitTest.Application
             _context.Database.EnsureDeleted();
             _context.Dispose();
         }
+        [TearDown]
+        public void TearDown()
+        {
+            // Check the environment variable
+            var performTeardown = Environment.GetEnvironmentVariable("PERFORM_TEARDOWN");
+
+            if (!string.Equals(performTeardown, "true", StringComparison.OrdinalIgnoreCase))
+            {
+                Console.WriteLine("TearDown: Skipping teardown as per SKIP_TEARDOWN=true.");
+                return;
+            }
+            _context.Database.EnsureDeleted();
+            _context.Dispose();
+            _identityContext.Database.EnsureDeleted();
+            _identityContext.Dispose();
+        }
 
         [Test, Order(1)]
         public async Task Handle_Should_Add_Customer_When_Valid()
@@ -61,9 +78,9 @@ namespace Emite.CCM.UnitTest.Application
             var handler = new AddCustomerCommandHandler(_context, _mapper, validator, _identityContext);
             var result = await handler.Handle(command, CancellationToken.None);
             // Assert
-            Assert.IsTrue(result.IsSuccess);
+            ClassicAssert.IsTrue(result.IsSuccess);
             var customer = await _context.Customer.FirstOrDefaultAsync(c => c.Id == customerId);
-            Assert.IsNotNull(customer);
+            ClassicAssert.IsNotNull(customer);
             Assert.That(customer.Id, Is.EqualTo(customerId!));
         }
         [Test, Order(2)]
@@ -83,9 +100,9 @@ namespace Emite.CCM.UnitTest.Application
             var handler = new EditCustomerCommandHandler(_context, _mapper, validator);
             var result = await handler.Handle(command, CancellationToken.None);
             // Assert
-            Assert.IsTrue(result.IsSuccess);
+            ClassicAssert.IsTrue(result.IsSuccess);
             var customer = await _context.Customer.FirstOrDefaultAsync(c => c.Id == customerId);
-            Assert.IsNotNull(customer);
+            ClassicAssert.IsNotNull(customer);
             Assert.That(customer.Name, Is.EqualTo(name));
         }
         [Test, Order(3)]
@@ -97,7 +114,7 @@ namespace Emite.CCM.UnitTest.Application
             CustomerState? customer = null;
             _ = result.Select(l => customer = l);
             // Assert       
-            Assert.IsNotNull(customer);
+            ClassicAssert.IsNotNull(customer);
         }
         [Test, Order(4)]
         public async Task Handle_Should_Delete_Customer()
@@ -114,9 +131,9 @@ namespace Emite.CCM.UnitTest.Application
             var handler = new DeleteCustomerCommandHandler(_context, _mapper, validator);
             var result = await handler.Handle(command, CancellationToken.None);
             // Assert
-            Assert.IsTrue(result.IsSuccess);
+            ClassicAssert.IsTrue(result.IsSuccess);
             var customer = await _context.Customer.FirstOrDefaultAsync(c => c.Id == customerId);
-            Assert.IsNull(customer);
+            ClassicAssert.IsNull(customer);
         }
     }
 }

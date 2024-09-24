@@ -9,6 +9,7 @@ using Emite.Common.Utility.Validators;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Moq;
+using NUnit.Framework.Legacy;
 
 namespace Emite.CCM.UnitTest.Application
 {
@@ -45,6 +46,22 @@ namespace Emite.CCM.UnitTest.Application
             _context.Database.EnsureDeleted();
             _context.Dispose();
         }
+        [TearDown]
+        public void TearDown()
+        {
+            // Check the environment variable
+            var performTeardown = Environment.GetEnvironmentVariable("PERFORM_TEARDOWN");
+
+            if (!string.Equals(performTeardown, "true", StringComparison.OrdinalIgnoreCase))
+            {
+                Console.WriteLine("TearDown: Skipping teardown as per SKIP_TEARDOWN=true.");
+                return;
+            }
+            _context.Database.EnsureDeleted();
+            _context.Dispose();
+            _identityContext.Database.EnsureDeleted();
+            _identityContext.Dispose();
+        }
 
         [Test, Order(1)]
         public async Task Handle_Should_Add_Ticket_When_Valid()
@@ -61,9 +78,9 @@ namespace Emite.CCM.UnitTest.Application
             var handler = new AddTicketCommandHandler(_context, _mapper, validator, _identityContext);
             var result = await handler.Handle(command, CancellationToken.None);
             // Assert
-            Assert.IsTrue(result.IsSuccess);
+            ClassicAssert.IsTrue(result.IsSuccess);
             var ticket = await _context.Ticket.FirstOrDefaultAsync(c => c.Id == ticketId);
-            Assert.IsNotNull(ticket);
+            ClassicAssert.IsNotNull(ticket);
             Assert.That(ticket.Id, Is.EqualTo(ticketId!));
         }
         [Test, Order(2)]
@@ -83,9 +100,9 @@ namespace Emite.CCM.UnitTest.Application
             var handler = new EditTicketCommandHandler(_context, _mapper, validator);
             var result = await handler.Handle(command, CancellationToken.None);
             // Assert
-            Assert.IsTrue(result.IsSuccess);
+            ClassicAssert.IsTrue(result.IsSuccess);
             var ticket = await _context.Ticket.FirstOrDefaultAsync(c => c.Id == ticketId);
-            Assert.IsNotNull(ticket);
+            ClassicAssert.IsNotNull(ticket);
             Assert.That(ticket.Description, Is.EqualTo(decription));
         }
         [Test, Order(3)]
@@ -97,7 +114,7 @@ namespace Emite.CCM.UnitTest.Application
             TicketState? ticket = null;
             _ = result.Select(l => ticket = l);
             // Assert       
-            Assert.IsNotNull(ticket);
+            ClassicAssert.IsNotNull(ticket);
         }
         [Test, Order(4)]
         public async Task Handle_Should_Delete_Ticket()
@@ -114,9 +131,9 @@ namespace Emite.CCM.UnitTest.Application
             var handler = new DeleteTicketCommandHandler(_context, _mapper, validator);
             var result = await handler.Handle(command, CancellationToken.None);
             // Assert
-            Assert.IsTrue(result.IsSuccess);
+            ClassicAssert.IsTrue(result.IsSuccess);
             var ticket = await _context.Ticket.FirstOrDefaultAsync(c => c.Id == ticketId);
-            Assert.IsNull(ticket);
+            ClassicAssert.IsNull(ticket);
         }
     }
 }
