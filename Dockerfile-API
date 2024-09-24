@@ -23,6 +23,7 @@ COPY Emite.CCM.EmailSending/*.csproj ./Emite.CCM.EmailSending/
 COPY Emite.CCM.ExcelProcessor/*.csproj ./Emite.CCM.ExcelProcessor/
 COPY Emite.CCM.Scheduler/*.csproj ./Emite.CCM.Scheduler/
 COPY Emite.CCM.ChatGPT/*.csproj ./Emite.CCM.ChatGPT/
+COPY Emite.CCM.UnitTest/*.csproj ./Emite.CCM.UnitTest/
 
 # Restore all dependencies for the solution
 RUN dotnet restore
