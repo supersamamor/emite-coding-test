@@ -15,8 +15,7 @@ using Serilog;
 using Emite.CCM.Scheduler;
 using Emite.CCM.Application;
 using System.Threading.RateLimiting;
-using System.Security.Cryptography.X509Certificates;
-
+using Emite.CCM.Application.Hubs;
 var builder = WebApplication.CreateBuilder(args);
 
 // Configure Serilog
@@ -65,15 +64,17 @@ builder.Services.AddRateLimiter(options =>
             factory: _ => new FixedWindowRateLimiterOptions
             {
                 PermitLimit = configuration.GetValue<int>("RateLimiter:NumberOfRequest"),
-                Window = TimeSpan.FromMinutes(configuration.GetValue<int>("RateLimiter:WindowTimeInMinutes")), 
+                Window = TimeSpan.FromMinutes(configuration.GetValue<int>("RateLimiter:WindowTimeInMinutes")),
                 QueueProcessingOrder = QueueProcessingOrder.OldestFirst,
                 QueueLimit = 0
             }));
 
     // You can add more policies here
 });
-
+builder.Services.AddSignalR();
 var app = builder.Build();
+
+
 using (var serviceScope = app.Services.CreateScope())
 {
     var serviceProvider = serviceScope.ServiceProvider;
@@ -113,33 +114,38 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 var baseUrl = configuration.GetValue<string>("BaseUrl");
+var webSocket = configuration.GetValue<string>("WebSocket");
 app.UseHttpsRedirection();
 app.UseSecurityHeaders(policies =>
     policies.AddDefaultSecurityHeaders()
             .AddContentSecurityPolicy(builder =>
             {
                 builder.AddUpgradeInsecureRequests();
-				builder.AddBlockAllMixedContent();
-				builder.AddDefaultSrc().None().OverHttps();
-				builder.AddScriptSrc()
-						.Self()
-						.StrictDynamic()
-						.WithNonce()
-						.OverHttps();
-				builder.AddStyleSrc()
-						.Self()
-						.UnsafeEval()
-						.StrictDynamic()
-						.WithNonce()
-						.OverHttps();
-				builder.AddImgSrc().OverHttps().Data();
-				builder.AddObjectSrc().None();
-				builder.AddBaseUri().None();
-				builder.AddFrameAncestors().Self();
-				builder.AddFormAction().From(baseUrl!).Self().OverHttps();
-				builder.AddConnectSrc().From(baseUrl!).OverHttps();
-				builder.AddFontSrc().From(new string[] { "https://fonts.gstatic.com",
-					baseUrl!,"https://stackpath.bootstrapcdn.com" }).OverHttps();
+                builder.AddBlockAllMixedContent();
+                builder.AddDefaultSrc().None().OverHttps();
+                builder.AddScriptSrc()
+                        .Self()
+                        .StrictDynamic()
+                        .WithNonce()
+                        .OverHttps();
+                builder.AddStyleSrc()
+                        .Self()
+                        .UnsafeEval()
+                        .StrictDynamic()
+                        .WithNonce()
+                        .OverHttps();
+                builder.AddImgSrc().OverHttps().Data();
+                builder.AddObjectSrc().None();
+                builder.AddBaseUri().None();
+                builder.AddFrameAncestors().Self();
+                builder.AddFormAction().From(baseUrl!).Self().OverHttps();
+                // Modify ConnectSrc to include the SignalR hub's WebSocket origin
+                builder.AddConnectSrc()
+                       .From(baseUrl!) // Existing allowed origin
+                       .From(webSocket!) // Add SignalR hub's WebSocket origin
+                       .OverHttps();
+                builder.AddFontSrc().From(new string[] { "https://fonts.gstatic.com",
+                    baseUrl!,"https://stackpath.bootstrapcdn.com" }).OverHttps();
             }));
 app.UseWebOptimizer();
 app.UseStaticFiles(new StaticFileOptions
@@ -155,6 +161,7 @@ app.UseCookiePolicy();
 app.UseSerilogRequestLogging();
 app.UseRequestLocalization(app.Services.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value);
 app.UseRouting();
+app.MapHub<TicketHub>("/ticketHub");
 app.UseAuthentication();
 app.UseAuthorization();
 app.EnrichDiagnosticContext();
@@ -166,14 +173,14 @@ app.UseNotyf();
 // Seed the database
 if (configuration.GetValue<bool>("EnableDatabaseSeed"))
 {
-	Log.Information("Seeding database");
-	var scope = app.Services.CreateScope();
-	await DefaultEntity.Seed(scope.ServiceProvider);
-	await DefaultRole.Seed(scope.ServiceProvider);
-	await DefaultUser.Seed(scope.ServiceProvider);
-	await DefaultClient.Seed(scope.ServiceProvider);
-	await UserRole.Seed(scope.ServiceProvider);
-	await DefaultDashboard.Seed(scope.ServiceProvider);
-	Log.Information("Finished seeding database");
+    Log.Information("Seeding database");
+    var scope = app.Services.CreateScope();
+    await DefaultEntity.Seed(scope.ServiceProvider);
+    await DefaultRole.Seed(scope.ServiceProvider);
+    await DefaultUser.Seed(scope.ServiceProvider);
+    await DefaultClient.Seed(scope.ServiceProvider);
+    await UserRole.Seed(scope.ServiceProvider);
+    await DefaultDashboard.Seed(scope.ServiceProvider);
+    Log.Information("Finished seeding database");
 }
 app.Run();

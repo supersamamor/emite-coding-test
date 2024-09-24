@@ -1,0 +1,84 @@
+<script asp-add-nonce src="~/lib/signalr/signalr.min.js"></script>
+<script asp-add-nonce>
+    // Initialize the badge element
+    const ticketBadge = document.getElementById('ticketBadge');   
+    const notificationContainer = document.getElementById('notificationContainer');
+    // Function to update the badge count
+    function updateBadge(count) {
+        if (count > 0) {
+            ticketBadge.textContent = count;
+            ticketBadge.classList.remove('d-none');
+        } else {
+            ticketBadge.classList.add('d-none');
+        }
+    }
+
+    // Initialize SignalR connection
+    const connection = new signalR.HubConnectionBuilder()
+        .withUrl("/ticketHub") // Ensure this matches the hub route on the server
+        .withAutomaticReconnect()
+        .configureLogging(signalR.LogLevel.Information)
+        .build();
+
+    // Start the connection
+    async function startConnection() {
+        try {
+            await connection.start();
+            console.log("Connected to TicketHub");
+            await fetchInitialTicketCount(); // Fetch initial count
+        } catch (err) {
+            console.error("Connection failed: ", err);
+            setTimeout(startConnection, 5000); // Retry after 5 seconds
+        }
+    }
+    connection.onclose(startConnection);
+
+    async function fetchInitialTicketCount() {
+        try {
+            const count = await connection.invoke("GetInitialTicketCount");
+            console.log(count);
+            updateBadge(count);
+        } catch (err) {
+            console.error("Error fetching initial ticket count:", err);
+        }
+    }
+
+    // Define the client-side method to handle new ticket notifications
+    connection.on("AddTicketCommandSuccess", (ticket) => {
+        console.log("New Ticket Added:", ticket);
+        incrementBadge();
+        addNotificationToDropdown(ticket);
+        console.log("AddTicketCommandSuccess");
+        console.log(ticket);
+    });
+    // Optionally, define a method to handle ticket count reset when dropdown is opened
+    document.getElementById('notificationDropdown').addEventListener('click', () => {
+        resetBadge();
+    });
+
+    // Function to increment the badge count
+    function incrementBadge() {
+        let currentCount = parseInt(ticketBadge.textContent) || 0;
+        updateBadge(currentCount + 1);
+    }
+
+    // Function to reset the badge count
+    function resetBadge() {
+        updateBadge(0);
+    }
+
+    // Function to add notification to the dropdown
+    function addNotificationToDropdown(ticket) { 
+        const newItem = document.createElement('a');
+        newItem.classList.add('dropdown-item');
+        newItem.href = "#";
+        newItem.innerHTML = `
+                        <span class="badge badge-success">New</span>
+                            Ticket ID: ${ticket.id}, Title: ${ticket.description}
+                    `;
+        notificationContainer.prepend(newItem); // Add to the top of the dropdown
+    }
+
+    // Start the SignalR connection
+    startConnection();
+</script>

@@ -261,6 +261,15 @@ select,
 .btnHistoryIcon {
     background-image: url('../img/History.png') !important;
 }
+.badge-counter {
+    position: relative !important;
+    top: -7px;
+    right: 10px !important;
+    transform: translate(50%, -50%);
+    font-size: 0.75rem;
+    padding: 0.25em 0.4em;
+    border-radius: 50%;
+}
 /* End Button Icons */
 @media (max-width: 850px) {
     .fills-application-list > li {

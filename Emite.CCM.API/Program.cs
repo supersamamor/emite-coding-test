@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Configuration;
 using System.Threading.RateLimiting;
 using System.Security.Cryptography.X509Certificates;
+using Emite.CCM.Application.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,7 +49,7 @@ builder.Services.AddRateLimiter(options =>
 
     // You can add more policies here
 });
-
+builder.Services.AddSignalR();
 if (configuration.GetValue<bool>("UseInMemoryDatabase"))
 {
     builder.Services.AddDbContext<ApplicationContext>(options
@@ -72,6 +73,7 @@ app.EnableSwagger();
 app.UseHttpsRedirection();
 app.UseSerilogRequestLogging();
 app.UseRouting();
+app.MapHub<TicketHub>("/ticketHub");
 app.UseAuthentication();
 app.UseAuthorization();
 app.EnrichDiagnosticContext();

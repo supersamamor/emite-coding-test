@@ -68,7 +68,7 @@ Bonus (Optional):
 5. Implement a simple rate limiting mechanism -  **Done**
    <br>Sample Implementation From : 
     - Emite.CCM.API.Controllers.v1.AgentController
-6. Add real-time notifications for new calls using SignalR
+6. Add real-time notifications for new calls using SignalR - **Done** (From the navigation menu of web UI, you can see a notification icon for number of tickets)
 7. Implement a basic call routing algorithm to assign calls to available agents
 8. If you know how to use Elasticsearch that would be a bonus.
 
