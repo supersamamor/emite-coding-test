@@ -68,14 +68,7 @@ public class ApplicationContext : AuditableDbContext<ApplicationContext>
 		modelBuilder.Entity<Audit>().HasIndex(p => p.TraceId);
         modelBuilder.Entity<Audit>().HasIndex(p => p.DateTime);
 		modelBuilder.Entity<UploadProcessorState>().HasQueryFilter(e => _authenticatedUser.Entity == Core.Constants.Entities.Default.ToUpper() || e.Entity == _authenticatedUser.Entity);      
-        // NOTE: DO NOT CREATE EXTENSION METHOD FOR QUERY FILTER!!!
-        // It causes filter to be evaluated before user has signed in
-        modelBuilder.Entity<AgentState>().HasQueryFilter(e => _authenticatedUser.Entity == Core.Constants.Entities.Default.ToUpper() || e.Entity == _authenticatedUser.Entity);
-		modelBuilder.Entity<CustomerState>().HasQueryFilter(e => _authenticatedUser.Entity == Core.Constants.Entities.Default.ToUpper() || e.Entity == _authenticatedUser.Entity);
-		modelBuilder.Entity<CallState>().HasQueryFilter(e => _authenticatedUser.Entity == Core.Constants.Entities.Default.ToUpper() || e.Entity == _authenticatedUser.Entity);
-		modelBuilder.Entity<TicketState>().HasQueryFilter(e => _authenticatedUser.Entity == Core.Constants.Entities.Default.ToUpper() || e.Entity == _authenticatedUser.Entity);
-		
-        
+   
         modelBuilder.Entity<AgentState>().Property(e => e.Email).HasMaxLength(100);
 		modelBuilder.Entity<AgentState>().Property(e => e.Name).HasMaxLength(100);
 		modelBuilder.Entity<AgentState>().Property(e => e.PhoneExtension).HasMaxLength(50);
