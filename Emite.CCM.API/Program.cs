@@ -10,6 +10,7 @@ using System.Threading.RateLimiting;
 using System.Security.Cryptography.X509Certificates;
 using Emite.CCM.Application.Hubs;
 using Emite.CCM.Application.Services;
+using OpenIddict.Validation.SystemNetHttp;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -62,7 +63,14 @@ else
     builder.Services.AddDbContext<ApplicationContext>(options
         => options.UseSqlServer(configuration.GetConnectionString("ApplicationContext")));
 }
-
+if (builder.Configuration.GetValue<bool>("HttpClientSettings:AllowInvalidCertificates"))
+{
+    builder.Services.AddHttpClient(typeof(OpenIddictValidationSystemNetHttpOptions).Assembly.GetName().Name!)
+    .ConfigurePrimaryHttpMessageHandler(_ => new HttpClientHandler
+    {
+        ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+    });
+}
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

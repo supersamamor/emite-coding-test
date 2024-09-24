@@ -72,3 +72,14 @@ Bonus (Optional):
 7. Implement a basic call routing algorithm to assign calls to available agents - **Done** (On assign agent end point, if agentid is null, the routing algorithm will execute)
 8. If you know how to use Elasticsearch that would be a bonus. **Done** Implementation of Elastic Search from DashboardController/TicketsViaElasticSearch
 
+
+# Test API Configuration
+```bash
+BaseUrl: https://localhost:48023
+AuthUrl: https://localhost:48021
+ClientId: 0332342A-FEA3-4250-B3EE-C96E423A0307
+ClientSecret: ce31d66c-1971-4698-948d-d0b868e1a1f8
+Version: 1
+Scope: email profile roles name Entity demo_api Permission.Agent.View Permission.Agent.Create Permission.Agent.Delete Permission.Agent.Edit Permission.Agent.UpdateStatus Permission.Customer.View Permission.Customer.Create Permission.Customer.Delete Permission.Customer.Edit Permission.Call.View Permission.Call.Create Permission.Call.Delete Permission.Call.Edit Permission.Call.AssignToAgent Permission.Ticket.View Permission.Ticket.Create Permission.Ticket.Delete Permission.Ticket.Edit Permission.Ticket.AssignToAgent
+```
+
