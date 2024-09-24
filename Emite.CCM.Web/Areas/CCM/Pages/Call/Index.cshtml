@@ -20,7 +20,7 @@
     if ((await AuthorizationService.AuthorizeAsync(User, Permission.Call.Upload)).Succeeded)
     {
         toolBarModel.Buttons.Add(new Emite.CCM.Web.Models.Button(Emite.CCM.Web.Models.ButtonType.Upload, 3));
-    } 
+    }
 }
 <partial name="_ListingsToolbarPartial" model=@(toolBarModel) />
 <div class="row">
@@ -31,25 +31,25 @@
                     <thead>
                         <tr>
                             <th>
-								@Localizer["Agent Id"]
-							</th>
-							<th>
-								@Localizer["Customer Id"]
-							</th>
-							<th>
-								@Localizer["End Time"]
-							</th>
-							<th>
-								@Localizer["Notes"]
-							</th>
-							<th>
-								@Localizer["Start Time"]
-							</th>
-							<th>
-								@Localizer["Status"]
-							</th>
-							  
-							
+                                @Localizer["Agent"]
+                            </th>
+                            <th>
+                                @Localizer["Customer"]
+                            </th>
+                            <th>
+                                @Localizer["End Time"]
+                            </th>
+                            <th>
+                                @Localizer["Notes"]
+                            </th>
+                            <th>
+                                @Localizer["Start Time"]
+                            </th>
+                            <th>
+                                @Localizer["Status"]
+                            </th>
+
+
                             <th>
                                 @Localizer["Actions"]
                             </th>
@@ -90,14 +90,14 @@
                     BindTableRowCollapseEvent();
                 },
                 columns: [
-                    { data: "agentId", name: "AgentId", responsivePriority: 1, title: '@Localizer["Agent Id"]', searchable: true, className: "text-start" },
-				{ data: "customerId", name: "CustomerId", responsivePriority: 1, title: '@Localizer["Customer Id"]', searchable: true, className: "text-start" },
-				{ data: "endTimeFormatted", name: "EndTime", responsivePriority: 1, title: '@Localizer["End Time"]', searchable: false, className: "text-start" },
-				{ data: "notes", name: "Notes", responsivePriority: 2, title: '@Localizer["Notes"]', searchable: false, className: "text-start" },
-				{ data: "startTimeFormatted", name: "StartTime", responsivePriority: 2, title: '@Localizer["Start Time"]', searchable: false, className: "text-start" },
-				{ data: "status", name: "Status", responsivePriority: 2, title: '@Localizer["Status"]', searchable: true, className: "text-start" },
-				   
-					
+                    { data: "agentId", name: "Agent.Name", responsivePriority: 1, title: '@Localizer["Agent"]', searchable: true, className: "text-start" },
+                    { data: "customerId", name: "Customer.Name", responsivePriority: 1, title: '@Localizer["Customer"]', searchable: true, className: "text-start" },
+                    { data: "endTimeFormatted", name: "EndTime", responsivePriority: 1, title: '@Localizer["End Time"]', searchable: false, className: "text-start" },
+                    { data: "notes", name: "Notes", responsivePriority: 2, title: '@Localizer["Notes"]', searchable: false, className: "text-start" },
+                    { data: "startTimeFormatted", name: "StartTime", responsivePriority: 2, title: '@Localizer["Start Time"]', searchable: false, className: "text-start" },
+                    { data: "status", name: "Status", responsivePriority: 2, title: '@Localizer["Status"]', searchable: true, className: "text-start" },
+
+
                     {
                         data: null,
                         searchable: false,
@@ -122,7 +122,7 @@
                                 button = button + '&nbsp;<a href="' + url + '" class="btn btnFills btnDeleteIcon btnDeleteCall" title="@Localizer["Delete"]"></a>';
             </text>
         }
-        
+
         @if ((await AuthorizationService.AuthorizeAsync(User, Permission.Call.History)).Succeeded)
         {
             <text>
@@ -130,7 +130,7 @@
                                 button = button + '&nbsp;<a href="' + url + '" class="btn btnFills btnHistoryIcon" title="@Localizer["History"]"></a>';
             </text>
         }
-                                                                                                                        return button;
+                                                                                                                                return button;
                         },
                     },
                     { data: "lastModifiedDate", name: "LastModifiedDate", title: '@Localizer["Last Modified Date"]', visible: false, searchable: false },
@@ -156,17 +156,17 @@
                 $('#batch-upload-form').submit();
             });
             $('#@(Emite.CCM.Web.Models.ListingToolbarConstants.ButtonPrefix + Emite.CCM.Web.Models.ButtonType.DownloadTemplate)').on('click', function (e) {
-				$('#download-template-form').submit();
-			});
-			$('#@(Emite.CCM.Web.Models.ListingToolbarConstants.ButtonPrefix + Emite.CCM.Web.Models.ButtonType.Upload)').on('click', function (e) {
-				$('#btnBatchUpload').click();
-			});
+                $('#download-template-form').submit();
+            });
+            $('#@(Emite.CCM.Web.Models.ListingToolbarConstants.ButtonPrefix + Emite.CCM.Web.Models.ButtonType.Upload)').on('click', function (e) {
+                $('#btnBatchUpload').click();
+            });
         @if (!string.IsNullOrEmpty(Model.BatchUpload.BatchUploadFileName))
         {
             <text>
                     $('#btnDownloadBatchUploadTemplateLink')[0].click();
             </text>
         }
-        });
+                });
     </script>
 }

@@ -144,14 +144,14 @@ namespace Emite.CCM.Web.Service
         public SelectList GetAgentList(string? id)
         {
             return _context.GetSingle<AgentState>(e => e.Id == id, new()).Result.Match(
-                Some: e => new SelectList(new List<SelectListItem> { new() { Value = e.Id, Text = e.Id } }, "Value", "Text", e.Id),
+                Some: e => new SelectList(new List<SelectListItem> { new() { Value = e.Id, Text = e.Name } }, "Value", "Text", e.Id),
                 None: () => new SelectList(new List<SelectListItem>(), "Value", "Text")
             );
         }
         public SelectList GetCustomerList(string? id)
         {
             return _context.GetSingle<CustomerState>(e => e.Id == id, new()).Result.Match(
-                Some: e => new SelectList(new List<SelectListItem> { new() { Value = e.Id, Text = e.Id } }, "Value", "Text", e.Id),
+                Some: e => new SelectList(new List<SelectListItem> { new() { Value = e.Id, Text = e.Name } }, "Value", "Text", e.Id),
                 None: () => new SelectList(new List<SelectListItem>(), "Value", "Text")
             );
         }

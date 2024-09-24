@@ -31,13 +31,13 @@
                     <thead>
                         <tr>
                             <th>
-                                @Localizer["Agent Id"]
+                                @Localizer["Agent"]
                             </th>
                             <th>
                                 @Localizer["Created At"]
                             </th>
                             <th>
-                                @Localizer["Customer Id"]
+                                @Localizer["Customer"]
                             </th>
                             <th>
                                 @Localizer["Description"]
@@ -94,9 +94,9 @@
                     BindTableRowCollapseEvent();
                 },
                 columns: [
-                    { data: "agentId", name: "AgentId", responsivePriority: 1, title: '@Localizer["Agent Id"]', searchable: true, className: "text-start" },
+                    { data: "agentId", name: "Agent.Name", responsivePriority: 1, title: '@Localizer["Agent"]', searchable: true, className: "text-start" },
                     { data: "createdAtFormatted", name: "CreatedAt", responsivePriority: 1, title: '@Localizer["Created At"]', searchable: false, className: "text-start" },
-                    { data: "customerId", name: "CustomerId", responsivePriority: 1, title: '@Localizer["Customer Id"]', searchable: true, className: "text-start" },
+                    { data: "customerId", name: "Customer.Name", responsivePriority: 1, title: '@Localizer["Customer"]', searchable: true, className: "text-start" },
                     { data: "description", name: "Description", responsivePriority: 2, title: '@Localizer["Description"]', searchable: true, className: "text-start" },
                     { data: "priority", name: "Priority", responsivePriority: 2, title: '@Localizer["Priority"]', searchable: true, className: "text-start" },
                     { data: "resolution", name: "Resolution", responsivePriority: 2, title: '@Localizer["Resolution"]', searchable: false, className: "text-start" },
@@ -140,7 +140,7 @@
                                 button = button + '&nbsp;<a href="' + url + '" class="btn btnFills btnHistoryIcon" title="@Localizer["History"]"></a>';
             </text>
         }
-                                                                                                                                return button;
+                                                                                                                                        return button;
                         },
                     },
                     { data: "lastModifiedDate", name: "LastModifiedDate", title: '@Localizer["Last Modified Date"]', visible: false, searchable: false },
@@ -177,6 +177,6 @@
                     $('#btnDownloadBatchUploadTemplateLink')[0].click();
             </text>
         }
-                });
+                        });
     </script>
 }

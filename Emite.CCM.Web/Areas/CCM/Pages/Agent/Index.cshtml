@@ -20,7 +20,7 @@
     if ((await AuthorizationService.AuthorizeAsync(User, Permission.Agent.Upload)).Succeeded)
     {
         toolBarModel.Buttons.Add(new Emite.CCM.Web.Models.Button(Emite.CCM.Web.Models.ButtonType.Upload, 3));
-    } 
+    }
 }
 <partial name="_ListingsToolbarPartial" model=@(toolBarModel) />
 <div class="row">
@@ -31,19 +31,19 @@
                     <thead>
                         <tr>
                             <th>
-								@Localizer["Email"]
-							</th>
-							<th>
-								@Localizer["Name"]
-							</th>
-							<th>
-								@Localizer["Phone Extension"]
-							</th>
-							<th>
-								@Localizer["Status"]
-							</th>
-							  
-							
+                                @Localizer["Email"]
+                            </th>
+                            <th>
+                                @Localizer["Name"]
+                            </th>
+                            <th>
+                                @Localizer["Phone Extension"]
+                            </th>
+                            <th>
+                                @Localizer["Status"]
+                            </th>
+
+
                             <th>
                                 @Localizer["Actions"]
                             </th>
@@ -85,11 +85,11 @@
                 },
                 columns: [
                     { data: "email", name: "Email", responsivePriority: 1, title: '@Localizer["Email"]', searchable: true, className: "text-start" },
-				{ data: "name", name: "Name", responsivePriority: 1, title: '@Localizer["Name"]', searchable: true, className: "text-start" },
-				{ data: "phoneExtension", name: "PhoneExtension", responsivePriority: 1, title: '@Localizer["Phone Extension"]', searchable: true, className: "text-start" },
-				{ data: "status", name: "Status", responsivePriority: 2, title: '@Localizer["Status"]', searchable: true, className: "text-start" },
-				   
-					
+                    { data: "name", name: "Name", responsivePriority: 1, title: '@Localizer["Name"]', searchable: true, className: "text-start" },
+                    { data: "phoneExtension", name: "PhoneExtension", responsivePriority: 1, title: '@Localizer["Phone Extension"]', searchable: true, className: "text-start" },
+                    { data: "status", name: "Status", responsivePriority: 2, title: '@Localizer["Status"]', searchable: true, className: "text-start" },
+
+
                     {
                         data: null,
                         searchable: false,
@@ -114,7 +114,7 @@
                                 button = button + '&nbsp;<a href="' + url + '" class="btn btnFills btnDeleteIcon btnDeleteAgent" title="@Localizer["Delete"]"></a>';
             </text>
         }
-        
+
         @if ((await AuthorizationService.AuthorizeAsync(User, Permission.Agent.History)).Succeeded)
         {
             <text>
@@ -122,7 +122,7 @@
                                 button = button + '&nbsp;<a href="' + url + '" class="btn btnFills btnHistoryIcon" title="@Localizer["History"]"></a>';
             </text>
         }
-                                                                                                                        return button;
+                                                                                                                                return button;
                         },
                     },
                     { data: "lastModifiedDate", name: "LastModifiedDate", title: '@Localizer["Last Modified Date"]', visible: false, searchable: false },
@@ -148,17 +148,17 @@
                 $('#batch-upload-form').submit();
             });
             $('#@(Emite.CCM.Web.Models.ListingToolbarConstants.ButtonPrefix + Emite.CCM.Web.Models.ButtonType.DownloadTemplate)').on('click', function (e) {
-				$('#download-template-form').submit();
-			});
-			$('#@(Emite.CCM.Web.Models.ListingToolbarConstants.ButtonPrefix + Emite.CCM.Web.Models.ButtonType.Upload)').on('click', function (e) {
-				$('#btnBatchUpload').click();
-			});
+                $('#download-template-form').submit();
+            });
+            $('#@(Emite.CCM.Web.Models.ListingToolbarConstants.ButtonPrefix + Emite.CCM.Web.Models.ButtonType.Upload)').on('click', function (e) {
+                $('#btnBatchUpload').click();
+            });
         @if (!string.IsNullOrEmpty(Model.BatchUpload.BatchUploadFileName))
         {
             <text>
                     $('#btnDownloadBatchUploadTemplateLink')[0].click();
             </text>
         }
-        });
+                });
     </script>
 }
