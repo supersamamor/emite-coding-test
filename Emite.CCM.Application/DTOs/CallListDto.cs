@@ -5,8 +5,8 @@ namespace Emite.CCM.Application.DTOs;
 
 public record CallListDto : BaseDto
 {
-	public string? AgentId { get; init; }
-	public string CustomerId { get; init; } = "";
+	public string? AgentName { get; init; }
+	public string CustomerName { get; init; } = "";
 	public DateTime? EndTime { get; init; }
 	public string EndTimeFormatted { get { return this.EndTime == null ? "" : this.EndTime!.Value.ToString("MMM dd, yyyy HH:mm"); } }
 	public string Notes { get; init; } = "";

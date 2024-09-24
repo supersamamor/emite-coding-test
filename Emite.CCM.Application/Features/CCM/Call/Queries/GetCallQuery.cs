@@ -44,8 +44,8 @@ public class GetCallQueryHandler(ApplicationContext context) : BaseQueryHandler<
         {
             Id = e.Id,
             LastModifiedDate = e.LastModifiedDate,
-            AgentId = e.Agent == null ? "" : e.Agent!.Id,
-            CustomerId = e.Customer == null ? "" : e.Customer!.Id,
+            AgentName = e.Agent == null ? "" : e.Agent!.Name,
+            CustomerName = e.Customer == null ? "" : e.Customer!.Name,
             EndTime = e.EndTime,
             Notes = e.Notes,
             StartTime = e.StartTime,

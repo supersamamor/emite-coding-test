@@ -5,10 +5,10 @@ namespace Emite.CCM.Application.DTOs;
 
 public record TicketListDto : BaseDto
 {
-	public string? AgentId { get; init; }
+	public string? AgentName { get; init; }
 	public DateTime CreatedAt { get; init; }
 	public string CreatedAtFormatted { get { return this.CreatedAt.ToString("MMM dd, yyyy HH:mm"); } }
-	public string CustomerId { get; init; } = "";
+	public string CustomerName { get; init; } = "";
 	public string Description { get; init; } = "";
 	public string Priority { get; init; } = "";
 	public string? Resolution { get; init; }

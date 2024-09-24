@@ -21,9 +21,9 @@ public class GetTicketQueryHandler(ApplicationContext context) : BaseQueryHandle
 			{
 				Id = e.Id,
 				LastModifiedDate = e.LastModifiedDate,
-				AgentId = e.Agent == null ? "" : e.Agent!.Id,
+                AgentName = e.Agent == null ? "" : e.Agent!.Name,
 				CreatedAt = e.CreatedAt,
-				CustomerId = e.Customer == null ? "" : e.Customer!.Id,
+                CustomerName = e.Customer == null ? "" : e.Customer!.Name,
 				Description = e.Description,
 				Priority = e.Priority,
 				Resolution = e.Resolution,
