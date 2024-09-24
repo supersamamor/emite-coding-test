@@ -16,6 +16,8 @@ builder.Host.UseSerilog((context, services, configuration) =>
                           .Services(services).Enrich
                           .FromLogContext());
 
+// Read configurations from environment variables
+builder.Configuration.AddEnvironmentVariables();
 // Add services to the container.
 
 var configuration = builder.Configuration;
