@@ -20,7 +20,7 @@ services:
       - SslCertificate__Path=/https/aspnetcore.pfx
       - SslCertificate__Password=certpass123!@#
       - ASPNETCORE_URLS=https://+:443;http://+:8080
-      - Elasticsearch__Uri=
+      - Elasticsearch__Uri=http://host.docker.internal:48022
       - Authentication__Issuer=https://host.docker.internal:48021
       - Authentication__Audience=https://host.docker.internal:48023
     extra_hosts:
@@ -55,7 +55,7 @@ services:
       - ASPNETCORE_URLS=https://+:443;http://+:8080
       - BaseUrl=https://host.docker.internal:48021
       - WebSocket=wss://host.docker.internal:48021
-      - Elasticsearch__Uri=
+      - Elasticsearch__Uri=http://host.docker.internal:48022
       - DefaultClient_DefaultApiUrl=https://host.docker.internal:48023
     extra_hosts:
       - "host.docker.internal:host-gateway"
@@ -86,6 +86,8 @@ services:
       - "48022:9200"  # Host port 48022 maps to container port 9200
     volumes:
       - es_data:/usr/share/elasticsearch/data  # Persistent storage for Elasticsearch data
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     networks:
       - sharednetwork
 networks:
