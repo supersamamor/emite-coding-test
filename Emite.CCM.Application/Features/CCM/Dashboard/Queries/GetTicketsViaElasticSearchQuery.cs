@@ -1,12 +1,16 @@
 using MediatR;
 using Emite.CCM.Application.Services;
 using Emite.CCM.Core.CCM;
+using System.ComponentModel.DataAnnotations;
 
 namespace Emite.CCM.Application.Features.CCM.CallsPerAgent.Queries;
 
 public record GetTicketsViaElasticSearchQuery : IRequest<IReadOnlyCollection<TicketState>?> {
-    public string Status { get; set; } = "";
-    public int PageSize { get; set; } = 0;
+    [Required]
+    public string? Status { get; set; } 
+    [Required]
+    public int PageSize { get; set; } 
+    [Required]
     public int PageNumber { get; set; }
 }
 
@@ -14,6 +18,6 @@ public class GetTicketsViaElasticSearchQueryHandler(ElasticSearchService elastic
 {
     public async Task<IReadOnlyCollection<TicketState>?> Handle(GetTicketsViaElasticSearchQuery request, CancellationToken cancellationToken = default)
     {
-        return (await elasticSearchService.SearchTicketsWithPaginationAsync(request.Status, request.PageNumber, request.PageSize))?.Documents;
+        return (await elasticSearchService.SearchTicketsWithPaginationAsync(request.Status!, request.PageNumber, request.PageSize))?.Documents;
     }
 }
