@@ -8,6 +8,7 @@ using OpenIddict.Core;
 using System.Text.Json;
 using static LanguageExt.Prelude;
 using static OpenIddict.Abstractions.OpenIddictConstants;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Emite.CCM.Web.Areas.Identity.Data;
 
@@ -87,13 +88,15 @@ public static class DefaultClient
         var manager = provider.GetRequiredService<OpenIddictScopeManager<OidcScope>>();
         if (await manager.FindByNameAsync("demo_api") is null)
         {
+            var configuration = provider.GetRequiredService<IConfiguration>();
+            var defaultApiUrl = configuration.GetValue<string>("DefaultClient:DefaultApiUrl")!;
             await manager.CreateAsync(new OpenIddictScopeDescriptor
             {
                 DisplayName = "Demo API access",
                 Name = "demo_api",
                 Resources =
                     {
-                        "https://localhost:48023"
+                        defaultApiUrl
                     }
             });
         }

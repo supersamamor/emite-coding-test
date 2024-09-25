@@ -1,0 +1,18 @@
+meta {
+  name: Get Access Token
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{authUrl}}/connect/token
+  body: formUrlEncoded
+  auth: none
+}
+
+body:form-urlencoded {
+  grant_type: client_credentials
+  client_id: 0332342A-FEA3-4250-B3EE-C96E423A0307
+  client_secret: ce31d66c-1971-4698-948d-d0b868e1a1f8
+  scope: email profile roles name Entity demo_api Permission.Agent.View Permission.Agent.Create Permission.Agent.Delete Permission.Agent.Edit Permission.Agent.UpdateStatus Permission.Customer.View Permission.Customer.Create Permission.Customer.Delete Permission.Customer.Edit Permission.Call.View Permission.Call.Create Permission.Call.Delete Permission.Call.Edit Permission.Call.AssignToAgent Permission.Ticket.View Permission.Ticket.Create Permission.Ticket.Delete Permission.Ticket.Edit Permission.Ticket.AssignToAgent
+}

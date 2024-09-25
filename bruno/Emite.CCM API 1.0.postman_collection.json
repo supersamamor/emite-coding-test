@@ -776,7 +776,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/api/v{{version}}/Agent",
+											"raw": "{{baseUrl}}/api/v{{version}}/Agent?PageNumber=1&PageSize=100",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -788,13 +788,11 @@
 											"query": [
 												{
 													"key": "PageNumber",
-													"value": "<integer>",
-													"disabled": true
+													"value": "1"
 												},
 												{
 													"key": "PageSize",
-													"value": "<integer>",
-													"disabled": true
+													"value": "100"
 												},
 												{
 													"key": "SortColumn",
@@ -4683,7 +4681,7 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "http://localhost:48019"
+			"value": "https://host.docker.internal:48023"
 		},
 		{
 			"key": "version",
@@ -4696,12 +4694,12 @@
 		},
 		{
 			"key": "clientSecret",
-			"value": "fc255109-f04c-4060-ab46-55d27d1e35a6",
+			"value": "ce31d66c-1971-4698-948d-d0b868e1a1f8",
 			"type": "string"
 		},
 		{
 			"key": "authUrl",
-			"value": "https://localhost:48021",
+			"value": "https://host.docker.internal:48021",
 			"type": "string"
 		},
 		{

@@ -59,6 +59,10 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
 COPY --from=build /app .
 
+# Install ping command
+RUN apt-get update && apt-get install -y iputils-ping
+RUN apt-get update && apt-get install -y telnet
+
 # Expose HTTP and HTTPS ports
 EXPOSE 8080
 EXPOSE 443
