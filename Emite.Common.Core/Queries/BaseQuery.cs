@@ -34,22 +34,25 @@ public abstract record BaseQuery
     /// The value to search for.
     /// </summary>
     public string? SearchValue { get; set; }
-    public string GenerateCacheKey(string queryName)
+    public string CacheQueryParameter
     {
-        // Handle null or empty SearchColumns
-        string searchColumns = (SearchColumns != null && SearchColumns.Any())
-            ? string.Join("_", SearchColumns.OrderBy(c => c))
-            : "All";
+        get
+        {
+            // Handle null or empty SearchColumns
+            string searchColumns = (SearchColumns != null && SearchColumns.Any())
+                ? string.Join("_", SearchColumns.OrderBy(c => c))
+                : "All";
 
-        // Handle null or empty SortColumn and SortOrder
-        string sortColumn = string.IsNullOrEmpty(SortColumn) ? "DefaultSort" : SortColumn;
-        string sortOrder = string.IsNullOrEmpty(SortOrder) ? "ASC" : SortOrder.ToUpper();
+            // Handle null or empty SortColumn and SortOrder
+            string sortColumn = string.IsNullOrEmpty(SortColumn) ? "DefaultSort" : SortColumn;
+            string sortOrder = string.IsNullOrEmpty(SortOrder) ? "ASC" : SortOrder.ToUpper();
 
-        // Handle null SearchValue
-        string searchValue = SearchValue ?? "None";
+            // Handle null SearchValue
+            string searchValue = SearchValue ?? "None";
 
-        // Construct the cache key
-        return $"{queryName}_PageNumber_{PageNumber}_PageSize_{PageSize}_SortColumn_{sortColumn}_SortOrder_{sortOrder}_SearchColumns_{searchColumns}_SearchValue_{searchValue}";
+            // Construct the cache key
+            return $"PageNumber_{PageNumber}_PageSize_{PageSize}_SortColumn_{sortColumn}_SortOrder_{sortOrder}_SearchColumns_{searchColumns}_SearchValue_{searchValue}";
+        }
     }
 
     /// <summary>

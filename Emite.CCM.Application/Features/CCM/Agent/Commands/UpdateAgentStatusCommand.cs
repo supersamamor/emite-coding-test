@@ -7,6 +7,9 @@ using LanguageExt;
 using LanguageExt.Common;
 using MediatR;
 using static LanguageExt.Prelude;
+using Microsoft.Extensions.Caching.Memory;
+using Emite.CCM.Application.Features.CCM.Agent.Queries;
+using Emite.CCM.Application.Services;
 
 namespace Emite.CCM.Application.Features.CCM.Agent.Commands;
 
@@ -17,7 +20,7 @@ public record UpdateAgentStatusCommand : IRequest<Validation<Error, AgentState>>
 }
 
 public class UpdateAgentStatusCommandHandler(ApplicationContext context,
-                                 CompositeValidator<UpdateAgentStatusCommand> validator) : IRequestHandler<UpdateAgentStatusCommand, Validation<Error, AgentState>>
+                                 CompositeValidator<UpdateAgentStatusCommand> validator, CacheService? cacheService) : IRequestHandler<UpdateAgentStatusCommand, Validation<Error, AgentState>>
 {
 
     public async Task<Validation<Error, AgentState>> Handle(UpdateAgentStatusCommand request, CancellationToken cancellationToken) =>
@@ -31,6 +34,11 @@ public class UpdateAgentStatusCommandHandler(ApplicationContext context,
                 entity.TagStatus(request.Status);
                 context.Update(entity);
                 _ = await context.SaveChangesAsync(cancellationToken);
+                if (cacheService != null)
+                {
+                    cacheService.RemoveCacheForQuery(nameof(GetAgentQuery));
+                    cacheService.SetCache(nameof(GetAgentByIdQuery), request.Id, entity);
+                }
                 return Success<Error, AgentState>(entity);
             },
             None: () => Fail<Error, AgentState>($"Record with id {request.Id} does not exist"));

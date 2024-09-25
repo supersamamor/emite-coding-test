@@ -35,6 +35,7 @@ builder.Services.AddDbContext<IdentityContext>(options
        => options.UseSqlServer(configuration.GetConnectionString("ApplicationContext")));
 builder.Services.Configure<CacheSettings>(configuration.GetSection("CacheSettings"));
 builder.Services.AddMemoryCache();
+builder.Services.AddSingleton<CacheService>();
 // Configure Rate Limiting
 builder.Services.AddRateLimiter(options =>
 {

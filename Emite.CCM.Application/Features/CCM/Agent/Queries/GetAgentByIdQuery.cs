@@ -6,29 +6,22 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
+using Emite.CCM.Application.Services;
 namespace Emite.CCM.Application.Features.CCM.Agent.Queries;
 
-public record GetAgentByIdQuery(string Id) : BaseCachedQueryById(Id), IRequest<Option<AgentState>>;
+public record GetAgentByIdQuery(string Id) : BaseQueryById(Id), IRequest<Option<AgentState>>;
 
-public class GetAgentByIdQueryHandler(ApplicationContext context, IMemoryCache cache, IOptions<CacheSettings> cacheSettings) : BaseCachedQueryByIdHandler<ApplicationContext, AgentState, GetAgentByIdQuery, IMemoryCache>(context, cache, cacheSettings.Value), IRequestHandler<GetAgentByIdQuery, Option<AgentState>>
+public class GetAgentByIdQueryHandler(ApplicationContext context, CacheService? cacheService) : BaseQueryByIdHandler<ApplicationContext, AgentState, GetAgentByIdQuery>(context), IRequestHandler<GetAgentByIdQuery, Option<AgentState>>
 {
     public override async Task<Option<AgentState>> Handle(GetAgentByIdQuery request, CancellationToken cancellationToken = default)
     {
-        var cacheKey = request.GenerateCacheKey(nameof(GetAgentByIdQuery));
-        if (Cache.TryGetValue(cacheKey, out AgentState? cachedResponse))
+        var cachedData = cacheService?.GetCacheViaQueryAndParameters<AgentState>(nameof(GetAgentByIdQuery), request.Id);
+        if (cachedData != null)
         {
-            return cachedResponse;
+            return cachedData;
         }
-        else
-        {
-            var cacheEntryOptions = new MemoryCacheEntryOptions
-            {
-                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(DefaultCacheDurationMinutes)
-            };
-            var response = await Context.Agent.Where(e => e.Id == request.Id).AsNoTracking().SingleAsync(cancellationToken);
-            Cache.Set(cacheKey, response, cacheEntryOptions);
-            return response;
-        }
-    }
-          
+        var response = await Context.Agent.Where(e => e.Id == request.Id).AsNoTracking().SingleAsync(cancellationToken);
+        cacheService?.SetCache(nameof(GetAgentByIdQuery), request.Id, response);
+        return response;
+    }          
 }

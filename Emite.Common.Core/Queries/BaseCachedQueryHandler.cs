@@ -45,8 +45,7 @@ public abstract class BaseCachedQueryHandler<TContext, TEntity, TQuery, TCache>
     /// <returns></returns>
     public virtual Task<PagedListResponse<TEntity>> Handle(TQuery request, CancellationToken cancellationToken = default)
     {
-        var cacheKey = request.GenerateCacheKey(nameof(TQuery));
-        if (Cache.TryGetValue(cacheKey, out PagedListResponse<TEntity>? cachedResponse))
+        if (Cache.TryGetValue(nameof(TQuery), out PagedListResponse<TEntity>? cachedResponse))
         {
             return Task.FromResult(cachedResponse!);
         }
@@ -59,7 +58,7 @@ public abstract class BaseCachedQueryHandler<TContext, TEntity, TQuery, TCache>
             var response = Task.FromResult(Context.Set<TEntity>().AsNoTracking().ToPagedResponse(request.SearchColumns, request.SearchValue,
                                                                 request.SortColumn, request.SortOrder,
                                                                 request.PageNumber, request.PageSize));
-            Cache.Set(cacheKey, response, cacheEntryOptions);
+            Cache.Set(nameof(TQuery), response, cacheEntryOptions);
             return response;
         }
     }

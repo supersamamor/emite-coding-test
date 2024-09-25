@@ -56,6 +56,7 @@ services.AddChatGPTApiService(configuration);
 services.AddScheduler(configuration);
 services.Configure<CacheSettings>(configuration.GetSection("CacheSettings"));
 services.AddMemoryCache();
+services.AddSingleton<CacheService>();
 // Configure Rate Limiting
 builder.Services.AddRateLimiter(options =>
 {
