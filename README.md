@@ -13,11 +13,16 @@ Before running this application in Docker, make sure you have the following inst
 docker-compose up --build
 ```
 
-### Step 2: Access the Web and API
-API Base URL: https://localhost:48023
-Swagger UI: https://localhost:48023/index.html
+### Step 2: Map localhost to host.docker.internal from etc/host file
+```bash
+127.0.0.1 host.docker.internal
+```
 
-Web UI: https://localhost:48021
+### Step 3: Access the Web and API
+API Base URL: https://host.docker.internal:48023
+Swagger UI: https://host.docker.internal/index.html
+
+Web UI: https://host.docker.internal:48021
 
 Username : system@admin
 Password: Admin123!@#
