@@ -14,6 +14,8 @@ docker-compose up --build
 ```
 
 ### Step 2: Map localhost to host.docker.internal from etc/host file
+from windows, the path is : C:\Windows\System32\drivers\etc
+for linux /etc/hosts
 ```bash
 127.0.0.1 host.docker.internal
 ```
