@@ -92,7 +92,7 @@ namespace Emite.CCM.UnitTest.Application
                 new AddAgentCommandValidator(_context)
             };
             var validator = new CompositeValidator<AddAgentCommand>(validators);
-            var handler = new AddAgentCommandHandler(_context, _mapper, validator, _identityContext);
+            var handler = new AddAgentCommandHandler(_context, _mapper, validator,null);
             var result = await handler.Handle(command, CancellationToken.None);
             // Assert
             ClassicAssert.IsTrue(result.IsSuccess);
@@ -114,7 +114,7 @@ namespace Emite.CCM.UnitTest.Application
                 new EditAgentCommandValidator(_context)
             };
             var validator = new CompositeValidator<EditAgentCommand>(validators);
-            var handler = new EditAgentCommandHandler(_context, _mapper, validator);
+            var handler = new EditAgentCommandHandler(_context, _mapper, validator, null);
             var result = await handler.Handle(command, CancellationToken.None);
             // Assert
             ClassicAssert.IsTrue(result.IsSuccess);
@@ -126,7 +126,7 @@ namespace Emite.CCM.UnitTest.Application
         public async Task Handle_Should_Fetch_Agent_Record()
         {
             var query = new GetAgentByIdQuery(agentId);
-            var handler = new GetAgentByIdQueryHandler(_context, _memoryCache, _cacheSettings);
+            var handler = new GetAgentByIdQueryHandler(_context, null);
             var result = await handler.Handle(query, CancellationToken.None);
             AgentState? agent = null;
             _ = result.Select(l => agent = l);
@@ -145,7 +145,7 @@ namespace Emite.CCM.UnitTest.Application
                 new DeleteAgentCommandValidator(_context)
             };
             var validator = new CompositeValidator<DeleteAgentCommand>(validators);
-            var handler = new DeleteAgentCommandHandler(_context, _mapper, validator);
+            var handler = new DeleteAgentCommandHandler(_context, _mapper, validator, null);
             var result = await handler.Handle(command, CancellationToken.None);
             // Assert
             ClassicAssert.IsTrue(result.IsSuccess);
