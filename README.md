@@ -22,7 +22,7 @@ for linux /etc/hosts
 
 ### Step 3: Access the Web and API
 API Base URL: https://host.docker.internal:48023
-Swagger UI: https://host.docker.internal/index.html
+Swagger UI: https://host.docker.internal:48023/index.html
 
 Web UI: https://host.docker.internal:48021
 
