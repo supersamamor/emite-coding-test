@@ -21,12 +21,11 @@ services:
       - SslCertificate__Password=certpass123!@#
       - ASPNETCORE_URLS=https://+:443;http://+:8080
       - Elasticsearch__Uri=
-      - Authentication__Issuer=https://localhost:48021
-      - Authentication__Audience=https://localhost:48023
+      - Authentication__Issuer=https://host.docker.internal:48021
+      - Authentication__Audience=https://host.docker.internal:48023
     extra_hosts:
       - "host.docker.internal:host-gateway"
     networks:
-      - networkA
       - sharednetwork
     depends_on:
       - db        
@@ -60,7 +59,6 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     networks:
-      - networkB
       - sharednetwork
     depends_on:
       - db      
@@ -74,10 +72,7 @@ services:
       - "15432:1433"                       
     volumes:
       - sql_data:/var/opt/mssql
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     networks:
-      - networkC
       - sharednetwork
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.17.9
@@ -90,19 +85,9 @@ services:
       - "48022:9200"  # Host port 48022 maps to container port 9200
     volumes:
       - es_data:/usr/share/elasticsearch/data  # Persistent storage for Elasticsearch data
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     networks:
-      - networkD
+      - sharednetwork
 networks:
-  networkA:
-    driver: bridge
-  networkB:
-    driver: bridge
-  networkC:
-    driver: bridge
-  networkD:
-    driver: bridge
   sharednetwork:
     driver: bridge
 volumes:
